@@ -1,0 +1,33 @@
+﻿body {
+}
+
+.bg-warningext {
+    color: black;
+    background: #dc4c4f;
+}
+
+.bg-secondaryext {
+    background: #dc4c4f;
+}
+
+.bg-primaryext {
+    background: #dc4c4f;
+}
+
+.bg-success, .bg-danger {
+    color: white;
+}
+
+/*.breadcrumb{
+    background-color:white;
+}*/
+
+.btn-ver{
+    background-color: cadetblue;
+    border-color: cadetblue;
+}
+
+    .btn-ver:hover {
+        background-color: #5B9092;
+        border-color: #5B9092;
+    }

@@ -1,0 +1,212 @@
+﻿
+@{
+    ViewBag.Title = "Perfil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 id="id" hidden>@TempData["IdCliente"]</h3>
+<div class="container my-5" style="display: flex; justify-content: center;">
+    <div class="row" style="width: 80%;">
+
+        <div class="col-sm-12">
+
+            <div class="card">
+                <div class="card-body" style="padding: 10px 0 20px;">
+
+                    <div class="row" style="justify-content: center">
+
+                        <div class="col-sm-9">
+
+                            <div class="d-flex justify-content-between">
+                                <h4 class="ms-2 mt-2" style="margin: 0 0 10px 8px">Editá tu perfil</h4>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body bg-light" style="display: flex; flex-direction: row;">
+
+                                    <div style="width: 50%; display: flex; justify-content: center; align-items: center;">
+                                        <i class="fas fa-user-circle" style="font-size:70px"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="card-title" style="align-self:center; font-size:1.5em; font-weight:bold">Tus datos</h5>
+                                        <div style="margin-bottom: 10px">
+                                            <h5 class="card-text" style=" display: inline">Nombre: </h5>
+                                            <h5 id="nombre" class="card-text" style="display: inline">0</h5>
+                                        </div>
+                                        <div style="margin-bottom: 10px">
+                                            <h5 class="card-text" style="display: inline">Apellido: </h5>
+                                            <h5 id="apellido" class="card-subtitle" style="display: inline">0</h5>
+                                        </div>
+                                        <div style="margin-bottom: 10px">
+                                            <h5 class="card-text" style="display: inline">Correo: </h5>
+                                            <h5 id="correo" style="display: inline">0</h5>
+                                        </div>
+                                        </div>
+
+                                    </div>
+                                <button class="btn-primary" style="padding:5px" onclick="Editar()"><i class="fas fa-pen me-1"></i>Editar</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@*Modal*@
+<div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Cliente</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <input id="txtid" type="hidden" value="0" />
+
+                <div class="row g-2">
+
+
+                    <div class="col-sm-6">
+                        <label for="txtnombres" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="txtnombres" autocomplete="off">
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <label for="txtapellidos" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="txtapellidos" autocomplete="off">
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <label for="txtcorreo" class="form-label">Correo</label>
+                        <input type="text" class="form-control" id="txtcorreo" autocomplete="off" disabled>
+                    </div>
+
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-12">
+
+                        <div id="mensajeError" class="alert alert-danger" role="alert">
+                            A simple danger alert—check it out!
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    jQuery(document).ready(function () {
+
+
+        jQuery.ajax({
+            url: '@Url.Action("VistaPerfil", "Tienda")',
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+
+                var objeto = data.resultado;
+
+                $("#nombre").text(objeto.Nombres)
+                $("#apellido").text(objeto.Apellidos)
+                $("#correo").text(objeto.Correo)
+                $("#id").text(objeto.IdCliente)
+
+            }
+        });
+    });
+
+
+    function Editar() {
+        $("#mensajeError").hide();
+
+        $("#FormModal").modal("show");
+
+        $("#txtid").val($("#id").text());
+        $("#txtnombres").val($("#nombre").text());
+        $("#txtapellidos").val($("#apellido").text());
+        $("#txtcorreo").val($("#correo").text());
+    };
+
+    function Guardar() {
+
+        var Cliente = {
+
+            IdCliente: $("#txtid").val(),
+            Apellidos: $("#txtapellidos").val(),
+            Correo: $("#txtcorreo").val(),
+            Nombres: $("#txtnombres").val()
+        }
+
+
+        jQuery.ajax({
+            url: '@Url.Action("GuardarCliente", "Tienda")',
+            type: "POST",
+            data: JSON.stringify({ objeto : Cliente}),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+
+                $(".modal-body").LoadingOverlay("hide");
+
+                //USUARIO NUEVO
+                if (Cliente.IdCliente == 0) {
+
+                    if (data.resultado != 0) {
+
+                        Cliente.IdCliente = data.resultado;
+                        tabladata.row.add(Cliente).draw(false);
+                        $("#FormModal").modal("hide");
+
+                    } else {
+                        $("#mensajeError").text(data.mensaje);
+                        $("#mensajeError").show();
+                    }
+                }
+                //USUARIO EDITAR
+                else {
+                    if (data.resultado) {
+                        $("#FormModal").modal("hide");
+                    } else {
+                        $("#mensajeError").text(data.mensaje);
+                        $("#mensajeError").show();
+                    }
+                }
+
+            },
+            error: function (error) {
+
+                $(".modal-body").LoadingOverlay("hide");
+                $("#mensajeError").text("Error Ajax");
+                $("#mensajeError").show();
+            },
+            beforeSend: function () {
+                $(".modal-body").LoadingOverlay("show", {
+                    imageResizeFactor: 2,
+                    text: "Cargando...",
+                    size: 14
+                })
+            }
+        });
+        location.reload();
+    }
+
+
+
+
+</script>

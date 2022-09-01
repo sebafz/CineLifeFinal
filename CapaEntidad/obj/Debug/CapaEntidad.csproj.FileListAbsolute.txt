@@ -1,0 +1,23 @@
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaEntidad\bin\Debug\CapaEntidad.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaEntidad\bin\Debug\CapaEntidad.pdb
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaEntidad\obj\Debug\CapaEntidad.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaEntidad\obj\Debug\CapaEntidad.pdb
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaEntidad\bin\Debug\CapaEntidad.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaEntidad\bin\Debug\CapaEntidad.pdb
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaEntidad\obj\Debug\CapaEntidad.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaEntidad\obj\Debug\CapaEntidad.pdb
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaEntidad\bin\Debug\CapaEntidad.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaEntidad\bin\Debug\CapaEntidad.pdb
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaEntidad\obj\Debug\CapaEntidad.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaEntidad\obj\Debug\CapaEntidad.pdb
+C:\Proyectos\SistemasIII\CineLife2\CapaEntidad\bin\Debug\CapaEntidad.dll
+C:\Proyectos\SistemasIII\CineLife2\CapaEntidad\bin\Debug\CapaEntidad.pdb
+C:\Proyectos\SistemasIII\CineLife2\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\Proyectos\SistemasIII\CineLife2\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Proyectos\SistemasIII\CineLife2\CapaEntidad\obj\Debug\CapaEntidad.dll
+C:\Proyectos\SistemasIII\CineLife2\CapaEntidad\obj\Debug\CapaEntidad.pdb

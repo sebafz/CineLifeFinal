@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "PagoEfectuado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+
+
+    <div class="col-sm-12 text-center">
+        <br /><br />
+
+        @{
+            if ((bool)ViewData["Status"])
+            {
+
+                <h1 class="text-success">¡Gracias por elegirnos!</h1>
+
+                <img style="width: 20%;" src="~/Images/ExitoAstronauta.png" />
+
+                <h2 class="text-success"> Tu pago fue realizado con éxito</h2>
+                <h4>Nro. de Transacción : @ViewData["IdTransaccion"]</h4>
+                <h5>Te mandamos un mail con la información de tu compra</h5>
+
+                <br />
+                <a href="@Url.Action("Index", "Tienda")" class="btn btn-primary">Volver a la tienda</a>
+            }
+            else
+            {
+
+
+                <h1 class="text-danger">Lo sentimos</h1>
+
+                <img style="width: 20%;" src="~/Images/ErrorAstronauta.png" />
+
+                <h2 class="text-danger"> Tu pago no pudo realizarse</h2>
+                <h5>Intentá nuevamente. Si el problema continúa ponete en contacto con nuestro equipo</h5>
+
+                <br />
+                <a href="@Url.Action("Index", "Tienda")" class="btn btn-primary">Volver a la tienda</a>
+            }
+
+
+
+        }
+
+
+    </div>
+</div>

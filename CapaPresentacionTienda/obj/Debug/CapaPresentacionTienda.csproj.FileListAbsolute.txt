@@ -1,0 +1,472 @@
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\CapaPresentacionTienda.dll.config
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\CapaPresentacionTienda.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\CapaPresentacionTienda.pdb
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\csc.exe
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\csc.exe.config
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\csc.rsp
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\csi.exe
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\csi.exe.config
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\csi.rsp
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.Managed.Core.targets
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.AppContext.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Collections.Immutable.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Console.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Globalization.Calendars.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.IO.Compression.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.IO.FileSystem.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Net.Http.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Net.Sockets.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Reflection.Metadata.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.ValueTuple.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Xml.XmlDocument.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Xml.XPath.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\vbc.exe
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\vbc.exe.config
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\vbc.rsp
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\VBCSCompiler.exe
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\roslyn\VBCSCompiler.exe.config
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\Antlr3.Runtime.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\CapaEntidad.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\CapaNegocio.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\Microsoft.Web.Infrastructure.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\Newtonsoft.Json.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\System.Web.Helpers.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\System.Web.Mvc.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\System.Web.Optimization.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\System.Web.Razor.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.Deployment.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.Razor.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\WebGrease.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\CapaDatos.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\CapaEntidad.pdb
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\CapaNegocio.pdb
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\System.Web.Helpers.xml
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\System.Web.Mvc.xml
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\System.Web.Optimization.xml
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\System.Web.Razor.xml
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.xml
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.Deployment.xml
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.Razor.xml
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\Newtonsoft.Json.xml
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\Antlr3.Runtime.pdb
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\CapaDatos.pdb
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.Helpers.resources.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.Mvc.resources.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.Optimization.resources.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.Razor.resources.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.WebPages.resources.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\obj\Debug\CapaPresentacionTienda.csproj.AssemblyReference.cache
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\obj\Debug\CapaPresentacionTienda.csproj.CoreCompileInputs.cache
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\obj\Debug\CapaPresentacionTienda.csproj.CopyComplete
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\obj\Debug\CapaPresentacionTienda.dll
+C:\ProgramasVisual\Curso de Sistema Web Carrito\CursoMVC\CapaPresentacionTienda\obj\Debug\CapaPresentacionTienda.pdb
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\CapaPresentacionTienda.dll.config
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\CapaPresentacionTienda.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\CapaPresentacionTienda.pdb
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\csc.exe
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\csc.exe.config
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\csc.rsp
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\csi.exe
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\csi.exe.config
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\csi.rsp
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.Managed.Core.targets
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.Win32.Primitives.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.AppContext.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Collections.Immutable.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Console.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Globalization.Calendars.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.IO.Compression.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.IO.Compression.ZipFile.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.IO.FileSystem.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Net.Http.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Net.Sockets.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Reflection.Metadata.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Threading.Tasks.Extensions.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.ValueTuple.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Xml.XmlDocument.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Xml.XPath.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\vbc.exe
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\vbc.exe.config
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\vbc.rsp
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\VBCSCompiler.exe
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\roslyn\VBCSCompiler.exe.config
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\Antlr3.Runtime.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\CapaEntidad.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\CapaNegocio.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\Microsoft.Web.Infrastructure.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\Newtonsoft.Json.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\System.Web.Helpers.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\System.Web.Mvc.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\System.Web.Optimization.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\System.Web.Razor.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.Deployment.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.Razor.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\WebGrease.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\CapaDatos.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\Firebase.Auth.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\Firebase.Storage.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\CapaEntidad.pdb
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\CapaNegocio.pdb
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\CapaNegocio.dll.config
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\Newtonsoft.Json.xml
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\System.Web.Helpers.xml
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\System.Web.Mvc.xml
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\System.Web.Optimization.xml
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\System.Web.Razor.xml
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.xml
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.Deployment.xml
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.Razor.xml
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\Antlr3.Runtime.pdb
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\CapaDatos.pdb
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.Helpers.resources.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.Mvc.resources.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.Optimization.resources.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.Razor.resources.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.WebPages.resources.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.WebPages.Deployment.resources.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.WebPages.Razor.resources.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\obj\Debug\CapaPresentacionTienda.csproj.AssemblyReference.cache
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\obj\Debug\CapaPresentacionTienda.csproj.CoreCompileInputs.cache
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\obj\Debug\CapaPresentacionTienda.csproj.CopyComplete
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\obj\Debug\CapaPresentacionTienda.dll
+E:\WorkSpaceAD\YOUTUBE\041_CURSO CARRITO COMPRAS MVC\SUBIR MEDIAFIRE\CursoMVC\CapaPresentacionTienda\obj\Debug\CapaPresentacionTienda.pdb
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\CapaPresentacionTienda.dll.config
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\CapaPresentacionTienda.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\CapaPresentacionTienda.pdb
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\csc.exe
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\csc.exe.config
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\csc.rsp
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\csi.exe
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\csi.exe.config
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\csi.rsp
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.AppContext.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Console.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.IO.Compression.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Net.Http.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Net.Sockets.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.ValueTuple.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Xml.XPath.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\vbc.exe
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\vbc.exe.config
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\vbc.rsp
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\VBCSCompiler.exe
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\Antlr3.Runtime.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\CapaEntidad.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\CapaNegocio.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\Newtonsoft.Json.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\System.Web.Helpers.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\System.Web.Mvc.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\System.Web.Optimization.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\System.Web.Razor.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.Deployment.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.Razor.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\WebGrease.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\CapaDatos.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\Firebase.Auth.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\Firebase.Storage.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\CapaEntidad.pdb
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\CapaNegocio.pdb
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\CapaNegocio.dll.config
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\Newtonsoft.Json.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\System.Web.Helpers.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\System.Web.Mvc.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\System.Web.Optimization.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\System.Web.Razor.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.Deployment.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.Razor.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\Antlr3.Runtime.pdb
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\CapaDatos.pdb
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.Helpers.resources.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.Mvc.resources.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.Optimization.resources.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.Razor.resources.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.WebPages.resources.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\obj\Debug\CapaPresentacionTienda.csproj.AssemblyReference.cache
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\obj\Debug\CapaPresentacionTienda.csproj.CoreCompileInputs.cache
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\obj\Debug\CapaPresentacionTienda.csproj.CopyComplete
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\obj\Debug\CapaPresentacionTienda.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVC\CapaPresentacionTienda\obj\Debug\CapaPresentacionTienda.pdb
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\CapaPresentacionTienda.dll.config
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\CapaPresentacionTienda.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\CapaPresentacionTienda.pdb
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\csc.exe
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\csc.exe.config
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\csc.rsp
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\csi.exe
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\csi.exe.config
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\csi.rsp
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.AppContext.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Console.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.IO.Compression.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Net.Http.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Net.Sockets.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.ValueTuple.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Xml.XPath.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\vbc.exe
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\vbc.exe.config
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\vbc.rsp
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\VBCSCompiler.exe
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\Antlr3.Runtime.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\CapaEntidad.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\CapaNegocio.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\Newtonsoft.Json.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\System.Web.Helpers.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\System.Web.Mvc.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\System.Web.Optimization.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\System.Web.Razor.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.Deployment.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.Razor.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\WebGrease.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\CapaDatos.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\Firebase.Auth.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\Firebase.Storage.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\CapaEntidad.pdb
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\CapaNegocio.pdb
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\CapaNegocio.dll.config
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\Newtonsoft.Json.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\System.Web.Helpers.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\System.Web.Mvc.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\System.Web.Optimization.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\System.Web.Razor.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.Deployment.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.Razor.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\Antlr3.Runtime.pdb
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\CapaDatos.pdb
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.Helpers.resources.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.Mvc.resources.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.Optimization.resources.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.Razor.resources.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.WebPages.resources.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\obj\Debug\CapaPresentacionTienda.csproj.AssemblyReference.cache
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\obj\Debug\CapaPresentacionTienda.csproj.CoreCompileInputs.cache
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\obj\Debug\CapaPresentacionTienda.csproj.CopyComplete
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\obj\Debug\CapaPresentacionTienda.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\CursoMVCM\CursoMVC\CapaPresentacionTienda\obj\Debug\CapaPresentacionTienda.pdb
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\CapaPresentacionTienda.dll.config
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\CapaPresentacionTienda.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\CapaPresentacionTienda.pdb
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\csc.exe
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\csc.exe.config
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\csc.rsp
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\csi.exe
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\csi.exe.config
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\csi.rsp
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.AppContext.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Console.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.IO.Compression.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Net.Http.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Net.Sockets.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.ValueTuple.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Xml.XPath.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\vbc.exe
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\vbc.exe.config
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\vbc.rsp
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\VBCSCompiler.exe
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\Antlr3.Runtime.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\CapaEntidad.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\CapaNegocio.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\Newtonsoft.Json.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\System.Web.Helpers.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\System.Web.Mvc.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\System.Web.Optimization.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\System.Web.Razor.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.Deployment.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.Razor.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\WebGrease.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\CapaDatos.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\Firebase.Auth.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\Firebase.Storage.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\CapaEntidad.pdb
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\CapaNegocio.pdb
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\CapaNegocio.dll.config
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\Newtonsoft.Json.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\System.Web.Helpers.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\System.Web.Mvc.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\System.Web.Optimization.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\System.Web.Razor.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.Deployment.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\System.Web.WebPages.Razor.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\Antlr3.Runtime.pdb
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\CapaDatos.pdb
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.Helpers.resources.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.Mvc.resources.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.Optimization.resources.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.Razor.resources.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.WebPages.resources.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\obj\Debug\CapaPresentacionTienda.csproj.AssemblyReference.cache
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\obj\Debug\CapaPresentacionTienda.csproj.CoreCompileInputs.cache
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\obj\Debug\CapaPresentacionTienda.csproj.CopyComplete
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\obj\Debug\CapaPresentacionTienda.dll
+C:\Users\sebat\Downloads\041_CURSO_CARRITO_COMPRAS_MVC (2)\ProyectoLenguajesIIISebastianFernandez\CursoMVC\CapaPresentacionTienda\obj\Debug\CapaPresentacionTienda.pdb
