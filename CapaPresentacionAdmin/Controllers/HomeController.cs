@@ -29,7 +29,20 @@ namespace CapaPresentacionAdmin.Controllers
             return View();
         }
 
+        public ActionResult Proveedores()
+        {
+            return View();
+        }
+
         public ActionResult Clientes()
+        {
+            return View();
+        }
+        public ActionResult Sedes()
+        {
+            return View();
+        }
+        public ActionResult Depositos()
         {
             return View();
         }
@@ -49,6 +62,20 @@ namespace CapaPresentacionAdmin.Controllers
         }
 
         [HttpGet]
+        public JsonResult ListarProveedores()
+        {
+
+
+            List<Proveedor> oLista = new List<Proveedor>();
+
+            oLista = new CN_Proveedores().Listar();
+
+
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+
+        }
+
+        [HttpGet]
         public JsonResult ListarClientes()
         {
 
@@ -57,6 +84,19 @@ namespace CapaPresentacionAdmin.Controllers
 
             oLista = new CN_Cliente().Listar();
 
+
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+
+        }
+
+        [HttpGet]
+        public JsonResult ListarSedes()
+        {
+
+
+            List<Sede> oLista = new List<Sede>();
+
+            oLista = new CN_Sede().Listar();
 
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
 
@@ -83,6 +123,26 @@ namespace CapaPresentacionAdmin.Controllers
         }
 
         [HttpPost]
+        public JsonResult GuardarProveedor(Proveedor objeto)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+
+            if (objeto.IdProveedor == 0)
+            {
+
+                resultado = new CN_Proveedores().Registrar(objeto, out mensaje);
+            }
+            else
+            {
+                resultado = new CN_Proveedores().Editar(objeto, out mensaje);
+
+            }
+
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
         public JsonResult GuardarCliente(Cliente objeto)
         {
             object resultado;
@@ -103,11 +163,42 @@ namespace CapaPresentacionAdmin.Controllers
         }
 
         [HttpPost]
+        public JsonResult GuardarSede(Sede objeto)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+
+            if (objeto.IdSede == 0)
+            {
+
+                resultado = new CN_Sede().Registrar(objeto, out mensaje);
+            }
+            else
+            {
+                resultado = new CN_Sede().Editar(objeto, out mensaje);
+
+            }
+
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
         public JsonResult EliminarUsuario(int id) {
             bool respuesta = false;
             string mensaje = string.Empty;
 
             respuesta = new CN_Usuarios().Eliminar(id,out mensaje);
+
+            return Json(new { resultado = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult EliminarProveedor(int id)
+        {
+            bool respuesta = false;
+            string mensaje = string.Empty;
+
+            respuesta = new CN_Proveedores().Eliminar(id, out mensaje);
 
             return Json(new { resultado = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
         }
@@ -120,6 +211,17 @@ namespace CapaPresentacionAdmin.Controllers
             string mensaje = string.Empty;
 
             respuesta = new CN_Cliente().Eliminar(id, out mensaje);
+
+            return Json(new { resultado = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult EliminarSede(int id)
+        {
+            bool respuesta = false;
+            string mensaje = string.Empty;
+
+            respuesta = new CN_Sede().Eliminar(id, out mensaje);
 
             return Json(new { resultado = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
         }

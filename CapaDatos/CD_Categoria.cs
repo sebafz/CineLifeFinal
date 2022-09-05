@@ -27,7 +27,7 @@ namespace CapaDatos
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
                 {
 
-                    string query = "SELECT IdCategoria,Descripcion,Activo FROM CATEGORIA";
+                    string query = "SELECT IdCategoria,Descripcion,Activo FROM CATEGORIA where Tipo=0 order by activo desc";
 
                     SqlCommand cmd = new SqlCommand(query, oconexion);
                     cmd.CommandType = CommandType.Text;
@@ -42,7 +42,7 @@ namespace CapaDatos
                             {
                                 IdCategoria = Convert.ToInt32(dr["IdCategoria"]),
                                 Descripcion = dr["Descripcion"].ToString(),
-                                Activo = Convert.ToBoolean(dr["Activo"])
+                                Activo = Convert.ToBoolean(dr["Activo"]),
                             });
                         }
                     }
@@ -71,6 +71,7 @@ namespace CapaDatos
                     SqlCommand cmd = new SqlCommand("sp_RegistrarCategoria", oconexion);
                     cmd.Parameters.AddWithValue("Descripcion", obj.Descripcion);
                     cmd.Parameters.AddWithValue("Activo", obj.Activo);
+                    cmd.Parameters.AddWithValue("Tipo", 0);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -132,20 +133,12 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
                 {
-                    SqlCommand cmd = new SqlCommand("sp_EliminarCategoria", oconexion);
-                    cmd.Parameters.AddWithValue("IdCategoria", id);
-                    cmd.Parameters.Add("Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
-                    cmd.CommandType = CommandType.StoredProcedure;
-
+                    SqlCommand cmd = new SqlCommand("update Categoria set activo=0 where IdCategoria = @id", oconexion);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.CommandType = CommandType.Text;
                     oconexion.Open();
-
-                    cmd.ExecuteNonQuery();
-
-                    resultado = Convert.ToBoolean(cmd.Parameters["Resultado"].Value);
-                    Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
+                    resultado = cmd.ExecuteNonQuery() > 0 ? true : false;
                 }
-
             }
             catch (Exception ex)
             {
@@ -154,8 +147,6 @@ namespace CapaDatos
             }
             return resultado;
         }
-
-
 
     }
 }

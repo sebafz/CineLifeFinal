@@ -10,6 +10,8 @@ namespace CapaEntidad
     {
         public int IdDeposito { get; set; }
         public Sede oSede { get; set; }
+        public bool Activo { get; set; }
         public string Nombre { get; set; }
+        public string Descripcion { get; set; }
     }
 }

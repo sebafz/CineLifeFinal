@@ -265,5 +265,41 @@ namespace CapaPresentacionAdmin.Controllers
 
         #endregion
 
+        // ++++++++++++++++ UBICACION ++++++++++++++++++++
+        #region UBICACION;
+        [HttpPost]
+        public JsonResult ObtenerProvinciaArg()
+        {
+
+            List<Provincia> oLista = new List<Provincia>();
+
+            oLista = new CN_Ubicacion().ObtenerProvinciaArg();
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult ObtenerLocalidadArg(string IdProvincia)
+        {
+
+            List<Localidad> oLista = new List<Localidad>();
+
+            oLista = new CN_Ubicacion().ObtenerLocalidadArg(IdProvincia);
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
+        #endregion;
+        #region SEDE;
+        [HttpPost]
+        public JsonResult ObtenerSede(string IdLocalidad)
+        {
+
+            List<Sede> oLista = new List<Sede>();
+
+            oLista = new CN_Sede().ObtenerSede(IdLocalidad);
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
     }
 }

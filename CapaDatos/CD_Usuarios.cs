@@ -15,6 +15,7 @@ namespace CapaDatos
     public class CD_Usuarios
     {
 
+
         public List<Usuario> Listar() {
 
             List<Usuario> lista = new List<Usuario>();
@@ -23,7 +24,11 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cn)) {
 
-                    string query = "select IdUsuario,Nombres,Apellidos,DNI,Telefono,Correo,Clave,Reestablecer,Activo from USUARIO";
+                    string query = "select IdUsuario,Nombres,Apellidos,DNI,u.Telefono,Correo,Clave,Reestablecer,u.Activo, s.IdSede, s.Nombre NomSed, p.IdProvincia, p.Descripcion DesProv, l.IdLocalidad, l.Descripcion DesLoc " +
+                    "from usuario u inner " +
+                    "join sede s on u.IdSede = s.IdSede inner " +
+                    "join Localidad l on s.IdLocalidad = l.IdLocalidad " +
+                    "inner join provincia p on l.IdProvincia = p.IdProvincia order by activo desc";
 
                     SqlCommand cmd = new SqlCommand(query, oconexion);
                     cmd.CommandType = CommandType.Text;
@@ -44,7 +49,18 @@ namespace CapaDatos
                                     Correo = dr["Correo"].ToString(),
                                     Clave = dr["Clave"].ToString(),
                                     Reestablecer = Convert.ToBoolean(dr["Reestablecer"]),
-                                    Activo = Convert.ToBoolean(dr["Activo"])
+                                    Activo = Convert.ToBoolean(dr["Activo"]),
+                                    oSede=new Sede()
+                                    {
+                                        IdSede= Convert.ToInt32(dr["IdSede"]),
+                                        Nombre = dr["NomSed"].ToString(),
+                                        oLocalidad = new Localidad()
+                                        {
+                                            IdLocalidad = Convert.ToInt32(dr["IdLocalidad"]),
+                                            Descripcion = dr["DesLoc"].ToString(),
+                                            oProvincia = new Provincia() { IdProvincia = Convert.ToInt32(dr["IdProvincia"]), Descripcion = dr["DesProv"].ToString() }
+                                        }
+                                    }
                                 }
 
                                 );
@@ -77,9 +93,12 @@ namespace CapaDatos
                     SqlCommand cmd = new SqlCommand("sp_RegistrarUsuario", oconexion);
                     cmd.Parameters.AddWithValue("Nombres", obj.Nombres);
                     cmd.Parameters.AddWithValue("Apellidos", obj.Apellidos);
+                    cmd.Parameters.AddWithValue("DNI", obj.DNI);
+                    cmd.Parameters.AddWithValue("Telefono", obj.Telefono);
                     cmd.Parameters.AddWithValue("Correo", obj.Correo);
                     cmd.Parameters.AddWithValue("Clave", obj.Clave);
                     cmd.Parameters.AddWithValue("Activo", obj.Activo);
+                    cmd.Parameters.AddWithValue("IdSede", obj.oSede.IdSede);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -113,6 +132,8 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("IdUsuario", obj.IdUsuario);
                     cmd.Parameters.AddWithValue("Nombres", obj.Nombres);
                     cmd.Parameters.AddWithValue("Apellidos", obj.Apellidos);
+                    cmd.Parameters.AddWithValue("DNI", obj.DNI);
+                    cmd.Parameters.AddWithValue("Telefono", obj.Telefono);
                     cmd.Parameters.AddWithValue("Correo", obj.Correo);
                     cmd.Parameters.AddWithValue("Activo", obj.Activo);
                     cmd.Parameters.Add("Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
@@ -145,7 +166,7 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
                 {
-                    SqlCommand cmd = new SqlCommand("delete top (1) from usuario where IdUsuario = @id", oconexion);
+                    SqlCommand cmd = new SqlCommand("update usuario set activo=0 where IdUsuario = @id", oconexion);
                     cmd.Parameters.AddWithValue("@id", id);
                     cmd.CommandType = CommandType.Text;
                     oconexion.Open();

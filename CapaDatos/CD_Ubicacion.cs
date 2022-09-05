@@ -39,8 +39,8 @@ namespace CapaDatos
                             lista.Add(
                                 new Departamento()
                                 {
-                                    IdDepartamento = dr["IdDepartamento"].ToString(),
-                                    Descripcion = dr["Descripcion"].ToString(),
+                                    //IdDepartamento = dr["IdDepartamento"].ToString(),
+                                    //Descripcion = dr["Descripcion"].ToString(),
                                 });
                         }
                     }
@@ -93,6 +93,89 @@ namespace CapaDatos
             catch
             {
                 lista = new List<Provincia>();
+
+            }
+
+            return lista;
+
+        }
+
+        public List<Provincia> ObtenerProvinciaArg()
+        {
+            List<Provincia> lista = new List<Provincia>();
+
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
+                {
+                    string query = "select * from provincia";
+
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    cmd.CommandType = CommandType.Text;
+
+                    oconexion.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(
+                                new Provincia()
+                                {
+                                    IdProvincia = Convert.ToInt32(dr["IdProvincia"]),
+                                    Identificador = dr["Identificador"].ToString(),
+                                    Descripcion = dr["Descripcion"].ToString(),
+                                });
+                        }
+                    }
+                }
+
+            }
+            catch
+            {
+                lista = new List<Provincia>();
+
+            }
+
+            return lista;
+
+        }
+
+
+        public List<Localidad> ObtenerLocalidadArg(string idprovincia)
+        {
+            List<Localidad> lista = new List<Localidad>();
+
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
+                {
+                    string query = "select IdLocalidad, Descripcion from Localidad where IdProvincia = @idprovincia";
+
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    cmd.Parameters.AddWithValue("@idprovincia", idprovincia);
+                    cmd.CommandType = CommandType.Text;
+
+                    oconexion.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(
+                                new Localidad()
+                                {
+                                    IdLocalidad = Convert.ToInt32(dr["IdLocalidad"]),
+                                    Descripcion = dr["Descripcion"].ToString(),
+                                });
+                        }
+                    }
+                }
+
+            }
+            catch
+            {
+                lista = new List<Localidad>();
 
             }
 

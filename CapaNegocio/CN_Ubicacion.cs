@@ -25,6 +25,18 @@ namespace CapaNegocio
             return objCapaDato.ObtenerProvincia(iddepartamento);
         }
 
+        public List<Provincia> ObtenerProvinciaArg()
+        {
+
+            return objCapaDato.ObtenerProvinciaArg();
+        }
+
+        public List<Localidad> ObtenerLocalidadArg(string idprovincia)
+        {
+
+            return objCapaDato.ObtenerLocalidadArg(idprovincia);
+        }
+
 
         public List<Distrito> ObtenerDistrito(string iddepartamento, string idprovincia) {
             return objCapaDato.ObtenerDistrito(iddepartamento, idprovincia);

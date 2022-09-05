@@ -24,20 +24,40 @@ namespace CapaNegocio
 
 
             if (string.IsNullOrEmpty(obj.Nombres) || string.IsNullOrWhiteSpace(obj.Nombres)) {
-                Mensaje = "El nombre del usuario no puede ser vacío";
+                Mensaje = "El nombre no puede ser vacío";
             }
             else if (!Regex.IsMatch(obj.Nombres, @"^[a-zA-Z ]+$"))
             {
                 Mensaje = "El nombre no puede contener números o símbolos";
             }
+
             else if (string.IsNullOrEmpty(obj.Apellidos) || string.IsNullOrWhiteSpace(obj.Apellidos))
             {
-                Mensaje = "El apellido del usuario no puede ser vacío";
+                Mensaje = "El apellido no puede ser vacío";
             }
             else if (!Regex.IsMatch(obj.Apellidos, @"^[a-zA-Z ]+$"))
             {
                 Mensaje = "El apellido no puede contener números o símbolos";
             }
+
+            if (String.IsNullOrEmpty(obj.DNI.ToString()) || string.IsNullOrWhiteSpace(obj.DNI.ToString()))
+            {
+                Mensaje = "El DNI no puede ser vacío";
+            }
+            else if (!Regex.IsMatch(obj.DNI.ToString(), @"^[0-9]+$"))
+            {
+                Mensaje = "El DNI no puede contener letras o símbolos";
+            }
+
+            if (string.IsNullOrEmpty(obj.Telefono) || string.IsNullOrWhiteSpace(obj.Telefono))
+            {
+                Mensaje = "El teléfono no puede ser vacío";
+            }
+            else if (!Regex.IsMatch(obj.Telefono, @"^[0-9]+$"))
+            {
+                Mensaje = "El teléfono no puede contener números o símbolos";
+            }
+
             else if (string.IsNullOrEmpty(obj.Correo) || string.IsNullOrWhiteSpace(obj.Correo))
             {
                 Mensaje = "El correo no puede ser vacío";
@@ -49,13 +69,13 @@ namespace CapaNegocio
 
                 string clave = CN_Recursos.GenerarClave();
 
-                string asunto = "Fun House: Te damos la bienvenida";
-                string mensaje_correo = "<h3 style='background-color: #f5f6fa;padding: 15px;margin: 0 5px 0;color: #004aad;border-radius: 15px;'>Bienvenido a Fun House</h3>" +
-                    "<h4 style='padding-left: 10px; color:black'>Este correo electrónico ha sido registrado como administrador de Fun House</h4>" +
+                string asunto = "CineLife: Te damos la bienvenida";
+                string mensaje_correo = "<h3 style='background-color: #fdf3e4;padding: 15px;margin: 0 5px 0;color: #de4f52;border-radius: 15px;'>Bienvenido a CineLife</h3>" +
+                    "<h4 style='padding-left: 10px; color:black'>Este correo electrónico ha sido registrado como administrador de CineLife</h4>" +
                     "<p style='margin: 15px 8px'>Tu contraseña para acceder es: </p>" +
-                    "<h1 style='color: #004aad; margin-left: 8px'>!clave!</h1>" +
+                    "<h1 style='color: #de4f52; margin-left: 8px'>!clave!</h1>" +
                     "<p style='margin: 15px 8px 5px'>Si no fuiste vos, por favor no hagas caso a este mensaje.</p>" +
-                    "<p style='margin: 15px 8px'>Gracias, equipo de Fun House.</p>";
+                    "<p style='margin: 15px 8px'>Gracias, equipo de CineLife.</p>";
                 mensaje_correo = mensaje_correo.Replace("!clave!", clave);
 
 
@@ -95,6 +115,7 @@ namespace CapaNegocio
             {
                 Mensaje = "El nombre no puede contener números o símbolos";
             }
+
             else if (string.IsNullOrEmpty(obj.Apellidos) || string.IsNullOrWhiteSpace(obj.Apellidos))
             {
                 Mensaje = "El apellido no puede ser vacío";
@@ -103,6 +124,25 @@ namespace CapaNegocio
             {
                 Mensaje = "El apellido no puede contener números o símbolos";
             }
+
+            if (String.IsNullOrEmpty(obj.DNI.ToString()) || string.IsNullOrWhiteSpace(obj.DNI.ToString()))
+            {
+                Mensaje = "El DNI no puede ser vacío";
+            }
+            else if (!Regex.IsMatch(obj.DNI.ToString(), @"^[0-9]+$"))
+            {
+                Mensaje = "El DNI no puede contener letras o símbolos";
+            }
+
+            if (string.IsNullOrEmpty(obj.Telefono) || string.IsNullOrWhiteSpace(obj.Telefono))
+            {
+                Mensaje = "El teléfono no puede ser vacío";
+            }
+            else if (!Regex.IsMatch(obj.Telefono, @"^[0-9]+$"))
+            {
+                Mensaje = "El teléfono no puede contener números o símbolos";
+            }
+
             else if (string.IsNullOrEmpty(obj.Correo) || string.IsNullOrWhiteSpace(obj.Correo))
             {
                 Mensaje = "El correo no puede ser vacío";

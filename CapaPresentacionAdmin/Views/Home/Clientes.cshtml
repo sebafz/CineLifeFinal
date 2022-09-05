@@ -29,8 +29,11 @@
                 <tr>
                     <th>Nombre</th>
                     <th>Apellido</th>
+                    <th>DNI</th>
                     <th>Correo</th>
+                    <th>Teléfono</th>
                     <th>Activo</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -67,10 +70,45 @@
                         <input type="text" class="form-control" id="txtapellidos" autocomplete="off">
                     </div>
 
+                    <div class="col-sm-6">
+                        <label for="txtdni" class="form-label">DNI</label>
+                        <input type="text" class="form-control" id="txtdni" autocomplete="off">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="txttelefono" class="form-label">Teléfono</label>
+                        <input type="text" class="form-control" id="txttelefono" autocomplete="off">
+                    </div>
+
+
+                    <div class="col-sm-12">
+                        <label for="txtdireccion" class="form-label">Dirección</label>
+                        <input type="text" class="form-control" id="txtdireccion" autocomplete="off">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="cboprovincia" class="form-label">Provincia</label>
+                        <select id="cboprovincia" class="form-select">
+                        </select>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="cbolocalidad" class="form-label">Localidad</label>
+                        <select id="cbolocalidad" class="form-select">
+                        </select>
+                    </div>
 
                     <div class="col-sm-6">
                         <label for="txtcorreo" class="form-label">Correo</label>
                         <input type="text" class="form-control" id="txtcorreo" autocomplete="off">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="cboactivo" class="form-label">Activo</label>
+                        <select id="cboactivo" class="form-select">
+                            <option value="1">Sí</option>
+                            <option value="0">No</option>
+                        </select>
                     </div>
 
                 </div>
@@ -114,15 +152,28 @@
                 dataType: "json"
             },
             "columns": [
-                {"data":"Nombres"},
-                {"data":"Apellidos"},
-                {"data":"Correo"},
+                { "data": "Nombres" },
+                { "data": "Apellidos" },
+                { "data": "DNI" },
+                { "data": "Correo" },
+                { "data": "Telefono" },
                 {
-                    "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-editar"><i class="fas fa-pen"></i></button>' +
+                    "data": "Activo", "render": function (valor) {
+                        if (valor) {
+                            return '<span class="badge bg-success">Sí</span>'
+                        } else {
+                            return '<span class="badge bg-danger">No</span>'
+                        }
+                    }
+
+                },
+                {
+                    "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-ver"><i class="fas fa-eye"></i></button>' +
+                        '<button type="button" class="btn btn-primary btn-sm ms-2 btn-editar"><i class="fas fa-pen"></i></button>' +
                         '<button type="button" class="btn btn-danger btn-sm ms-2 btn-eliminar"><i class="fas fa-trash"></i></button>',
                     "orderable": false,
                     "searchable": false,
-                    "width": "90px"
+                    "width": "100px"
                 }
 
             ],
@@ -137,8 +188,15 @@
             $("#txtid").val(0);
             $("#txtnombres").val("");
             $("#txtapellidos").val("");
+            $("#txtdni").val("");
+            $("#txttelefono").val("");
             $("#txtcorreo").val("");
+            $("#txtdireccion").val("");
+            $("#cboactivo").val(1);
+            $("#cboprovincia").val($("#cboprovincia option:first").val());
+            $("#cbolocalidad").val($("#cbolocalidad option:first").val());
 
+            $("#btnguardar").show();
 
             $("#mensajeError").hide();
 
@@ -149,14 +207,141 @@
 
                 $("#txtid").val(json.IdCliente);
                 $("#txtnombres").val(json.Nombres);
+                document.getElementById('txtnombres').disabled = true;
                 $("#txtapellidos").val(json.Apellidos);
+                document.getElementById('txtapellidos').disabled = true;
+                $("#txtdni").val(json.CUIL);
+                document.getElementById('txtdni').disabled = true;
+                $("#txttelefono").val(json.Telefono);
                 $("#txtcorreo").val(json.Correo);
+                document.getElementById('txtcorreo').disabled = true;
+                $("#txtdireccion").val(json.Direccion);
+                $("#cboactivo").val(json.Activo == true ? 1 : 0);
+                $("#cboprovincia").val(json.oLocalidad.oProvincia.IdProvincia);
+                ListarLocalidad();
+                $("#cbolocalidad").val(json.oLocalidad.IdLocalidad);
 
             }
 
             $("#FormModal").modal("show");
         }
 
+        function abrirModalVer(json) {
+
+            $("#txtid").val(0);
+            $("#txtnombres").val("");
+            $("#txtapellidos").val("");
+            $("#txtdni").val("");
+            $("#txttelefono").val("");
+            $("#txtcorreo").val("");
+            $("#txtdireccion").val("");
+            $("#cboactivo").val(1);
+            $("#cboprovincia").val($("#cboprovincia option:first").val());
+            $("#cbolocalidad").val($("#cbolocalidad option:first").val());
+
+            $("#btnguardar").hide();
+
+            $("#mensajeError").hide();
+
+
+
+            if (json != null) {
+
+
+                $("#txtid").val(json.IdCliente);
+                $("#txtnombres").val(json.Nombres);
+                document.getElementById('txtnombres').disabled = true;
+                $("#txtapellidos").val(json.Apellidos);
+                document.getElementById('txtapellidos').disabled = true;
+                $("#txtdni").val(json.CUIL);
+                document.getElementById('txtdni').disabled = true;
+                $("#txttelefono").val(json.Telefono);
+                document.getElementById('txttelefono').disabled = true;
+                $("#txtcorreo").val(json.Correo);
+                document.getElementById('txtcorreo').disabled = true;
+                $("#cboactivo").val(json.Activo == true ? 1 : 0);
+                document.getElementById('cboactivo').disabled = true;
+                $("#txtdireccion").val(json.Direccion);
+                document.getElementById('txtdireccion').disabled = true;
+                $("#cboprovincia").val(json.oLocalidad.oProvincia.IdProvincia);
+                document.getElementById('cboprovincia').disabled = true;
+                ListarLocalidad();
+                $("#cbolocalidad").val(json.oLocalidad.IdLocalidad);
+                document.getElementById('cbolocalidad').disabled = true;
+
+            }
+
+            $("#FormModal").modal("show");
+        }
+
+        function ListarProvincia() {
+
+            $("<option>").attr({ "value": "00", "disabled":"disabled", "selected":"true" }).text("Seleccionar").appendTo("#cboprovincia")
+
+            jQuery.ajax({
+                url: '@Url.Action("ObtenerProvinciaArg", "Mantenedor")',
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                    if (data.lista != null) {
+
+                        $.each(data.lista, function (i, item) {
+
+                            $("<option>").attr({ "value": item.IdProvincia }).text(item.Descripcion).appendTo("#cboprovincia")
+                        })
+
+                        ListarLocalidad();
+                    }
+                }
+            })
+
+        }
+
+        $("#cboprovincia").on("change", function () {
+            ListarLocalidad();
+            })
+
+        function ListarLocalidad() {
+
+            $("#cbolocalidad").html("")
+
+            $("<option>").attr({ "value": "00", "disabled": "disabled", "selected": "true" }).text("Seleccionar").appendTo("#cbolocalidad")
+
+            jQuery.ajax({
+                url: '@Url.Action("ObtenerLocalidadArg", "Mantenedor")',
+                type: "POST",
+                data: JSON.stringify({ IdProvincia: $("#cboprovincia option:selected").val() }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                    if (data.lista != null) {
+
+                        $.each(data.lista, function (i, item) {
+
+                            $("<option>").attr({ "value": item.IdLocalidad }).text(item.Descripcion).appendTo("#cbolocalidad")
+                        })
+
+                    }
+                }
+            })
+
+        }
+
+
+
+        $("#tabla tbody").on("click", '.btn-ver', function () {
+
+
+            filaSeleccionada = $(this).closest("tr");
+
+            var data = tabladata.row(filaSeleccionada).data();
+
+            abrirModalVer(data)
+
+        })
 
         $("#tabla tbody").on("click", '.btn-editar', function () {
 
@@ -173,13 +358,13 @@
 
         $("#tabla tbody").on("click", '.btn-eliminar', function () {
 
-            var usuarioseleccionado = $(this).closest("tr");
+            var provseleccionado = $(this).closest("tr");
 
-            var data = tabladata.row(usuarioseleccionado).data();
+            var data = tabladata.row(provseleccionado).data();
 
 
             swal({
-                title: "¿Está seguro?",
+                title: "¿Estás Seguro?",
                 text: "¿Desea eliminar el cliente?",
                 type: "warning",
                 showCancelButton: true,
@@ -193,15 +378,14 @@
                  jQuery.ajax({
                     url: '@Url.Action("EliminarCliente", "Home")',
                     type: "POST",
-                    data: JSON.stringify({ id: data.IdCliente }),
+                     data: JSON.stringify({ id: data.IdCliente }),
                     dataType: "json",
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
 
-
                         if (data.resultado) {
+                            location.reload();
 
-                            tabladata.row(usuarioseleccionado).remove().draw();
                         } else {
 
                             swal("No se pudo eliminar", data.mensaje, "error")
@@ -222,16 +406,38 @@
 
         })
 
-        function Guardar() {
+        function Cerrar() {
+            document.getElementById('txtnombres').disabled = false;
+            document.getElementById('txtapellidos').disabled = false;
+            document.getElementById('txtdni').disabled = false;
+            document.getElementById('txttelefono').disabled = false;
+            document.getElementById('txtcorreo').disabled = false;
+            document.getElementById('cboactivo').disabled = false;
+            document.getElementById('txtdireccion').disabled = false;
+            document.getElementById('cboprovincia').disabled = false;
+            document.getElementById('cbolocalidad').disabled = false;
+        }
 
+        function Guardar() {
             var Cliente = {
 
                 IdCliente: $("#txtid").val(),
+                Activo: $("#cboactivo").val() == 1 ? true: false,
                 Apellidos: $("#txtapellidos").val(),
+                CUIL: $("#txtdni").val(),
+                Telefono: $("#txttelefono").val(),
                 Correo: $("#txtcorreo").val(),
-                Nombres: $("#txtnombres").val()
+                Nombres: $("#txtnombres").val(),
+                Direccion: $("#txtdireccion").val(),
+                oLocalidad: {
+                    IdLocalidad: $("#cbolocalidad option:selected").val(),
+                    Descripcion: $("#cbolocalidad option:selected").text(),
+                    oProvincia: {
+                        IdProvincia: $("#cboprovincia option:selected").val(),
+                        Descripcion: $("#cboprovincia option:selected").text(),
+                    }
+                },
             }
-
 
            jQuery.ajax({
                 url: '@Url.Action("GuardarCliente", "Home")',
@@ -239,12 +445,12 @@
                 data: JSON.stringify({ objeto : Cliente}),
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
-                success: function (data) {
+               success: function (data) {
 
                    $(".modal-body").LoadingOverlay("hide");
 
                     //USUARIO NUEVO
-                    if (Cliente.IdCliente == 0) {
+                   if (Cliente.IdCliente == 0) {
 
                         if (data.resultado != 0) {
 

@@ -6,7 +6,7 @@
 
 
 <ol class="breadcrumb mb-4 mt-4">
-    <li class="breadcrumb-item"><a href="index.html">Resumen</a></li>
+    <li class="breadcrumb-item"><a href="#">Resumen</a></li>
     <li class="breadcrumb-item active">Usuarios</li>
 </ol>
 
@@ -80,31 +80,37 @@
                     </div>
 
 
-                    <div class="col-sm-6">
+                    <div class="col-sm-12">
                         <label for="txtcorreo" class="form-label">Correo</label>
                         <input type="text" class="form-control" id="txtcorreo" autocomplete="off">
                     </div>
 
+                    <div class="col-sm-6">
+                        <label for="cboprovincia" class="form-label">Provincia</label>
+                        <select id="cboprovincia" class="form-select">
+
+                        </select>
+                    </div>
 
                     <div class="col-sm-6">
-                        <label for="cboactivo" class="form-label">Activo</label>
-                        <select id="cboactivo" class="form-select">
-                            <option value="1">Sí</option>
-                            <option value="0">No</option>
+                        <label for="cbolocalidad" class="form-label">Localidad</label>
+                        <select id="cbolocalidad" class="form-select">
+
                         </select>
                     </div>
 
                     <div class="col-sm-6">
                         <label for="cbosede" class="form-label">Sede</label>
                         <select id="cbosede" class="form-select">
-                            
+
                         </select>
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="cbodeposito" class="form-label">Depósito</label>
-                        <select id="cbodeposito" class="form-select">
-                            
+                        <label for="cboactivo" class="form-label">Activo</label>
+                        <select id="cboactivo" class="form-select">
+                            <option value="1">Sí</option>
+                            <option value="0">No</option>
                         </select>
                     </div>
 
@@ -135,12 +141,13 @@
 
 @section scripts{
     <script>
-
+        ListarProvincia();
+        CargarTabla()
         var tabladata;
         var filaSeleccionada;
 
 
-
+        function CargarTabla() {
         tabladata = $("#tabla").DataTable({
             responsive: true,
             ordering: false,
@@ -178,17 +185,27 @@
             }
 
         });
+        }
 
         function abrirModal(json) {
 
             $("#txtid").val(0);
             $("#txtnombres").val("");
             $("#txtapellidos").val("");
+            $("#txtdni").val("");
+            $("#txttelefono").val("");
             $("#txtcorreo").val("");
             $("#cboactivo").val(1);
+            $("#cboprovincia").val($("#cboprovincia option:first").val());
+            $("#cbolocalidad").val($("#cbolocalidad option:first").val());
+            $("#cbosede").val($("#cbosede option:first").val());
 
+            $("#btnguardar").show();
 
             $("#mensajeError").hide();
+
+            $("#cbolocalidad").html("");
+            $("#cbosede").html("");
 
 
 
@@ -201,10 +218,13 @@
                 $("#txtdni").val(json.DNI);
                 $("#txttelefono").val(json.Telefono);
                 $("#txtcorreo").val(json.Correo);
+                document.getElementById('txtcorreo').disabled = true;
                 $("#cboactivo").val(json.Activo == true ? 1 : 0);
-                $("#cbosede").val();
-                $("#cbodeposito").val();
-                $("#btnguardar").show();
+                $("#cboprovincia").val(json.oSede.oLocalidad.oProvincia.IdProvincia);
+                ListarLocalidad();
+                $("#cbolocalidad").val(json.oSede.oLocalidad.IdLocalidad);
+                ListarSede();
+                $("#cbosede").val(json.oSede.IdSede);
 
             }
 
@@ -216,9 +236,15 @@
             $("#txtid").val(0);
             $("#txtnombres").val("");
             $("#txtapellidos").val("");
+            $("#txtdni").val("");
+            $("#txttelefono").val("");
             $("#txtcorreo").val("");
             $("#cboactivo").val(1);
+            $("#cboprovincia").val($("#cboprovincia option:first").val());
+            $("#cbolocalidad").val($("#cbolocalidad option:first").val());
+            $("#cbosede").val($("#cbosede option:first").val());
 
+            $("#btnguardar").hide();
 
             $("#mensajeError").hide();
 
@@ -240,15 +266,105 @@
                 document.getElementById('txtcorreo').disabled = true;
                 $("#cboactivo").val(json.Activo == true ? 1 : 0);
                 document.getElementById('cboactivo').disabled = true;
-                $("#cbosede").val();
+                $("#cboprovincia").val(json.oSede.oLocalidad.oProvincia.IdProvincia);
+                ListarLocalidad();
+                $("#cbolocalidad").val(json.oSede.oLocalidad.IdLocalidad);
+                ListarSede();
+                $("#cbosede").val(json.oSede.IdSede);
+                document.getElementById('cboprovincia').disabled = true;
+                document.getElementById('cbolocalidad').disabled = true;
                 document.getElementById('cbosede').disabled = true;
-                $("#cbodeposito").val();
-                document.getElementById('cbodeposito').disabled = true;
-                $("#btnguardar").hide();
 
             }
 
             $("#FormModal").modal("show");
+        }
+
+        function ListarProvincia() {
+
+            $("<option>").attr({ "value": "00", "disabled":"disabled", "selected":"true" }).text("Seleccionar").appendTo("#cboprovincia")
+
+            jQuery.ajax({
+                url: '@Url.Action("ObtenerProvinciaArg", "Mantenedor")',
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                    if (data.lista != null) {
+
+                        $.each(data.lista, function (i, item) {
+
+                            $("<option>").attr({ "value": item.IdProvincia }).text(item.Descripcion).appendTo("#cboprovincia")
+                        })
+
+                        ListarLocalidad();
+                    }
+                }
+            })
+
+        }
+
+        $("#cboprovincia").on("change", function () {
+            ListarLocalidad();
+            })
+
+        function ListarLocalidad() {
+
+            $("#cbolocalidad").html("")
+
+            $("<option>").attr({ "value": "00", "disabled": "disabled", "selected": "true" }).text("Seleccionar").appendTo("#cbolocalidad")
+
+            jQuery.ajax({
+                url: '@Url.Action("ObtenerLocalidadArg", "Mantenedor")',
+                type: "POST",
+                data: JSON.stringify({ IdProvincia: $("#cboprovincia option:selected").val() }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                    if (data.lista != null) {
+
+                        $.each(data.lista, function (i, item) {
+
+                            $("<option>").attr({ "value": item.IdLocalidad }).text(item.Descripcion).appendTo("#cbolocalidad")
+                        })
+                        ListarSede();
+                    }
+                }
+            })
+
+        }
+
+        $("#cbolocalidad").on("change", function () {
+            ListarSede();
+            })
+
+        function ListarSede() {
+
+            $("#cbosede").html("")
+
+            $("<option>").attr({ "value": "00", "disabled": "disabled", "selected": "true" }).text("Seleccionar").appendTo("#cbosede")
+
+            jQuery.ajax({
+                url: '@Url.Action("ObtenerSede", "Mantenedor")',
+                type: "POST",
+                data: JSON.stringify({ IdLocalidad: $("#cbolocalidad option:selected").val() }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                    if (data.lista != null) {
+
+                        $.each(data.lista, function (i, item) {
+
+                            $("<option>").attr({ "value": item.IdSede }).text(item.Nombre).appendTo("#cbosede")
+                        })
+
+                    }
+                }
+            })
+
         }
 
 
@@ -284,7 +400,7 @@
 
 
             swal({
-                title: "Esta Seguro?",
+                title: "¿Estás Seguro?",
                 text: "¿Desea eliminar el usuario?",
                 type: "warning",
                 showCancelButton: true,
@@ -304,8 +420,7 @@
                     success: function (data) {
 
                         if (data.resultado) {
-
-                            tabladata.row(usuarioseleccionado).remove().draw();
+                            location.reload();
                         } else {
 
                             swal("No se pudo eliminar", data.mensaje, "error")
@@ -315,8 +430,6 @@
                         console.log(error)
                     }
                 });
-
-
 
 
             });
@@ -334,17 +447,32 @@
             document.getElementById('txtcorreo').disabled = false;
             document.getElementById('cboactivo').disabled = false;
             document.getElementById('cbosede').disabled = false;
-            document.getElementById('cbodeposito').disabled = false;
+            document.getElementById('cboprovincia').disabled = false;
+            document.getElementById('cbolocalidad').disabled = false;
         }
 
         function Guardar() {
             var Usuario = {
 
                 IdUsuario: $("#txtid").val(),
-                Activo: $("#cboactivo").val() == 1 ? true: false,
+                Activo: $("#cboactivo").val() == 1 ? true : false,
                 Apellidos: $("#txtapellidos").val(),
+                DNI: $("#txtdni").val(),
+                Telefono: $("#txttelefono").val(),
                 Correo: $("#txtcorreo").val(),
-                Nombres: $("#txtnombres").val()
+                Nombres: $("#txtnombres").val(),
+                oSede: {
+                    IdSede: $("#cbosede option:selected").val(),
+                    Nombre: $("#cbosede option:selected").text(),
+                    oLocalidad: {
+                        IdLocalidad: $("#cbolocalidad option:selected").val(),
+                        Descripcion: $("#cbolocalidad option:selected").text(),
+                        oProvincia: {
+                            IdProvincia: $("#cboprovincia option:selected").val(),
+                            Descripcion: $("#cboprovincia option:selected").text(),
+                        }
+                    },
+                }, 
             }
 
 
@@ -405,7 +533,6 @@
 
 
         }
-
 
 
     </script>

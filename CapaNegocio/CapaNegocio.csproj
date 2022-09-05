@@ -206,8 +206,10 @@
     <Compile Include="CN_Marca.cs" />
     <Compile Include="CN_Paypal.cs" />
     <Compile Include="CN_Producto.cs" />
+    <Compile Include="CN_Proveedores.cs" />
     <Compile Include="CN_Recursos.cs" />
     <Compile Include="CN_Reporte.cs" />
+    <Compile Include="CN_Sede.cs" />
     <Compile Include="CN_Ubicacion.cs" />
     <Compile Include="CN_Usuarios.cs" />
     <Compile Include="CN_Venta.cs" />
