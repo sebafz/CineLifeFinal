@@ -64,6 +64,7 @@
     <Compile Include="Proveedor.cs" />
     <Compile Include="Provincia.cs" />
     <Compile Include="Reporte.cs" />
+    <Compile Include="ReporteDeposito.cs" />
     <Compile Include="Sede.cs" />
     <Compile Include="TipoProveedor.cs" />
     <Compile Include="TipoUsuario.cs" />

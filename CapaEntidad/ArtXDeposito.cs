@@ -15,5 +15,6 @@ namespace CapaEntidad
         public int StockMaximo { get; set; }
         public int StockMinimo { get; set; }
         public int PuntoDePedido { get; set; }
+        public bool Activo { get; set; }
     }
 }

@@ -9,9 +9,8 @@ namespace CapaEntidad
     public class Deposito
     {
         public int IdDeposito { get; set; }
-        public Sede oSede { get; set; }
-        public bool Activo { get; set; }
-        public string Nombre { get; set; }
+        public int Sede { get; set; }
         public string Descripcion { get; set; }
+        public bool Activo { get; set; }
     }
 }

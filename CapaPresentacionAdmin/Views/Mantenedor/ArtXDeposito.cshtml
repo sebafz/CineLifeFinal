@@ -1,0 +1,483 @@
+﻿
+@{
+    ViewBag.Title = "ArtXDeposito";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<ol class="breadcrumb mb-4 mt-4">
+    <li class="breadcrumb-item">Mantemiento</li>
+    <li class="breadcrumb-item"><a href="@Url.Action("Deposito", "Mantenedor")">Depósitos</a></li>
+    <li class="breadcrumb-item active">Artículos por depósito</li>
+</ol>
+
+
+<div class="card">
+    <div class="card-header">
+
+        <i class="fas fa-boxes me-1"></i> Lista de artículos por depósito
+    </div>
+
+    <div class="card-body">
+
+        <div class="row">
+
+            <div class="col-12">
+                <button type="button" class="btn btn-primary" onclick="abrirModalAgregar()">Crear nuevo</button>
+            </div>
+        </div>
+
+        <hr />
+        @{
+            <h6 class="alert alert-warning">Se muestran los artículos de @TempData["NomSede"] de la sede @TempData["NomDeposito"]</h6>
+        }
+        <table id="tabla" class="display cell-border" style="width: 100%">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Marca</th>
+                    <th>Categoría</th>
+                    <th>Stock</th>
+                    <th>Precio</th>
+                    <th>Activo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<!-- Modal editar-->
+<div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Artículo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <input id="txtid" type="hidden" value="0" />
+
+                <form id="contenedor" class="row">
+
+                    <div class="col-sm-3">
+                        <div class="mb-3">
+                            <label class="form-label">Stock</label>
+                            <input type="text" class="form-control" id="txtstock" name="stock" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Stock mínimo</label>
+                            <input type="text" class="form-control" id="txtstockminimo" name="stock" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="mb-3">
+                            <label class="form-label">Stock máximo</label>
+                            <input type="text" class="form-control" id="txtstockmaximo" name="stockmaximo" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Punto de pedido</label>
+                            <input type="text" class="form-control" id="txtpuntodepedido" name="stock" />
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mb-3">
+                            <label class="form-label">Activo</label>
+                            <select id="cboactivo" class="form-select">
+                                <option value="1">Sí</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+
+                <!--Mensaje de alerta-->
+                <div class="row mt-2">
+                    <div class="col-12">
+
+                        <div id="mensajeError" class="alert alert-danger" role="alert">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal agregar-->
+<div class="modal fade" id="FormModalAgregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Añadir artículo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <table id="tablaAgregar" class="display cell-border" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Marca</th>
+                            <th>Categoría</th>
+                            <th>Proveedor</th>
+                            <th>Precio</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts{
+    <script>
+        var tabladata;
+        var filaSeleccionada;
+
+
+
+        tabladata = $("#tabla").DataTable({
+            responsive: true,
+            ordering: false,
+            "ajax": {
+                url: '@Url.Action("ListarProductoXDeposito", "Mantenedor")',
+                type: "GET",
+                data: { id: @TempData["IdDeposito"] },
+                dataType: "json",
+                contentType: "application/json; charset=utf-8"
+            },
+            "columns": [
+                {"data":"Nombre"},
+                { "data": "Descripcion" },
+                {
+                    "data": "oMarca", "render": function (data) {
+                      return data.Descripcion
+                    }
+                },
+                {
+                    "data": "oCategoria", "render": function (data) {
+                        return data.Descripcion
+                    }
+                },
+                { "data": "Stock" },
+                { "data": "Precio" },
+                {
+                    "data": "Activo", "render": function (valor) {
+                        if (valor) {
+                            return '<span class="badge bg-success">Sí</span>'
+                        } else {
+                            return '<span class="badge bg-danger">No</span>'
+                        }
+                    }
+                },
+                {
+                    "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-editar"><i class="fas fa-pen"></i></button>' +
+                        '<button type="button" class="btn btn-danger btn-sm ms-2 btn-eliminar"><i class="fas fa-trash"></i></button>',
+                    "orderable": false,
+                    "searchable": false,
+                    "width": "70px"
+                }
+
+            ],
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+            }
+
+        });
+
+        tabladata = $("#tablaAgregar").DataTable({
+            responsive: true,
+            ordering: false,
+            "ajax": {
+                url: '@Url.Action("ListarProductosActivos", "Mantenedor")',
+                type: "GET",
+                data: null,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8"
+            },
+            "columns": [
+                {"data":"Nombre"},
+                { "data": "Descripcion" },
+                {
+                    "data": "oMarca", "render": function (data) {
+                      return data.Descripcion
+                    }
+                },
+                {
+                    "data": "oCategoria", "render": function (data) {
+                        return data.Descripcion
+                    }
+                },
+                {
+                    "data": "oProveedor", "render": function (data) {
+                        return data.Nombres
+                    }
+                },
+                { "data": "Precio" },
+                {
+                    "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-agregar"><i class="fas fa-plus"></i></button>',
+                    "orderable": false,
+                    "searchable": false,
+                    "width": "50px"
+                }
+
+            ],
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+            }
+
+            });
+
+
+        jQuery.validator.addMethod("stock", function (value, element) {
+            return this.optional(element) || /^\D+$/i.test(value);
+        }, "El stock debe ser un número mayor o igual a cero");
+
+
+        //$("#contenedor").validate({
+        //    rules: {
+        //        stock: {
+        //            required: true,
+        //            stock: true
+        //        },
+        //        stockminimo: {
+        //            required: true,
+        //            stock: true
+        //        },
+        //        stockmaximo: {
+        //            required: true,
+        //            stock: true
+        //        },
+        //        puntodepedido: {
+        //            required: true,
+        //            stock: true
+        //        }
+        //    },
+        //    messages: {
+        //        stock: { required: "El campo stock es obligatorio", stock: "El stock debe ser un número mayor o igual a cero"},
+        //        stockminimo: { required: "El campo stock mínimo es obligatorio", stock: "El stock debe ser un número mayor o igual a cero"},
+        //        stockmaximo: { required: "El campo stock  máximo es obligario", stock: "El stock debe ser un número mayor o igual a cero" }
+        //    },
+        //    errorElement: "div",
+        //    errorLabelContainer: ".alert-danger"
+        //})
+
+
+        function abrirModal(json) {
+
+            $("#txtid").val(0);
+            $("#txtstock").val("");
+            $("#txtstockminimo").val("");
+            $("#txtstockmaximo").val("");
+            $("#txtpuntodepedido").val("");
+            $("#cboactivo").val(1);
+
+            $("#mensajeError").hide();
+
+            if (json != null) {
+
+                $("#txtid").val(json.IdProducto);
+                $("#txtstock").val(json.Stock);
+                $("#txtstockminimo").val(json.StockMinimo);
+                $("#txtstockmaximo").val(json.StockMaximo);
+                $("#txtpuntodepedido").val(json.PuntoDePedido);
+                $("#cboactivo").val(json.Activo == true ? 1 : 0);
+
+            }
+
+            $("#FormModal").modal("show");
+        }
+
+        function abrirModalAgregar() {
+
+            $("#FormModalAgregar").modal("show");
+        }
+
+        function abrirModalVacio(json) {
+
+            $("#txtid").val(0);
+            $("#txtstock").val("");
+            $("#txtstockminimio").val("");
+            $("#txtstockmaximo").val("");
+            $("#txtpuntodepedido").val("");
+            $("#cboactivo").val(1);
+
+            $("#mensajeError").hide();
+
+            $("#FormModal").modal("show");
+        }
+
+        $("#tabla tbody").on("click", '.btn-editar', function () {
+
+            filaSeleccionada = $(this).closest("tr");
+
+            var data =  tabladata.row(filaSeleccionada).data();
+
+            abrirModal(data)
+
+        })
+
+        $("#tablaAgregar tbody").on("click", '.btn-agregar', function () {
+
+            filaSeleccionada = $(this).closest("tr");
+
+            var data =  tabladata.row(filaSeleccionada).data();
+
+            $("#FormModalAgregar").modal("hide");
+
+            abrirModalVacio(data)
+
+        })
+
+        $("#tabla tbody").on("click", '.btn-eliminar', function () {
+
+            var productoseleccionado = $(this).closest("tr");
+
+            var data = tabladata.row(productoseleccionado).data();
+
+            swal({
+                title: "¿Estás seguro?",
+                text: "¿Desea eliminar el producto?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-primary",
+                confirmButtonText: "Sí",
+                cancelButtonText: "No",
+                closeOnConfirm: true
+            },
+            function () {
+
+                 jQuery.ajax({
+                    url: '@Url.Action("EliminarProductoXDeposito", "Mantenedor")',
+                    type: "POST",
+                     data: JSON.stringify({ idart: data.IdProducto, iddep: @TempData["IdDeposito"]  }),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+
+
+                        if (data.resultado) {
+                            
+                            
+                        } else {
+
+                            swal("No se pudo eliminar", data.mensaje, "error")
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error)
+                    }
+                });
+
+
+
+
+            });
+
+
+            console.log(data);
+
+        })
+
+        function Guardar() {
+
+            var ArtXDeposito = {
+                IdArtXDeposito: $("#txtid").val(),
+                Stock: $("#txtstock").val(),
+                StockMinimo: $("#txtstockminimo").val(),
+                StockMaximo: $("#txtstockmaximo").val(),
+                PuntoDePedido: $("#txtpuntodepedido").val(),
+                Activo: $("#cboactivo").val() == 1 ? true : false,
+            }
+
+
+           jQuery.ajax({
+                url: '@Url.Action("GuardarArtXDeposito", "Mantenedor")',
+                type: "POST",
+               data: JSON.stringify({ objeto: ArtXDeposito }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+               success: function (data) {
+
+                   $(".modal-body").LoadingOverlay("hide");
+
+                    //USUARIO NUEVO
+                   if (Producto.IdProducto == 0) {
+
+                        if (data.resultado != 0) {
+
+                            Producto.IdProducto = data.resultado;
+                            tabladata.row.add(ArtXDeposito).draw(false);
+                            $("#FormModalAgregar").modal("hide");
+
+                        } else {
+                            $("#mensajeError").text(data.mensaje);
+                            $("#mensajeError").show();
+                        }
+                    }
+                    //USUARIO EDITAR
+                    else {
+
+                        if (data.resultado) {
+
+                            tabladata.row(filaSeleccionada).data(Producto).draw(false);
+                            filaSeleccionada = null;
+                            $("#FormModal").modal("hide");
+                        } else {
+                            $("#mensajeError").text(data.mensaje);
+                            $("#mensajeError").show();
+                        }
+                    }
+                },
+               error: function (error) {
+
+                   $(".modal-body").LoadingOverlay("hide");
+                   $("#mensajeError").text("Error Ajax");
+                   $("#mensajeError").show();
+                },
+                beforeSend: function () {
+                    $(".modal-body").LoadingOverlay("show", {
+                        imageResizeFactor: 2,
+                        text: "Cargando...",
+                        size: 14
+                    })
+                }
+            });
+
+
+        }
+
+
+
+    </script>
+
+
+}
+
+
+

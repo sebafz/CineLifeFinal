@@ -19,6 +19,12 @@ namespace CapaNegocio
             return objCapaDato.ObtenerSede(idlocalidad);
         }
 
+        public List<Sede> ObtenerTodasLasSedes()
+        {
+
+            return objCapaDato.ObtenerTodasLasSedes();
+        }
+
         public List<Sede> Listar()
         {
             return objCapaDato.Listar();

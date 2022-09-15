@@ -532,7 +532,8 @@
     <Content Include="Views\Home\Clientes.cshtml" />
     <Content Include="Views\Home\Proveedores.cshtml" />
     <Content Include="Views\Home\Sedes.cshtml" />
-    <Content Include="Views\Home\Depositos.cshtml" />
+    <Content Include="Views\Mantenedor\Deposito.cshtml" />
+    <Content Include="Views\Mantenedor\ArtXDeposito.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

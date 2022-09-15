@@ -14,10 +14,9 @@ namespace CapaEntidad
         public string Descripcion { get; set; }
         public Marca oMarca { get; set; }
         public Categoria oCategoria { get; set; }
+        public Proveedor oProveedor { get; set; }
         public decimal Precio { get; set; }
 
-        //No usar el stock desde acá, solo está para que no haya errores con el proyecto anterior!!!!
-        public int Stock { get; set; }
         public string PrecioTexto { get; set; }
         public string RutaImagen { get; set; }
         public string NombreImagen { get; set; }
@@ -28,5 +27,12 @@ namespace CapaEntidad
         public string Extension { get; set; }
         public string FechaVencimiento { get; set; }
         public string FechaRegistro { get; set; }
+
+
+        //Solo usar estos de abajo para artxdeposito
+        public int Stock { get; set; }
+        public int StockMaximo { get; set; }
+        public int StockMinimo { get; set; }
+        public int PuntoDePedido { get; set; }
     }
 }

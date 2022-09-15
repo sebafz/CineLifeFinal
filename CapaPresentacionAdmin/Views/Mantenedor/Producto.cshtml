@@ -6,43 +6,43 @@
 
 
 <ol class="breadcrumb mb-4 mt-4">
-    <li class="breadcrumb-item"><a href="index.html">Mantemiento</a></li>
-    <li class="breadcrumb-item active">Productos</li>
+    <li class="breadcrumb-item">Mantemiento</li>
+    <li class="breadcrumb-item active">Artículos</li>
 </ol>
 
 <div class="card">
     <div class="card-header">
 
-        <i class="fas fa-boxes me-1"></i> Lista de productos
+        <i class="fas fa-boxes me-1"></i> Lista de artículos
     </div>
 
     <div class="card-body">
         <div class="row">
+
             <div class="col-12">
-                <button type="button" class="btn btn-primary" onclick="abrirModal(null)">Crear Nuevo</button>
+                <button type="button" class="btn btn-primary" onclick="abrirModal(null)">Crear nuevo</button>
             </div>
         </div>
 
         <hr />
-
-        <table id="tabla" class="display cell-border" style="width: 100%">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Descripción</th>
-                    <th>Marca</th>
-                    <th>Categoría</th>
-                    <th>Precio</th>
-                    <th>Stock</th>
-                    <th>Activo</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+            <table id="tabla" class="display cell-border" style="width: 100%">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Marca</th>
+                        <th>Categoría</th>
+                        <th>Proveedor</th>
+                        <th>Precio</th>
+                        <th>Activo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 
 
 
@@ -51,7 +51,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
-                <h5 class="modal-title" id="exampleModalLabel">Producto</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Artículo</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -93,16 +93,17 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Precio</label>
-                            <input type="text" class="form-control" id="txtprecio" name="precio" autocomplete="off" />
+                            <label class="form-label">Proveedor</label>
+                            <select id="cboproveedor" class="form-select">
+                            </select>
                         </div>
                     </div>
 
 
                     <div class="col-sm-3">
                         <div class="mb-3">
-                            <label class="form-label">Stock</label>
-                            <input type="number" min="0" class="form-control" id="txtstock" name="stock" />
+                            <label class="form-label">Precio</label>
+                            <input type="text" class="form-control" id="txtprecio" name="precio" autocomplete="off" />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Activo</label>
@@ -138,7 +139,6 @@
 
 @section scripts{
     <script>
-
         var tabladata;
         var filaSeleccionada;
 
@@ -179,8 +179,12 @@
                         return data.Descripcion
                     }
                 },
+                {
+                    "data": "oProveedor", "render": function (data) {
+                        return data.Nombres
+                    }
+                },
                 { "data": "Precio" },
-                { "data": "Stock" },
                 {
                     "data": "Activo", "render": function (valor) {
                         if (valor) {
@@ -195,7 +199,7 @@
                         '<button type="button" class="btn btn-danger btn-sm ms-2 btn-eliminar"><i class="fas fa-trash"></i></button>',
                     "orderable": false,
                     "searchable": false,
-                    "width": "90px"
+                    "width": "70px"
                 }
 
             ],
@@ -205,7 +209,24 @@
 
         });
 
+        jQuery.ajax({
+            url: '@Url.Action("ListarProveedores", "Home")',
+            type: "GET",
+            data: null,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
 
+                $("<option>").attr({ "value": "0","disabled":"true" }).text("Seleccionar").appendTo("#cboproveedor");
+                $.each(data.data, function (index, item) {
+
+                    $("<option>").attr({ "value": item.IdProveedor }).text(item.Nombres).appendTo("#cboproveedor");
+                })
+            },
+            error: function (error) {
+                console.log(error)
+            }
+        });
 
         jQuery.ajax({
             url: '@Url.Action("ListarMarca", "Mantenedor")',
@@ -264,25 +285,16 @@
                 precio: {
                     required: true,
                     preciodecimal: true
-                },
-                stock: {
-                    required: true,
-                    number:true
                 }
             },
             messages: {
                 nombre: "El campo nombre es obligatorio",
                 descripcion: "El campo descripción es obligatorio",
-                precio: { required: "El campo precio es obligario", preciodecimal: "El formato correcto del precio es ####.##" },
-                stock: { required: "El campo stock es obligario", preciodecimal: "El campo stock solo puede contener números" }
+                precio: { required: "El campo precio es obligario", preciodecimal: "El formato correcto del precio es ####.##" }
             },
             errorElement: "div",
             errorLabelContainer: ".alert-danger"
         })
-
-
-
-
 
 
 
@@ -296,8 +308,8 @@
             $("#txtdescripcion").val("");
             $("#cbomarca").val($("#cbomarca option:first").val());
             $("#cbocategoria").val($("#cbocategoria option:first").val());
+            $("#cboproveedor").val($("#cboproveedor option:first").val());
             $("#txtprecio").val("");
-            $("#txtstock").val("");
             $("#cboactivo").val(1);
 
             $("#mensajeError").hide();
@@ -309,8 +321,8 @@
                 $("#txtdescripcion").val(json.Descripcion);
                 $("#cbomarca").val(json.oMarca.IdMarca);
                 $("#cbocategoria").val(json.oCategoria.IdCategoria);
+                $("#cboproveedor").val(json.oProveedor.IdProveedor);
                 $("#txtprecio").val(json.Precio);
-                $("#txtstock").val(json.Stock);
                 $("#cboactivo").val(json.Activo == true ? 1 : 0);
 
 
@@ -352,7 +364,6 @@
             $("#FormModal").modal("show");
         }
 
-
         $("#tabla tbody").on("click", '.btn-editar', function () {
 
             filaSeleccionada = $(this).closest("tr");
@@ -373,7 +384,7 @@
 
 
             swal({
-                title: "¿Está seguro?",
+                title: "¿Estás seguro?",
                 text: "¿Desea eliminar el producto?",
                 type: "warning",
                 showCancelButton: true,
@@ -395,7 +406,7 @@
 
                         if (data.resultado) {
 
-                            tabladata.row(productoseleccionado).remove().draw();
+                            location.reload();
                         } else {
 
                             swal("No se pudo eliminar", data.mensaje, "error")
@@ -438,13 +449,16 @@
                     IdCategoria: $("#cbocategoria option:selected").val(),
                     Descripcion: $("#cbocategoria option:selected").text()
                 },
+                oProveedor: {
+                    IdProveedor: $("#cboproveedor option:selected").val(),
+                    Nombres: $("#cboproveedor option:selected").text()
+                },
                 PrecioTexto: $("#txtprecio").val(),
                 Precio: $("#txtprecio").val(),
-                Stock: $("#txtstock").val(),
                 Activo: $("#cboactivo").val() == 1 ? true : false,
             }
 
-            //ver estooo
+
             var request = new FormData();
             request.append("objeto", JSON.stringify(Producto))
             request.append("archivoImagen", ImagenSeleccionada)

@@ -202,6 +202,7 @@
     <Compile Include="CN_Carrito.cs" />
     <Compile Include="CN_Categoria.cs" />
     <Compile Include="CN_Cliente.cs" />
+    <Compile Include="CN_Deposito.cs" />
     <Compile Include="CN_FireBase.cs" />
     <Compile Include="CN_Marca.cs" />
     <Compile Include="CN_Paypal.cs" />

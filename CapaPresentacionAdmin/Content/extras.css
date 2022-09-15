@@ -31,3 +31,33 @@
         background-color: #5B9092;
         border-color: #5B9092;
     }
+
+.btn-abrir {
+    background-color: burlywood;
+    border-color: burlywood;
+}
+
+    .btn-abrir:hover {
+        background-color: #dfb57e;
+        border-color: #dfb57e;
+    }
+
+.btn-agregar {
+    background-color: seagreen;
+    border-color: seagreen;
+}
+
+.btn-agregar:hover {
+    background-color: #226942;
+    border-color: #226942;
+}
+
+.btn-agregar:active {
+    background-color: #226942;
+    border-color: #226942;
+}
+
+    .btn-agregar:focus {
+        background-color: #226942;
+        border-color: #226942;
+    }

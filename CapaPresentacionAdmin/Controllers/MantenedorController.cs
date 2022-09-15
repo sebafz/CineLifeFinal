@@ -33,6 +33,16 @@ namespace CapaPresentacionAdmin.Controllers
             return View();
         }
 
+        public ActionResult Deposito()
+        {
+            return View();
+        }
+
+        public ActionResult ArtXDeposito()
+        {
+            return View();
+        }
+
 
         // ++++++++++++++++ CATEGORIA ++++++++++++++++++++
 
@@ -135,7 +145,21 @@ namespace CapaPresentacionAdmin.Controllers
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpGet]
+        public JsonResult ListarProductosActivos()
+        {
+            List<Producto> oLista = new List<Producto>();
+            oLista = new CN_Producto().ListarActivos();
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
 
+        [HttpGet]
+        public JsonResult ListarProductoXDeposito(int id)
+        {
+            List<Producto> oLista = new List<Producto>();
+            oLista = new CN_Producto().ListarXDeposito(id);
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
 
         [HttpPost]
         public async Task<JsonResult> GuardarProducto(string objeto, HttpPostedFileBase archivoImagen)
@@ -175,10 +199,6 @@ namespace CapaPresentacionAdmin.Controllers
             }
             else
             {
-                if (oProducto.Stock == 0)
-                {
-                    oProducto.Activo = false;
-                }
                 operacion_exitosa = new CN_Producto().Editar(oProducto, out mensaje);
             }
 
@@ -289,6 +309,8 @@ namespace CapaPresentacionAdmin.Controllers
             return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
         }
         #endregion;
+
+        // ++++++++++++++++ SEDE ++++++++++++++++++++
         #region SEDE;
         [HttpPost]
         public JsonResult ObtenerSede(string IdLocalidad)
@@ -300,6 +322,115 @@ namespace CapaPresentacionAdmin.Controllers
 
             return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public JsonResult ObtenerTodasLasSedes()
+        {
+
+            List<Sede> oLista = new List<Sede>();
+
+            oLista = new CN_Sede().ObtenerTodasLasSedes();
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
         #endregion
+
+        // ++++++++++++++++ DEPOSITO ++++++++++++++++++++
+        #region DEPOSITO;
+        [HttpGet]
+        public JsonResult ListarMarca2()
+        {
+            List<ReporteDeposito> oLista = new List<ReporteDeposito>();
+
+            oLista = new CN_Deposito().Listar();
+
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public JsonResult GuardarDeposito(Deposito objeto)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+
+            if (objeto.IdDeposito == 0)
+            {
+                resultado = new CN_Deposito().Registrar(objeto, out mensaje);
+            }
+            else
+            {
+                resultado = new CN_Deposito().Editar(objeto, out mensaje);
+            }
+
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult EliminarDeposito(int id)
+        {
+            bool respuesta = false;
+            string mensaje = string.Empty;
+
+            respuesta = new CN_Deposito().Eliminar(id, out mensaje);
+
+            return Json(new { resultado = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult ObtenerDeposito(string IdSede)
+        {
+
+            List<Deposito> oLista = new List<Deposito>();
+
+            oLista = new CN_Deposito().ObtenerDeposito(IdSede);
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> AbrirDeposito(ReporteDeposito objeto)
+        {
+            TempData["IdDeposito"] = objeto.IdDeposito;
+            TempData["NomDeposito"] = objeto.Nombre;
+            TempData["NomSede"] = objeto.Area;
+            return Json(new { Status = true, Link = "/Mantenedor/ArtXDeposito"}, JsonRequestBehavior.AllowGet);
+
+
+        }
+        #endregion;
+
+        // ++++++++++++++++ ARTXDEPOSITO ++++++++++++++++++++
+        #region ARTXDEPOSITO;
+        [HttpPost]
+        public JsonResult GuardarProductoXDeposito(Producto objeto, int iddeposito)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+
+            if (objeto.IdProducto == 0)
+            {
+
+                resultado = new CN_Producto().RegistrarXDeposito(objeto, iddeposito, out mensaje);
+            }
+            else
+            {
+                resultado = new CN_Producto().EditarXDeposito(objeto, iddeposito, out mensaje);
+
+            }
+
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult EliminarProductoXDeposito(int idart, int iddep)
+        {
+            bool respuesta = false;
+            string mensaje = string.Empty;
+
+            respuesta = new CN_Producto().EliminarProductoXDeposito(idart, iddep, out mensaje);
+
+            return Json(new { resultado = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+        #endregion;
     }
 }
+
+

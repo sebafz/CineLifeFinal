@@ -18,6 +18,16 @@ namespace CapaNegocio
             return objCapaDato.Listar();
         }
 
+        public List<Producto> ListarActivos()
+        {
+            return objCapaDato.ListarActivos();
+        }
+
+        public List<Producto> ListarXDeposito(int id)
+        {
+            return objCapaDato.ListarXDeposito(id);
+        }
+
         public List<Producto> ObtenerProductos(int idMarca, int idCategoria, int nroPagina, int obtenerRegistros, out int TotalRegistros, out int TotalPaginas)
         {
             return objCapaDato.ObtenerProductos(idMarca,idCategoria,nroPagina,obtenerRegistros, out TotalRegistros, out TotalPaginas);
@@ -52,18 +62,13 @@ namespace CapaNegocio
             {
                 Mensaje = "Debe seleccionar una categoría";
             }
-            else if (obj.oCategoria.IdCategoria == 0)
+            else if (obj.oProveedor.IdProveedor == 0)
             {
-                Mensaje = "Debe seleccionar una categoría";
+                Mensaje = "Debe seleccionar un proveedor";
             }
             else if (obj.Precio == 0) {
 
                 Mensaje = "Debe ingresar el precio del producto";
-            }
-            else if (obj.Stock == 0)
-            {
-
-                Mensaje = "Debe ingresar el stock del producto";
             }
 
             if (string.IsNullOrEmpty(Mensaje))
@@ -102,22 +107,53 @@ namespace CapaNegocio
             {
                 Mensaje = "Debe seleccionar una categoría";
             }
-            else if (obj.oCategoria.IdCategoria == 0)
+            else if (obj.oProveedor.IdProveedor == 0)
             {
-                Mensaje = "Debe seleccionar una categoría";
+                Mensaje = "Debe seleccionar un proveedor";
             }
             else if (obj.Precio == 0)
             {
                 Mensaje = "Debe ingresar el precio del producto";
             }
-            else if (obj.Stock < 0)
-            {
-                Mensaje = "Debe ingresar el stock del producto";
-            }
 
             if (string.IsNullOrEmpty(Mensaje))
             {
                 return objCapaDato.Editar(obj, out Mensaje);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public int RegistrarXDeposito(Producto obj, int iddeposito, out string Mensaje)
+        {
+
+            Mensaje = string.Empty;
+
+            if (string.IsNullOrEmpty(Mensaje))
+            {
+
+                return objCapaDato.RegistrarXDeposito(obj, iddeposito, out Mensaje);
+
+            }
+            else
+            {
+                return 0;
+            }
+
+
+
+        }
+
+        public bool EditarXDeposito(Producto obj, int iddeposito, out string Mensaje)
+        {
+
+            Mensaje = string.Empty;
+
+            if (string.IsNullOrEmpty(Mensaje))
+            {
+                return objCapaDato.EditarXDeposito(obj, iddeposito, out Mensaje);
             }
             else
             {
@@ -135,6 +171,10 @@ namespace CapaNegocio
         public bool Eliminar(int id, out string Mensaje)
         {
             return objCapaDato.Eliminar(id, out Mensaje);
+        }
+        public bool EliminarProductoXDeposito(int idart, int iddep, out string Mensaje)
+        {
+            return objCapaDato.EliminarXDeposito(idart, iddep, out Mensaje);
         }
 
 
