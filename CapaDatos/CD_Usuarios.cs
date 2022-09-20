@@ -28,7 +28,7 @@ namespace CapaDatos
                     "from usuario u inner " +
                     "join sede s on u.IdSede = s.IdSede inner " +
                     "join Localidad l on s.IdLocalidad = l.IdLocalidad " +
-                    "inner join provincia p on l.IdProvincia = p.IdProvincia order by activo desc";
+                    "inner join provincia p on l.IdProvincia = p.IdProvincia";
 
                     SqlCommand cmd = new SqlCommand(query, oconexion);
                     cmd.CommandType = CommandType.Text;

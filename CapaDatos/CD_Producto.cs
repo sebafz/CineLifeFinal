@@ -427,14 +427,13 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
                 {
-                    SqlCommand cmd = new SqlCommand("sp_EditarProducto", oconexion);
+                    SqlCommand cmd = new SqlCommand("sp_EditarProductoXDeposito", oconexion);
                     cmd.Parameters.AddWithValue("IdProducto", obj.IdProducto);
-                    cmd.Parameters.AddWithValue("Nombre", obj.Nombre);
-                    cmd.Parameters.AddWithValue("Descripcion", obj.Descripcion);
-                    cmd.Parameters.AddWithValue("IdMarca", obj.oMarca.IdMarca);
-                    cmd.Parameters.AddWithValue("IdCategoria", obj.oCategoria.IdCategoria);
-                    cmd.Parameters.AddWithValue("IdProveedor", obj.oProveedor.IdProveedor);
-                    cmd.Parameters.AddWithValue("Precio", obj.Precio);
+                    cmd.Parameters.AddWithValue("IdDeposito", iddeposito);
+                    cmd.Parameters.AddWithValue("Stock", obj.Stock);
+                    cmd.Parameters.AddWithValue("StockMinimo", obj.StockMinimo);
+                    cmd.Parameters.AddWithValue("StockMaximo", obj.StockMaximo);
+                    cmd.Parameters.AddWithValue("PuntoDePedido", obj.PuntoDePedido);
                     cmd.Parameters.AddWithValue("Activo", obj.Activo);
                     cmd.Parameters.Add("Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;

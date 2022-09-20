@@ -388,10 +388,9 @@ namespace CapaPresentacionAdmin.Controllers
         [HttpPost]
         public async Task<JsonResult> AbrirDeposito(ReporteDeposito objeto)
         {
-            TempData["IdDeposito"] = objeto.IdDeposito;
-            TempData["NomDeposito"] = objeto.Nombre;
-            TempData["NomSede"] = objeto.Area;
-            return Json(new { Status = true, Link = "/Mantenedor/ArtXDeposito"}, JsonRequestBehavior.AllowGet);
+            //TempData["NomDeposito"] = objeto.Nombre;
+            //TempData["NomSede"] = objeto.Area;
+            return Json(new { Status = true, Link = "/Mantenedor/ArtXDeposito/?idDeposito="+objeto.IdDeposito+ "&NomDeposito="+objeto.Nombre+"&NomSede="+objeto.Area }, JsonRequestBehavior.AllowGet);
 
 
         }
@@ -428,6 +427,26 @@ namespace CapaPresentacionAdmin.Controllers
             respuesta = new CN_Producto().EliminarProductoXDeposito(idart, iddep, out mensaje);
 
             return Json(new { resultado = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GuardarArtXDeposito(Producto objeto, int iddeposito)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+
+            if (objeto.IdProducto == 0)
+            {
+
+                resultado = new CN_Producto().RegistrarXDeposito(objeto, iddeposito, out mensaje);
+            }
+            else
+            {
+                resultado = new CN_Producto().EditarXDeposito(objeto, iddeposito, out mensaje);
+
+            }
+
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
         }
         #endregion;
     }

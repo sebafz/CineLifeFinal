@@ -28,9 +28,17 @@
         </div>
 
         <hr />
-        @{
-            <h6 class="alert alert-warning">Se muestran los artículos de @TempData["NomSede"] de la sede @TempData["NomDeposito"]</h6>
-        }
+    <script>
+        
+        var queryString = window.location.search;
+        var urlParams = new URLSearchParams(queryString);
+        var IdDepositoURL = urlParams.get('idDeposito');
+        var NomDepositoURL = urlParams.get('NomDeposito');
+        var NomSedeURL = urlParams.get('NomSede');
+
+        var resultado = "Se muestran los artículos de " + NomSedeURL + " de la sede " + NomDepositoURL;
+        document.write("<h6 class='alert alert-warning'>Se muestran los artículos de " + NomSedeURL + " de la sede " + NomDepositoURL +"</h6>");
+    </script>
         <table id="tabla" class="display cell-border" style="width: 100%">
             <thead>
                 <tr>
@@ -38,9 +46,13 @@
                     <th>Descripción</th>
                     <th>Marca</th>
                     <th>Categoría</th>
-                    <th>Stock</th>
                     <th>Precio</th>
                     <th>Activo</th>
+
+                    <th>Stock</th>
+                    <th>StockMinimo</th>
+                    <th>StockMaximo</th>
+                    <th>PuntoDePedido</th>
                     <th></th>
                 </tr>
             </thead>
@@ -69,22 +81,22 @@
                     <div class="col-sm-3">
                         <div class="mb-3">
                             <label class="form-label">Stock</label>
-                            <input type="text" class="form-control" id="txtstock" name="stock" />
+                            <input type="number" class="form-control" id="txtstock" name="stock" />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Stock mínimo</label>
-                            <input type="text" class="form-control" id="txtstockminimo" name="stock" />
+                            <input type="number" class="form-control" id="txtstockminimo" name="stock" />
                         </div>
                     </div>
 
                     <div class="col-sm-3">
                         <div class="mb-3">
                             <label class="form-label">Stock máximo</label>
-                            <input type="text" class="form-control" id="txtstockmaximo" name="stockmaximo" />
+                            <input type="number" class="form-control" id="txtstockmaximo" name="stockmaximo" />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Punto de pedido</label>
-                            <input type="text" class="form-control" id="txtpuntodepedido" name="stock" />
+                            <input type="number" class="form-control" id="txtpuntodepedido" name="stock" />
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -159,20 +171,25 @@
         var tabladata;
         var filaSeleccionada;
 
-
+        var queryString = window.location.search;
+        var urlParams = new URLSearchParams(queryString);
+        var IdDepositoURL = urlParams.get('idDeposito');
+        var NomDepositoURL = urlParams.get('NomDeposito');
+        var NomSedeURL = urlParams.get('NomSede');
 
         tabladata = $("#tabla").DataTable({
             responsive: true,
-            ordering: false,
+            ordering: true,
             "ajax": {
                 url: '@Url.Action("ListarProductoXDeposito", "Mantenedor")',
                 type: "GET",
-                data: { id: @TempData["IdDeposito"] },
+                data: { id: IdDepositoURL },
                 dataType: "json",
                 contentType: "application/json; charset=utf-8"
             },
             "columns": [
-                {"data":"Nombre"},
+                { "data": "Nombre"},
+                
                 { "data": "Descripcion" },
                 {
                     "data": "oMarca", "render": function (data) {
@@ -184,7 +201,6 @@
                         return data.Descripcion
                     }
                 },
-                { "data": "Stock" },
                 { "data": "Precio" },
                 {
                     "data": "Activo", "render": function (valor) {
@@ -195,6 +211,10 @@
                         }
                     }
                 },
+                { "data": "Stock", "visible": false },
+                { "data": "StockMinimo", "visible": false },
+                { "data": "StockMaximo", "visible": false },
+                { "data": "PuntoDePedido", "visible": false },
                 {
                     "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-editar"><i class="fas fa-pen"></i></button>' +
                         '<button type="button" class="btn btn-danger btn-sm ms-2 btn-eliminar"><i class="fas fa-trash"></i></button>',
@@ -202,6 +222,7 @@
                     "searchable": false,
                     "width": "70px"
                 }
+                
 
             ],
             "language": {
@@ -212,7 +233,7 @@
 
         tabladata = $("#tablaAgregar").DataTable({
             responsive: true,
-            ordering: false,
+            ordering: true,
             "ajax": {
                 url: '@Url.Action("ListarProductosActivos", "Mantenedor")',
                 type: "GET",
@@ -322,7 +343,7 @@
 
             $("#txtid").val(0);
             $("#txtstock").val("");
-            $("#txtstockminimio").val("");
+            $("#txtstockminimo").val("");
             $("#txtstockmaximo").val("");
             $("#txtpuntodepedido").val("");
             $("#cboactivo").val(1);
@@ -375,15 +396,15 @@
                  jQuery.ajax({
                     url: '@Url.Action("EliminarProductoXDeposito", "Mantenedor")',
                     type: "POST",
-                     data: JSON.stringify({ idart: data.IdProducto, iddep: @TempData["IdDeposito"]  }),
+                     data: JSON.stringify({ idart: data.IdProducto, iddep: IdDepositoURL  }),
                     dataType: "json",
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
 
 
                         if (data.resultado) {
-                            
-                            
+
+                            location.reload();
                         } else {
 
                             swal("No se pudo eliminar", data.mensaje, "error")
@@ -393,9 +414,6 @@
                         console.log(error)
                     }
                 });
-
-
-
 
             });
 
@@ -419,7 +437,7 @@
            jQuery.ajax({
                 url: '@Url.Action("GuardarArtXDeposito", "Mantenedor")',
                 type: "POST",
-               data: JSON.stringify({ objeto: ArtXDeposito }),
+               data: JSON.stringify({ objeto: ArtXDeposito, int: IdDepositoURL }),
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                success: function (data) {

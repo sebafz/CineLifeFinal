@@ -107,7 +107,7 @@
 
         tabladata = $("#tabla").DataTable({
             responsive: true,
-            ordering: false,
+            ordering: true,
             "ajax": {
                 url: '@Url.Action("ListarCategorias", "Mantenedor")',
                 type: "GET",
@@ -202,7 +202,7 @@
 
                         if (data.resultado) {
 
-
+                            location.reload();
                         } else {
 
                             swal("No se pudo eliminar", data.mensaje, "error")

@@ -128,7 +128,7 @@
 
         tabladata = $("#tabla").DataTable({
             responsive: true,
-            ordering: false,
+            ordering: true,
             "ajax": {
                 url: '@Url.Action("ListarSedes", "Home")',
                 type: "GET",
@@ -183,7 +183,7 @@
             if (json != null) {
 
 
-                $("#txtid").val(json.IdProveedor);
+                $("#txtid").val(json.IdSede);
                 $("#txtnombres").val(json.Nombre);
                 $("#txttelefono").val(json.Telefono);
                 $("#txtdireccion").val(json.Direccion);
@@ -216,7 +216,7 @@
             if (json != null) {
 
 
-                $("#txtid").val(json.IdProveedor);
+                $("#txtid").val(json.IdSede);
                 $("#txtnombres").val(json.Nombre);
                 document.getElementById('txtnombres').disabled = true;
                 $("#txttelefono").val(json.Telefono);

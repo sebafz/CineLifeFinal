@@ -26,7 +26,7 @@ namespace CapaDatos
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
                 {
 
-                    string query = "SELECT IdMarca,Descripcion,Activo FROM MARCA where Tipo=0 order by activo desc";
+                    string query = "SELECT IdMarca,Descripcion,Activo FROM MARCA where Tipo=0";
 
                     SqlCommand cmd = new SqlCommand(query, oconexion);
                     cmd.CommandType = CommandType.Text;

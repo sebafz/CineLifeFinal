@@ -119,7 +119,7 @@
 
         tabladata = $("#tabla").DataTable({
             responsive: true,
-            ordering: false,
+            ordering: true,
             "ajax": {
                 url: '@Url.Action("ListarMarca2", "Mantenedor")',
                 type: "GET",

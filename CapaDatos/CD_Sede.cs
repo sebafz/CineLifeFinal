@@ -25,7 +25,7 @@ namespace CapaDatos
 
                     string query = "select IdSede,Nombre,s.Direccion,s.Telefono,s.Activo, p.IdProvincia, p.Descripcion DesProv, l.IdLocalidad, l.Descripcion DesLoc " +
                     "from sede s inner join Localidad l on s.IdLocalidad = l.IdLocalidad "+
-                    "inner join provincia p on l.IdProvincia = p.IdProvincia order by activo desc";
+                    "inner join provincia p on l.IdProvincia = p.IdProvincia";
 
                     SqlCommand cmd = new SqlCommand(query, oconexion);
                     cmd.CommandType = CommandType.Text;
