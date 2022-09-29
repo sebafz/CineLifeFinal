@@ -149,3 +149,29 @@ C:\Proyectos\SistemasIII\CineLife2\CapaNegocio\obj\Debug\CapaNegocio.csproj.Core
 C:\Proyectos\SistemasIII\CineLife2\CapaNegocio\obj\Debug\CapaNegocio.csproj.CopyComplete
 C:\Proyectos\SistemasIII\CineLife2\CapaNegocio\obj\Debug\CapaNegocio.dll
 C:\Proyectos\SistemasIII\CineLife2\CapaNegocio\obj\Debug\CapaNegocio.pdb
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\bin\Debug\CapaNegocio.dll.config
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\bin\Debug\CapaNegocio.dll
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\bin\Debug\CapaNegocio.pdb
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\bin\Debug\CapaDatos.dll
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\bin\Debug\CapaEntidad.dll
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\bin\Debug\Firebase.Auth.dll
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\bin\Debug\Firebase.Storage.dll
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\bin\Debug\Newtonsoft.Json.dll
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\bin\Debug\System.Configuration.ConfigurationManager.dll
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\bin\Debug\System.Security.AccessControl.dll
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\bin\Debug\System.Security.Permissions.dll
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\bin\Debug\System.Security.Principal.Windows.dll
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\bin\Debug\CapaDatos.pdb
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\bin\Debug\CapaEntidad.pdb
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\bin\Debug\Newtonsoft.Json.xml
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\bin\Debug\System.Configuration.ConfigurationManager.xml
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\bin\Debug\System.Security.AccessControl.xml
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\bin\Debug\System.Security.Permissions.xml
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\bin\Debug\System.Security.Principal.Windows.xml
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\obj\Debug\CapaNegocio.csproj.AssemblyReference.cache
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\obj\Debug\CapaNegocio.csproj.CoreCompileInputs.cache
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\obj\Debug\CapaNegocio.csproj.CopyComplete
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\obj\Debug\CapaNegocio.dll
+B:\Sistemas 3\WEB2\CineLifeFinal\CapaNegocio\obj\Debug\CapaNegocio.pdb
