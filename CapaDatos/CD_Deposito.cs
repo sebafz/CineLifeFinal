@@ -118,6 +118,47 @@ namespace CapaDatos
 
         }
 
+        public List<Deposito> ObtenerDepositoTransferir(string iddeposito)
+        {
+            List<Deposito> lista = new List<Deposito>();
+
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
+                {
+                    string query = "select IdDeposito, Nombre from Deposito where IdDeposito != @iddeposito";
+
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    cmd.Parameters.AddWithValue("@iddeposito", iddeposito);
+                    cmd.CommandType = CommandType.Text;
+
+                    oconexion.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(
+                                new Deposito()
+                                {
+                                    IdDeposito = Convert.ToInt32(dr["IdDeposito"]),
+                                    Descripcion = dr["Nombre"].ToString(),
+                                });
+                        }
+                    }
+                }
+
+            }
+            catch
+            {
+                lista = new List<Deposito>();
+
+            }
+
+            return lista;
+
+        }
+
 
         public int Registrar(Deposito obj, out string Mensaje)
         {
@@ -209,6 +250,38 @@ namespace CapaDatos
             return resultado;
         }
 
+        public bool Transferir(int idartxdep, int iddepositoorigen, int iddepositodestino, int cantidad, out string Mensaje)
+        {
+            bool resultado = false;
+            Mensaje = string.Empty;
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
+                {
+                    SqlCommand cmd = new SqlCommand("sp_TransferirArticulo", oconexion);
+                    cmd.Parameters.AddWithValue("idartxdep", idartxdep);
+                    cmd.Parameters.AddWithValue("iddepositoorigen", iddepositoorigen);
+                    cmd.Parameters.AddWithValue("iddepositodestino", iddepositodestino);
+                    cmd.Parameters.AddWithValue("cantidad", cantidad);
+                    cmd.Parameters.Add("Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    oconexion.Open();
+
+                    cmd.ExecuteNonQuery();
+
+                    resultado = Convert.ToBoolean(cmd.Parameters["Resultado"].Value);
+                    Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                resultado = false;
+                Mensaje = ex.Message;
+            }
+            return resultado;
+        }
 
     }
 }

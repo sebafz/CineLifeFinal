@@ -9,8 +9,8 @@ namespace CapaEntidad
     public class ArtXDeposito
     {
         public int IdArtXDeposito { get; set; }
-        public Producto IdProducto { get; set; }
-        public Deposito IdDeposito { get; set; }
+        public Producto oProducto { get; set; }
+        public Deposito oDeposito { get; set; }
         public int Stock { get; set; }
         public int StockMaximo { get; set; }
         public int StockMinimo { get; set; }

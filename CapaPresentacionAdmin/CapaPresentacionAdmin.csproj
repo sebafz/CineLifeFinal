@@ -139,8 +139,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccesoController.cs" />
+    <Compile Include="Controllers\ComprasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MantenedorController.cs" />
+    <Compile Include="Controllers\VentasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -534,6 +536,11 @@
     <Content Include="Views\Home\Sedes.cshtml" />
     <Content Include="Views\Mantenedor\Deposito.cshtml" />
     <Content Include="Views\Mantenedor\ArtXDeposito.cshtml" />
+    <Content Include="Views\Compras\FacturasCompra.cshtml" />
+    <Content Include="Views\Compras\NotasCompra.cshtml" />
+    <Content Include="Views\Ventas\FacturasVenta.cshtml" />
+    <Content Include="Views\Ventas\NotasVenta.cshtml" />
+    <Content Include="Views\Mantenedor\Movimientos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -199,12 +199,15 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CN_ArtXDeposito.cs" />
     <Compile Include="CN_Carrito.cs" />
     <Compile Include="CN_Categoria.cs" />
     <Compile Include="CN_Cliente.cs" />
+    <Compile Include="CN_Comprobante.cs" />
     <Compile Include="CN_Deposito.cs" />
     <Compile Include="CN_FireBase.cs" />
     <Compile Include="CN_Marca.cs" />
+    <Compile Include="CN_Movimiento.cs" />
     <Compile Include="CN_Paypal.cs" />
     <Compile Include="CN_Producto.cs" />
     <Compile Include="CN_Proveedores.cs" />

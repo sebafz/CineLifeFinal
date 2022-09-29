@@ -28,31 +28,31 @@
         </div>
 
         <hr />
-    <script>
-        
-        var queryString = window.location.search;
-        var urlParams = new URLSearchParams(queryString);
-        var IdDepositoURL = urlParams.get('idDeposito');
-        var NomDepositoURL = urlParams.get('NomDeposito');
-        var NomSedeURL = urlParams.get('NomSede');
+        <script>
 
-        var resultado = "Se muestran los artículos de " + NomSedeURL + " de la sede " + NomDepositoURL;
-        document.write("<h6 class='alert alert-warning'>Se muestran los artículos de " + NomSedeURL + " de la sede " + NomDepositoURL +"</h6>");
-    </script>
+            var queryString = window.location.search;
+            var urlParams = new URLSearchParams(queryString);
+            var IdDepositoURL = urlParams.get('idDeposito');
+            var NomDepositoURL = urlParams.get('NomDeposito');
+            var NomSedeURL = urlParams.get('NomSede');
+
+            var resultado = "Se muestran los artículos de " + NomSedeURL + " de la sede " + NomDepositoURL;
+            document.write("<h6 class='alert alert-warning'>Se muestran los artículos de " + NomSedeURL + " de la sede " + NomDepositoURL + "</h6>");
+        </script>
         <table id="tabla" class="display cell-border" style="width: 100%">
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Descripción</th>
                     <th>Marca</th>
                     <th>Categoría</th>
                     <th>Precio</th>
-                    <th>Activo</th>
-
                     <th>Stock</th>
                     <th>StockMinimo</th>
                     <th>StockMaximo</th>
                     <th>PuntoDePedido</th>
+                    <th>Activo</th>
+
+
                     <th></th>
                 </tr>
             </thead>
@@ -66,7 +66,7 @@
 
 <!-- Modal editar-->
 <div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
                 <h5 class="modal-title" id="exampleModalLabel">Artículo</h5>
@@ -78,29 +78,29 @@
 
                 <form id="contenedor" class="row">
 
-                    <div class="col-sm-3">
-                        <div class="mb-3">
+                    <div class="col-sm-4">
+                        <div class="mb-4">
                             <label class="form-label">Stock</label>
                             <input type="number" class="form-control" id="txtstock" name="stock" />
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <label class="form-label">Stock mínimo</label>
                             <input type="number" class="form-control" id="txtstockminimo" name="stock" />
                         </div>
                     </div>
 
-                    <div class="col-sm-3">
-                        <div class="mb-3">
+                    <div class="col-sm-4">
+                        <div class="mb-4">
                             <label class="form-label">Stock máximo</label>
                             <input type="number" class="form-control" id="txtstockmaximo" name="stockmaximo" />
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <label class="form-label">Punto de pedido</label>
                             <input type="number" class="form-control" id="txtpuntodepedido" name="stock" />
                         </div>
                     </div>
-                    <div class="col-sm-3">
-                        <div class="mb-3">
+                    <div class="col-sm-4">
+                        <div class="mb-4">
                             <label class="form-label">Activo</label>
                             <select id="cboactivo" class="form-select">
                                 <option value="1">Sí</option>
@@ -164,11 +164,60 @@
     </div>
 </div>
 
+<!-- Modal transferir-->
+<div class="modal fade" id="FormModalTransferir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Transferir artículo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
 
+                <input id="txtidartxdep" type="hidden" value="0" />
+
+                <div class="row g-2">
+
+                    <div class="col-sm-12">
+                        <h6 class='alert alert-warning'>
+                            Estás por transferir un artículo de este depósito a otro. Seleccioná a continuación el destino y cantidad a transferir.
+                        </h6>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="mb-6">
+                            <label for="cbodeposito" class="form-label">Depósito de destino</label>
+                            <select id="cbodeposito" class="form-select">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="mb-6">
+                            <label for="cbocantidad" class="form-label">Cantidad a transferir</label>
+                            <select id="cbocantidad" class="form-select">
+                            </select>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btnguardar" onclick="Transferir()">Transferir</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @section scripts{
     <script>
+        ListarDeposito();
         var tabladata;
+        var tabladataAgregar;
         var filaSeleccionada;
 
         var queryString = window.location.search;
@@ -177,61 +226,7 @@
         var NomDepositoURL = urlParams.get('NomDeposito');
         var NomSedeURL = urlParams.get('NomSede');
 
-        tabladata = $("#tabla").DataTable({
-            responsive: true,
-            ordering: true,
-            "ajax": {
-                url: '@Url.Action("ListarProductoXDeposito", "Mantenedor")',
-                type: "GET",
-                data: { id: IdDepositoURL },
-                dataType: "json",
-                contentType: "application/json; charset=utf-8"
-            },
-            "columns": [
-                { "data": "Nombre"},
-                
-                { "data": "Descripcion" },
-                {
-                    "data": "oMarca", "render": function (data) {
-                      return data.Descripcion
-                    }
-                },
-                {
-                    "data": "oCategoria", "render": function (data) {
-                        return data.Descripcion
-                    }
-                },
-                { "data": "Precio" },
-                {
-                    "data": "Activo", "render": function (valor) {
-                        if (valor) {
-                            return '<span class="badge bg-success">Sí</span>'
-                        } else {
-                            return '<span class="badge bg-danger">No</span>'
-                        }
-                    }
-                },
-                { "data": "Stock", "visible": false },
-                { "data": "StockMinimo", "visible": false },
-                { "data": "StockMaximo", "visible": false },
-                { "data": "PuntoDePedido", "visible": false },
-                {
-                    "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-editar"><i class="fas fa-pen"></i></button>' +
-                        '<button type="button" class="btn btn-danger btn-sm ms-2 btn-eliminar"><i class="fas fa-trash"></i></button>',
-                    "orderable": false,
-                    "searchable": false,
-                    "width": "70px"
-                }
-                
-
-            ],
-            "language": {
-                "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
-            }
-
-        });
-
-        tabladata = $("#tablaAgregar").DataTable({
+        tabladataAgregar = $("#tablaAgregar").DataTable({
             responsive: true,
             ordering: true,
             "ajax": {
@@ -272,41 +267,90 @@
                 "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
             }
 
-            });
+        })
 
+        tabladata = $("#tabla").DataTable({
+            responsive: true,
+            ordering: true,
+            "ajax": {
+                url: '@Url.Action("ListarProductoXDeposito", "Mantenedor")',
+                type: "GET",
+                data: { id: IdDepositoURL },
+                dataType: "json",
+                contentType: "application/json; charset=utf-8"
+            },
+            "columns": [
+                { "data": "Nombre"},
+                {
+                    "data": "oMarca", "render": function (data) {
+                      return data.Descripcion
+                    }
+                },
+                {
+                    "data": "oCategoria", "render": function (data) {
+                        return data.Descripcion
+                    }
+                },
+                { "data": "Precio" },
+                { "data": "Stock", "visible": true },
+                { "data": "StockMinimo", "visible": true },
+                { "data": "StockMaximo", "visible": true },
+                { "data": "PuntoDePedido", "visible": true },
+                {
+                    "data": "Activo", "render": function (valor) {
+                        if (valor) {
+                            return '<span class="badge bg-success">Sí</span>'
+                        } else {
+                            return '<span class="badge bg-danger">No</span>'
+                        }
+                    }
+                },
+                {
+                    "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-transferir"><i class="fas fa-arrow-alt-circle-up"></i></button>' +
+                        '<button type="button" class="btn btn-primary btn-sm ms-2 btn-editar"><i class="fas fa-pen"></i></button>' +
+                        '<button type="button" class="btn btn-danger btn-sm ms-2 btn-eliminar"><i class="fas fa-trash"></i></button>',
+                    "orderable": false,
+                    "searchable": false,
+                    "width": "100px"
+                }
+
+
+            ],
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+            }
+
+        });
 
         jQuery.validator.addMethod("stock", function (value, element) {
             return this.optional(element) || /^\D+$/i.test(value);
         }, "El stock debe ser un número mayor o igual a cero");
 
 
-        //$("#contenedor").validate({
-        //    rules: {
-        //        stock: {
-        //            required: true,
-        //            stock: true
-        //        },
-        //        stockminimo: {
-        //            required: true,
-        //            stock: true
-        //        },
-        //        stockmaximo: {
-        //            required: true,
-        //            stock: true
-        //        },
-        //        puntodepedido: {
-        //            required: true,
-        //            stock: true
-        //        }
-        //    },
-        //    messages: {
-        //        stock: { required: "El campo stock es obligatorio", stock: "El stock debe ser un número mayor o igual a cero"},
-        //        stockminimo: { required: "El campo stock mínimo es obligatorio", stock: "El stock debe ser un número mayor o igual a cero"},
-        //        stockmaximo: { required: "El campo stock  máximo es obligario", stock: "El stock debe ser un número mayor o igual a cero" }
-        //    },
-        //    errorElement: "div",
-        //    errorLabelContainer: ".alert-danger"
-        //})
+        $("#contenedor").validate({
+            rules: {
+                stock: {
+                    required: true
+                },
+                stockminimo: {
+                    required: true
+                },
+                stockmaximo: {
+                    required: true
+                },
+                puntodepedido: {
+                    required: true
+                }
+            },
+            messages: {
+                stock: { required: "El campo stock es obligatorio"},
+                stockminimo: { required: "El campo stock mínimo es obligatorio"},
+                stockmaximo: { required: "El campo stock  máximo es obligario"},
+                puntodepedido: { required: "El campo stock  máximo es obligario" }
+            },
+            errorElement: "div",
+            errorLabelContainer: ".alert-danger"
+        })
 
 
         function abrirModal(json) {
@@ -341,7 +385,7 @@
 
         function abrirModalVacio(json) {
 
-            $("#txtid").val(0);
+            $("#txtid").val(json.IdProducto);
             $("#txtstock").val("");
             $("#txtstockminimo").val("");
             $("#txtstockmaximo").val("");
@@ -353,7 +397,14 @@
             $("#FormModal").modal("show");
         }
 
-        $("#tabla tbody").on("click", '.btn-editar', function () {
+        function abrirModalTransferir(json) {
+
+            $("#txtidartxdep").val(json.IdProducto);
+
+            $("#FormModalTransferir").modal("show");
+        }
+
+        $("#tabla").on("click", '.btn-editar', function () {
 
             filaSeleccionada = $(this).closest("tr");
 
@@ -363,15 +414,32 @@
 
         })
 
-        $("#tablaAgregar tbody").on("click", '.btn-agregar', function () {
+        $("#tablaAgregar").on("click", '.btn-agregar', function () {
 
             filaSeleccionada = $(this).closest("tr");
 
-            var data =  tabladata.row(filaSeleccionada).data();
+            var data = tabladataAgregar.row(filaSeleccionada).data();
 
             $("#FormModalAgregar").modal("hide");
 
             abrirModalVacio(data)
+
+        })
+
+        $("#tabla").on("click", '.btn-transferir', function () {
+
+            filaSeleccionada = $(this).closest("tr");
+
+            var data = tabladata.row(filaSeleccionada).data();
+
+            $("#cbolocalidad").html("");
+
+            $("<option>").attr({ "value": "00", "disabled": "disabled", "selected": "true" }).text("Seleccionar").appendTo("#cbocantidad");
+
+            for (var i = data.Stock; i > 0; i--)
+                $("<option>").attr({ "value": i}).text(i).appendTo("#cbocantidad");
+
+            abrirModalTransferir(data)
 
         })
 
@@ -422,14 +490,76 @@
 
         })
 
+        function ListarDeposito() {
+
+            $("<option>").attr({ "value": "00", "disabled":"disabled", "selected":"true" }).text("Seleccionar").appendTo("#cbodeposito")
+
+            jQuery.ajax({
+                url: '@Url.Action("ObtenerDepositoTransferir", "Mantenedor")',
+                type: "POST",
+                data: JSON.stringify({ IdDeposito: IdDepositoURL }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                    if (data.lista != null) {
+
+                        $.each(data.lista, function (i, item) {
+
+                            $("<option>").attr({ "value": item.IdDeposito }).text(item.Descripcion).appendTo("#cbodeposito")
+                        })
+                    }
+                }
+            })
+
+        }
+
+        function Transferir() {
+
+           jQuery.ajax({
+                url: '@Url.Action("TransferirArticulo", "Mantenedor")',
+                type: "POST",
+               data: JSON.stringify({ IdProducto: $('#txtidartxdep').val(), IdDepositoOrigen: IdDepositoURL, IdDepositoDestino: $('#cbodeposito').val(), Cantidad: $('#cbocantidad').val() }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+               success: function (data) {
+
+                   if (data.resultado) {
+                       swal({
+                           title: "El artículo se transifrió con éxito",
+                           type: "success",
+                           showCancelButton: false,
+                           confirmButtonClass: "btn-primary",
+                           confirmButtonText: "Aceptar",
+                           closeOnConfirm: true
+                       },
+                           location.reload())
+                   } else {
+
+                       swal("No se pudo eliminar", data.mensaje, "error")
+                   }
+               },
+               error: function (error) {
+                   console.log(error)
+               }
+
+            });
+
+        }
+
         function Guardar() {
 
             var ArtXDeposito = {
-                IdArtXDeposito: $("#txtid").val(),
                 Stock: $("#txtstock").val(),
                 StockMinimo: $("#txtstockminimo").val(),
                 StockMaximo: $("#txtstockmaximo").val(),
                 PuntoDePedido: $("#txtpuntodepedido").val(),
+                oProducto: {
+                    IdProducto: $("#txtid").val()
+                },
+                oDeposito: {
+                    IdDeposito: IdDepositoURL
+                }, 
                 Activo: $("#cboactivo").val() == 1 ? true : false,
             }
 
@@ -437,7 +567,7 @@
            jQuery.ajax({
                 url: '@Url.Action("GuardarArtXDeposito", "Mantenedor")',
                 type: "POST",
-               data: JSON.stringify({ objeto: ArtXDeposito, int: IdDepositoURL }),
+               data: JSON.stringify({ objeto: ArtXDeposito}),
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                success: function (data) {

@@ -27,20 +27,61 @@
     border-color: cadetblue;
 }
 
-    .btn-ver:hover {
-        background-color: #5B9092;
-        border-color: #5B9092;
-    }
+.btn-ver:hover {
+    background-color: #5B9092;
+    border-color: #5B9092;
+}
+.btn-ver:active {
+    background-color: #5B9092;
+    border-color: #5B9092;
+}
+
+.btn-ver:focus {
+    background-color: #5B9092;
+    border-color: #5B9092;
+}
+
+.btn-ver:disabled {
+    background-color: #5B9092;
+    border-color: #5B9092;
+}
+
+.btn-ver:not(:disabled):not(.disabled):active {
+    background-color: #5B9092;
+    border-color: #5B9092;
+}
+
 
 .btn-abrir {
     background-color: burlywood;
     border-color: burlywood;
 }
 
-    .btn-abrir:hover {
-        background-color: #dfb57e;
-        border-color: #dfb57e;
-    }
+.btn-abrir:hover {
+    background-color: #d4b081;
+    border-color: #d4b081;
+}
+.btn-abrir:active {
+    background-color: #d4b081;
+    border-color: #d4b081;
+}
+
+.btn-abrir:focus {
+    background-color: #d4b081;
+    border-color: #d4b081;
+}
+
+.btn-abrir:disabled {
+    background-color: #d4b081;
+    border-color: #d4b081;
+}
+
+.btn-abrir:not(:disabled):not(.disabled):active {
+    background-color: #d4b081;
+    border-color: #d4b081;
+}
+
+
 
 .btn-agregar {
     background-color: seagreen;
@@ -57,7 +98,64 @@
     border-color: #226942;
 }
 
-    .btn-agregar:focus {
-        background-color: #226942;
-        border-color: #226942;
-    }
+.btn-agregar:focus {
+    background-color: #226942;
+    border-color: #226942;
+}
+.btn-agregar:disabled {
+    background-color: #226942;
+    border-color: #226942;
+}
+
+.btn-agregar:not(:disabled):not(.disabled):active {
+    background-color: #226942;
+    border-color: #226942;
+}
+
+
+
+.btn-transferir {
+    background-color: #3ea86c;
+    border-color: #3ea86c;
+}
+
+.btn-transferir:hover {
+    background-color: #348456;
+    border-color: #348456;
+}
+
+.btn-transferir:active {
+    background-color: #348456;
+    border-color: #348456;
+}
+
+.btn-transferir:focus {
+    background-color: #348456;
+    border-color: #348456;
+}
+
+.btn-transferir:disabled {
+    background-color: #348456;
+    border-color: #348456;
+}
+
+.btn-transferir:not(:disabled):not(.disabled):active{
+    background-color: #348456;
+    border-color: #348456;
+}
+
+
+.card-bg-expand {
+    background-color: #212529;
+    border-color: #212529;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-link-padding {
+    padding: 0.8rem 1rem 0.75rem !important;
+}
+
+.navbar-cuerppo-padding {
+    padding: 0 0 40px 0;
+}

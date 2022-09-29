@@ -25,24 +25,24 @@
         </div>
 
         <hr />
-            <table id="tabla" class="display cell-border" style="width: 100%">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>Marca</th>
-                        <th>Categoría</th>
-                        <th>Proveedor</th>
-                        <th>Precio</th>
-                        <th>Activo</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
+        <table id="tabla" class="display cell-border" style="width: 100%">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Marca</th>
+                    <th>Categoría</th>
+                    <th>Proveedor</th>
+                    <th>Precio</th>
+                    <th>Activo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
     </div>
+</div>
 
 
 
@@ -227,6 +227,7 @@
                 console.log(error)
             }
         });
+
 
         jQuery.ajax({
             url: '@Url.Action("ListarMarca", "Mantenedor")',

@@ -22,6 +22,12 @@ namespace CapaNegocio
             return objCapaDato.ObtenerDeposito(idsede);
         }
 
+        public List<Deposito> ObtenerDepositoTransferir(string iddeposito)
+        {
+
+            return objCapaDato.ObtenerDepositoTransferir(iddeposito);
+        }
+
         public int Registrar(Deposito obj, out string Mensaje)
         {
 
@@ -76,6 +82,11 @@ namespace CapaNegocio
         public bool Eliminar(int id, out string Mensaje)
         {
             return objCapaDato.Eliminar(id, out Mensaje);
+        }
+
+        public bool TransferirArticulo(int idartxdep, int iddepositoorigen, int iddepositodestino, int cantidad, out string mensaje)
+        {
+            return objCapaDato.Transferir(idartxdep, iddepositoorigen, iddepositodestino, cantidad, out mensaje);
         }
 
     }

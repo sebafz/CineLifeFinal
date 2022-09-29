@@ -42,7 +42,10 @@ namespace CapaPresentacionAdmin.Controllers
         {
             return View();
         }
-
+        public ActionResult Movimientos()
+        {
+            return View();
+        }
 
         // ++++++++++++++++ CATEGORIA ++++++++++++++++++++
 
@@ -146,10 +149,34 @@ namespace CapaPresentacionAdmin.Controllers
         }
 
         [HttpGet]
+        public JsonResult ListarProductosVacio()
+        {
+            List<Producto> oLista = new List<Producto>();
+            oLista = new CN_Producto().ListarVacio();
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
         public JsonResult ListarProductosActivos()
         {
             List<Producto> oLista = new List<Producto>();
             oLista = new CN_Producto().ListarActivos();
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult ListarProductosXProveedor(int id)
+        {
+            List<Producto> oLista = new List<Producto>();
+            oLista = new CN_Producto().ListarXProveedor(id);
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult ListarProductosXComprobante(int id)
+        {
+            List<DetalleComprobante> oLista = new List<DetalleComprobante>();
+            oLista = new CN_Producto().ListarXComprobante(id);
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
 
@@ -270,7 +297,6 @@ namespace CapaPresentacionAdmin.Controllers
             //return Json(new { ruta = oproducto.RutaImagen }, JsonRequestBehavior.AllowGet);
 
         }
-
 
         [HttpPost]
         public JsonResult EliminarProducto(int id)
@@ -394,24 +420,45 @@ namespace CapaPresentacionAdmin.Controllers
 
 
         }
+        [HttpPost]
+        public JsonResult ObtenerDepositoTransferir(string IdDeposito)
+        {
+
+            List<Deposito> oLista = new List<Deposito>();
+
+            oLista = new CN_Deposito().ObtenerDepositoTransferir(IdDeposito);
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult TransferirArticulo(int idartxdep, int iddepositoorigen, int iddepositodestino , int cantidad)
+        {
+            bool respuesta = false;
+            string mensaje = string.Empty;
+
+            respuesta = new CN_Deposito().TransferirArticulo(idartxdep, iddepositoorigen, iddepositodestino, cantidad, out mensaje);
+
+            return Json(new { resultado = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
         #endregion;
 
         // ++++++++++++++++ ARTXDEPOSITO ++++++++++++++++++++
         #region ARTXDEPOSITO;
         [HttpPost]
-        public JsonResult GuardarProductoXDeposito(Producto objeto, int iddeposito)
+        public JsonResult GuardarArtXDeposito(ArtXDeposito objeto)
         {
             object resultado;
             string mensaje = string.Empty;
 
-            if (objeto.IdProducto == 0)
+            if (objeto.IdArtXDeposito == 0)
             {
 
-                resultado = new CN_Producto().RegistrarXDeposito(objeto, iddeposito, out mensaje);
+                resultado = new CN_ArtXDeposito().Registrar(objeto, out mensaje);
             }
             else
             {
-                resultado = new CN_Producto().EditarXDeposito(objeto, iddeposito, out mensaje);
+                resultado = new CN_ArtXDeposito().Editar(objeto, out mensaje);
 
             }
 
@@ -427,26 +474,6 @@ namespace CapaPresentacionAdmin.Controllers
             respuesta = new CN_Producto().EliminarProductoXDeposito(idart, iddep, out mensaje);
 
             return Json(new { resultado = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpPost]
-        public JsonResult GuardarArtXDeposito(Producto objeto, int iddeposito)
-        {
-            object resultado;
-            string mensaje = string.Empty;
-
-            if (objeto.IdProducto == 0)
-            {
-
-                resultado = new CN_Producto().RegistrarXDeposito(objeto, iddeposito, out mensaje);
-            }
-            else
-            {
-                resultado = new CN_Producto().EditarXDeposito(objeto, iddeposito, out mensaje);
-
-            }
-
-            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
         }
         #endregion;
     }

@@ -33,16 +33,16 @@
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                <div class="sb-sidenav-menu">
+                <div class="sb-sidenav-menu navbar-cuerppo-padding">
                     <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Resumen</div>
+                        <div class="sb-sidenav-menu-heading navbar-link-padding">Resumen</div>
                         <a class="nav-link" href="@Url.Action("Index","Home")">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Tablero
                         </a>
 
 
-                        <div class="sb-sidenav-menu-heading">Mantenimiento</div>
+                        <div class="sb-sidenav-menu-heading navbar-link-padding">Mantenimiento</div>
                         <a class="nav-link" href="@Url.Action("Usuarios","Home")">
                             <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                             Usuarios
@@ -59,26 +59,69 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-map-pin"></i></div>
                             Sedes
                         </a>
-                        <a class="nav-link" href="@Url.Action("Deposito","Mantenedor")">
-                            <div class="sb-nav-link-icon"><i class="fas fa-store"></i></div>
-                            Depósitos
-                        </a>
 
-                        <div class="sb-sidenav-menu-heading">Stock</div>
-                        <a class="nav-link" href="@Url.Action("Producto","Mantenedor")">
-                            <div class="sb-nav-link-icon"><i class="fas fa-boxes"></i></div>
-                            Artículos
-                        </a>
-                        <a class="nav-link" href="@Url.Action("Categoria","Mantenedor")">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Categorías
-                        </a>
-                        <a class="nav-link" href="@Url.Action("Marca","Mantenedor")">
-                            <div class="sb-nav-link-icon"><i class="fas fa-bookmark"></i></div>
-                            Marcas
-                        </a>
 
+                        <div class="sb-sidenav-menu-heading navbar-link-padding" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            Stock <i class="fas fa-caret-down"></i>
+                        </div>
+                        <div class="collapse" id="collapseExample">
+                            <div class="card card-body card-bg-expand">
+                                <a class="nav-link" href="@Url.Action("Movimientos","Mantenedor")">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-truck"></i></div>
+                                    Movimientos de stock
+                                </a>
+                                <a class="nav-link" href="@Url.Action("Deposito","Mantenedor")">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-store"></i></div>
+                                    Depósitos
+                                </a>
+                                <a class="nav-link" href="@Url.Action("Producto","Mantenedor")">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-boxes"></i></div>
+                                    Artículos
+                                </a>
+                                <a class="nav-link" href="@Url.Action("Categoria","Mantenedor")">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                    Categorías
+                                </a>
+                                <a class="nav-link" href="@Url.Action("Marca","Mantenedor")">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-bookmark"></i></div>
+                                    Marcas
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="sb-sidenav-menu-heading navbar-link-padding" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            Compras <i class="fas fa-caret-down"></i>
+                        </div>
+                        <div class="collapse" id="collapseExample2">
+                            <div class="card card-body card-bg-expand">
+                                <a class="nav-link" href="@Url.Action("FacturasCompra","Compras")">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-cash-register"></i></div>
+                                    Facturas
+                                </a>
+                                <a class="nav-link" href="@Url.Action("NotasCompra","Compras")">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-money-bill"></i></div>
+                                    Notas
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="sb-sidenav-menu-heading navbar-link-padding" data-bs-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            Ventas <i class="fas fa-caret-down"></i>
+                        </div>
+                        <div class="collapse" id="collapseExample3">
+                            <div class="card card-body card-bg-expand">
+                                <a class="nav-link" href="@Url.Action("FacturasVenta","Ventas")">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-cash-register"></i></div>
+                                    Facturas
+                                </a>
+                                <a class="nav-link" href="@Url.Action("NotasVenta","Ventas")">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-money-bill"></i></div>
+                                    Notas
+                                </a>
+                            </div>
+                        </div>
                     </div>
+                    
                 </div>
             </nav>
         </div>

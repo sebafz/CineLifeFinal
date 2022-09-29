@@ -31,6 +31,7 @@ namespace CapaEntidad
 
         //Solo usar estos de abajo para artxdeposito
         public int Stock { get; set; }
+        public int Cantidad { get; set; }
         public int StockMaximo { get; set; }
         public int StockMinimo { get; set; }
         public int PuntoDePedido { get; set; }

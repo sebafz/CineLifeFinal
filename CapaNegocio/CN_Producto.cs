@@ -18,9 +18,24 @@ namespace CapaNegocio
             return objCapaDato.Listar();
         }
 
+        public List<Producto> ListarVacio()
+        {
+            return objCapaDato.ListarVacio();
+        }
+
         public List<Producto> ListarActivos()
         {
             return objCapaDato.ListarActivos();
+        }
+
+        public List<Producto> ListarXProveedor(int idproveedor)
+        {
+            return objCapaDato.ListarXProveedor(idproveedor);
+        }
+
+        public List<DetalleComprobante> ListarXComprobante(int id)
+        {
+            return objCapaDato.ListarXComprobante(id);
         }
 
         public List<Producto> ListarXDeposito(int id)
@@ -119,41 +134,6 @@ namespace CapaNegocio
             if (string.IsNullOrEmpty(Mensaje))
             {
                 return objCapaDato.Editar(obj, out Mensaje);
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public int RegistrarXDeposito(Producto obj, int iddeposito, out string Mensaje)
-        {
-
-            Mensaje = string.Empty;
-
-            if (string.IsNullOrEmpty(Mensaje))
-            {
-
-                return objCapaDato.RegistrarXDeposito(obj, iddeposito, out Mensaje);
-
-            }
-            else
-            {
-                return 0;
-            }
-
-
-
-        }
-
-        public bool EditarXDeposito(Producto obj, int iddeposito, out string Mensaje)
-        {
-
-            Mensaje = string.Empty;
-
-            if (string.IsNullOrEmpty(Mensaje))
-            {
-                return objCapaDato.EditarXDeposito(obj, iddeposito, out Mensaje);
             }
             else
             {
