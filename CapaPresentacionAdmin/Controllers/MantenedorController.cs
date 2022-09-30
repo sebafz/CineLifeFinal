@@ -476,7 +476,25 @@ namespace CapaPresentacionAdmin.Controllers
             return Json(new { resultado = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
         }
         #endregion;
+
+        // ++++++++++++++++ Peliculas ++++++++++++++++++++
+
+        //public ActionResult Peliculas()
+        //{
+        //    return View();
+        //}
+
+        //[HttpGet]
+        //public JsonResult ListarPeliculas()
+        //{
+        //    List<Pelicula> oLista = new List<Pelicula>();
+        //    oLista = new CN_Pelicula().Listar();
+        //    return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        //}
+
+
     }
+
 }
 
 

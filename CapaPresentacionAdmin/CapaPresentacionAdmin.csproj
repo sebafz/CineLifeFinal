@@ -142,6 +142,7 @@
     <Compile Include="Controllers\ComprasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MantenedorController.cs" />
+    <Compile Include="Controllers\PeliculasController.cs" />
     <Compile Include="Controllers\VentasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -541,6 +542,9 @@
     <Content Include="Views\Ventas\FacturasVenta.cshtml" />
     <Content Include="Views\Ventas\NotasVenta.cshtml" />
     <Content Include="Views\Mantenedor\Movimientos.cshtml" />
+    <Content Include="Views\Peliculas\Peliculas.cshtml" />
+    <Content Include="Views\Peliculas\Salas.cshtml" />
+    <Content Include="Views\Peliculas\Funciones.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
