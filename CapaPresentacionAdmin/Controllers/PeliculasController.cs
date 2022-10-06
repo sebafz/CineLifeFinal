@@ -171,7 +171,13 @@ namespace CapaPresentacionAdmin.Controllers
             oLista = new CN_Sala().Listar();
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
-
+        [HttpGet]
+        public JsonResult ListarFunciones()
+        {
+            List<Funcion> oLista = new List<Funcion>();
+            oLista = new CN_Funcion().Listar();
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
 
     }
 }

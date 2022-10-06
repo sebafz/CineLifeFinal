@@ -28,7 +28,9 @@
         <table id="tabla" class="display cell-border" style="width: 100%">
             <thead>
                 <tr>
-                    <th>Descripción</th>
+                    <th>IdFuncion</th>
+                    <th>Pelicula</th>
+                    <th>Sala</th>
                     <th>Activo</th>
                     <th></th>
                 </tr>
@@ -109,12 +111,14 @@
             responsive: true,
             ordering: true,
             "ajax": {
-                url: '@Url.Action("ListarMarca", "Mantenedor")',
+                url: '@Url.Action("ListarFunciones", "Peliculas")',
                 type: "GET",
                 dataType: "json"
             },
             "columns": [
-                {"data":"Descripcion"},
+                { "data": "IdFuncion" },
+                { "data":"NombrePelicula" },
+                {"data":"DescripcionSala"},
                 {
                     "data": "Activo", "render": function (valor) {
                         if (valor) {

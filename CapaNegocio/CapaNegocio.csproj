@@ -206,6 +206,7 @@
     <Compile Include="CN_Comprobante.cs" />
     <Compile Include="CN_Deposito.cs" />
     <Compile Include="CN_FireBase.cs" />
+    <Compile Include="CN_Funcion.cs" />
     <Compile Include="CN_Sala.cs" />
     <Compile Include="CN_Marca.cs" />
     <Compile Include="CN_Movimiento.cs" />
