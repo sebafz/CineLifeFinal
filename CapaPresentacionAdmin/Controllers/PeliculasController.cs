@@ -32,8 +32,8 @@ namespace CapaPresentacionAdmin.Controllers
 
 
 
+        #region Peliculas
 
-        
         [HttpGet]
         public JsonResult ListarPeliculas()
         {
@@ -47,7 +47,7 @@ namespace CapaPresentacionAdmin.Controllers
 
 
         [HttpPost]
-        public async Task<JsonResult> GuardarPelicula(string objeto, HttpPostedFileBase archivoImagen)
+        public async Task<JsonResult>GuardarPelicula(string objeto, HttpPostedFileBase archivoImagen)
         {
 
             string mensaje = string.Empty;
@@ -72,10 +72,10 @@ namespace CapaPresentacionAdmin.Controllers
                     operacion_exitosa = false;
                 }
             }
-            //else
-            //{
-            //    operacion_exitosa = new CN_Pelicula().Editar(oProducto, out mensaje);
-            //}
+            else
+            {
+                operacion_exitosa = new CN_Pelicula().Editar(oProducto, out mensaje);
+            }
 
 
             if (operacion_exitosa)
@@ -104,18 +104,18 @@ namespace CapaPresentacionAdmin.Controllers
 
                     guardar_imagen_exito = ruta_guardar != "" ? true : false;
 
-                    //if (guardar_imagen_exito)
-                    //{
+                    if (guardar_imagen_exito)
+                    {
 
-                    //    oProducto.RutaImagen = ruta_guardar;
-                    //    oProducto.NombreImagen = nombre_imagen;
-                    //    bool rspta = new CN_Producto().GuardarDatosImagen(oProducto, out mensaje);
-                    //}
-                    //else
-                    //{
+                        oProducto.RutaImagen = ruta_guardar;
+                        oProducto.NombreImagen = nombre_imagen;
+                        bool rspta = new CN_Pelicula().GuardarDatosImagen(oProducto, out mensaje);
+                    }
+                    else
+                    {
 
-                    //    mensaje = "Se guardaró el producto pero hubo problemas con la carga de la imagen";
-                    //}
+                        mensaje = "Se guardaró el producto pero hubo problemas con la carga de la imagen";
+                    }
 
 
                 }
@@ -132,7 +132,7 @@ namespace CapaPresentacionAdmin.Controllers
         {
 
             bool conversion;
-            Producto oproducto = new CN_Producto().Listar().Where(p => p.IdProducto == id).FirstOrDefault();
+            Pelicula oproducto = new CN_Pelicula().Listar().Where(p => p.IdPelicula == id).FirstOrDefault();
 
             string textoBase64 = CN_Recursos.ConvertirBase64(Path.Combine(oproducto.RutaImagen, oproducto.NombreImagen), out conversion);
 
@@ -147,21 +147,27 @@ namespace CapaPresentacionAdmin.Controllers
              JsonRequestBehavior.AllowGet
             );
 
-            //return Json(new { ruta = oproducto.RutaImagen }, JsonRequestBehavior.AllowGet);
+            return Json(new { ruta = oproducto.RutaImagen }, JsonRequestBehavior.AllowGet);
 
         }
 
         [HttpPost]
-        public JsonResult EliminarProducto(int id)
+        public JsonResult EliminarPelicula(int id)
         {
             bool respuesta = false;
             string mensaje = string.Empty;
 
-            respuesta = new CN_Producto().Eliminar(id, out mensaje);
+            respuesta = new CN_Pelicula().Eliminar(id, out mensaje);
 
             return Json(new { resultado = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
         }
 
+        #endregion
+
+
+
+
+        #region Sala
 
 
         [HttpGet]
@@ -172,12 +178,46 @@ namespace CapaPresentacionAdmin.Controllers
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
         [HttpGet]
+
+        [HttpPost]
+        public JsonResult GuardarSala(Sala objeto)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+
+            if (objeto.IdSala == 0)
+            {
+                resultado = new CN_Sala().Registrar(objeto, out mensaje);
+            }
+            else
+            {
+                resultado = new CN_Sala().Editar(objeto, out mensaje);
+            }
+
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult EliminarSala(int id)
+        {
+            bool respuesta = false;
+            string mensaje = string.Empty;
+
+            respuesta = new CN_Sala().Eliminar(id, out mensaje);
+
+            return Json(new { resultado = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        #endregion
         public JsonResult ListarFunciones()
         {
             List<Funcion> oLista = new List<Funcion>();
             oLista = new CN_Funcion().Listar();
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
+
+
 
     }
 }

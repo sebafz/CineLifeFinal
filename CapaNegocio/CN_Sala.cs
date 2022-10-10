@@ -22,65 +22,66 @@ namespace CapaNegocio
         }
 
 
-        //public int Registrar(Marca obj, out string Mensaje)
+        public int Registrar(Sala obj, out string Mensaje)
+        {
+
+            Mensaje = string.Empty;
+
+
+            if (string.IsNullOrEmpty(obj.Descripcion) || string.IsNullOrWhiteSpace(obj.Descripcion))
+            {
+                Mensaje = "La descripción de la categoría no puede estar vacía";
+            }
+
+
+
+            if (string.IsNullOrEmpty(Mensaje))
+            {
+
+                return objCapaDato.Registrar(obj, out Mensaje);
+
+            }
+            else
+            {
+
+                return 0;
+            }
+
+
+
+        }
+
+        public bool Editar(Sala obj, out string Mensaje)
+        {
+
+            Mensaje = string.Empty;
+
+
+            if (string.IsNullOrEmpty(obj.Descripcion) || string.IsNullOrWhiteSpace(obj.Descripcion))
+            {
+                Mensaje = "La descripción de la categoría no puede estar vacía ";
+            }
+
+
+            if (string.IsNullOrEmpty(Mensaje))
+            {
+
+                return objCapaDato.Editar(obj, out Mensaje);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+
+        public bool Eliminar(int id, out string Mensaje)
+        {
+            return objCapaDato.Eliminar(id, out Mensaje);
+        }
+        //public List<Marca> ListarMarcaporCategoria(int idcategoria)
         //{
-
-        //    Mensaje = string.Empty;
-
-
-        //    if (string.IsNullOrEmpty(obj.Descripcion) || string.IsNullOrWhiteSpace(obj.Descripcion))
-        //    {
-        //        Mensaje = "La descripción de la categoría no puede estar vacía";
-        //    }
-
-
-
-        //    if (string.IsNullOrEmpty(Mensaje))
-        //    {
-
-        //        return objCapaDato.Registrar(obj, out Mensaje);
-
-        //    }
-        //    else
-        //    {
-
-        //        return 0;
-        //    }
-
-
-
-        //}
-
-        //public bool Editar(Marca obj, out string Mensaje)
-        //{
-
-        //    Mensaje = string.Empty;
-
-
-        //    if (string.IsNullOrEmpty(obj.Descripcion) || string.IsNullOrWhiteSpace(obj.Descripcion))
-        //    {
-        //        Mensaje = "La descripción de la categoría no puede estar vacía ";
-        //    }
-
-
-        //    if (string.IsNullOrEmpty(Mensaje))
-        //    {
-
-        //        return objCapaDato.Editar(obj, out Mensaje);
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
-
-
-
-        //public bool Eliminar(int id, out string Mensaje)
-        //{
-        //    return objCapaDato.Eliminar(id, out Mensaje);
-        //}
-        //public List<Marca> ListarMarcaporCategoria(int idcategoria) {
 
         //    return objCapaDato.ListarMarcaporCategoria(idcategoria);
         //}

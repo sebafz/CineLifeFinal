@@ -24,8 +24,7 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
                 {
-
-                    string query = "select f.IdFuncion,p.Nombre,s.Descripcion,f.Activo from Funciones f join Pelicula p on f.IdPelicula=p.IdPelicula join Sala s on s.IdSala=f.IdSala";
+                    string query = "select f.IdFuncion,p.Nombre,s.Descripcion,f.Activo, h.Hora from Funciones f join Pelicula p on f.IdPelicula=p.IdPelicula join Sala s on s.IdSala=f.IdSala join Horario h on h.IdHorario=f.Horario";
 
                     SqlCommand cmd = new SqlCommand(query, oconexion);
                     cmd.CommandType = CommandType.Text;
@@ -42,6 +41,7 @@ namespace CapaDatos
                                 NombrePelicula = dr["Nombre"].ToString(),
                                 DescripcionSala = dr["Descripcion"].ToString(),
                                 Activo = Convert.ToBoolean(dr["Activo"]),
+                                Horario= dr["Hora"].ToString(),
                             });
                         }
                     }

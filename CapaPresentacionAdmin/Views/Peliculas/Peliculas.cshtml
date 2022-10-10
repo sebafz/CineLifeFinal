@@ -196,36 +196,31 @@
 
         function abrirModal(json) {
 
-            $("#txtid").val();
+            $("#txtid").val(0);
             $("#img_producto").removeAttr("src");
-            $("#fileProducto").val("");
-            $("#txtnombre").val("");
-            $("#txtdescripcion").val("");
-            $("#cbomarca").val($("#cbomarca option:first").val());
-            $("#cbocategoria").val($("#cbocategoria option:first").val());
-            $("#cboproveedor").val($("#cboproveedor option:first").val());
-            $("#txtprecio").val("");
+            $("#txtnombre").val();
+            $("#txtdescripcion").val();
+            $("#txtduracion").val();
+            $("#cbogenero").val();
             $("#cboactivo").val(1);
 
             $("#mensajeError").hide();
 
-            if (json != null) {
+          if (json != null) {
 
-                $("#txtid").val(json.IdProducto);
+                $("#txtid").val(json.IdPelicula);
                 $("#txtnombre").val(json.Nombre);
                 $("#txtdescripcion").val(json.Descripcion);
-                $("#cbomarca").val(json.oMarca.IdMarca);
-                $("#cbocategoria").val(json.oCategoria.IdCategoria);
-                $("#cboproveedor").val(json.oProveedor.IdProveedor);
-                $("#txtprecio").val(json.Precio);
+                $("#txtduracion").val(json.Duracion);
+                $("#cbogenero").val(json.Genero);
                 $("#cboactivo").val(json.Activo == true ? 1 : 0);
 
 
 
                  jQuery.ajax({
-                    url: '@Url.Action("ImagenProducto", "Mantenedor")',
-                    type: "POST",
-                     data: JSON.stringify({ id : json.IdProducto}),
+                    url: '@Url.Action("ImagenProducto", "Peliculas")',
+                     type: "POST",
+                     data: JSON.stringify({ id: json.IdPelicula }),
                     dataType: "json",
                     contentType: "application/json; charset=utf-8",
                      success: function (data) {
@@ -236,7 +231,7 @@
                             $("#img_producto").attr({ "src": "data:image/" + data.extension + ";base64," + data.textobase64 });
                         }
 
-                         /*$("#img_producto").attr({ "src": data.ruta});*/
+                         $("#img_producto").attr({ "src": data.ruta});
 
                     },
                     error: function (error) {
@@ -273,14 +268,14 @@
 
         $("#tabla tbody").on("click", '.btn-eliminar', function () {
 
-            var productoseleccionado = $(this).closest("tr");
+            var peliseleccionada = $(this).closest("tr");
 
-            var data = tabladata.row(productoseleccionado).data();
+            var data = tabladata.row(peliseleccionada).data();
 
 
             swal({
                 title: "¿Estás seguro?",
-                text: "¿Desea eliminar el producto?",
+                text: "¿Desea eliminar la Pelicula?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-primary",
@@ -291,13 +286,13 @@
             function () {
 
                  jQuery.ajax({
-                    url: '@Url.Action("EliminarProducto", "Mantenedor")',
+                    url: '@Url.Action("EliminarPelicula", "Peliculas")',
                     type: "POST",
-                     data: JSON.stringify({ id: data.IdProducto }),
+                     data: JSON.stringify({ id: data.IdPelicula }),
                     dataType: "json",
                     contentType: "application/json; charset=utf-8",
-                    success: function (data) {
-
+                     success: function (data) {
+                         console.log(data)
 
                         if (data.resultado) {
 
@@ -333,7 +328,7 @@
             var ImagenSeleccionada = $("#fileProducto")[0].files[0];
 
             var Pelicula = {
-                IdPelicula: $("txtid").val(),
+                IdPelicula: $("#txtid").val(),
                 Nombre: $("#txtnombre").val(),
                 Descripcion: $("#txtdescripcion").val(),
                 Duracion: $("#txtduracion").val(),
@@ -363,7 +358,7 @@
 
                        if (data.idGenerado != 0) {
 
-                           Pelicula.IdPelicula = data.idGenerado;
+                            Pelicula.IdPelicula = data.idPelicula;
                             tabladata.row.add(Pelicula).draw(false);
                             $("#FormModal").modal("hide");
 
@@ -385,7 +380,33 @@
                             $("#mensajeError").text(data.mensaje);
                             $("#mensajeError").show();
                         }
-                    }
+                   }
+                   //if (Pelicula.IdPelicula == 0) {
+
+                   //    if (data.resultado != 0) {
+
+                   //        Pelicula.IdPelicula = data.resultado;
+                   //        tabladata.row.add(Pelicula).draw(false);
+                   //        $("#FormModal").modal("hide");
+
+                   //    } else {
+                   //        $("#mensajeError").text(data.mensaje);
+                   //        $("#mensajeError").show();
+                   //    }
+                   //}
+                   ///*MARCA EDITAR*/
+                   //else {
+
+                   //    if (data.resultado) {
+
+                   //        tabladata.row(filaSeleccionada).data(Pelicula).draw(false);
+                   //        filaSeleccionada = null;
+                   //        $("#FormModal").modal("hide");
+                   //    } else {
+                   //        $("#mensajeError").text(data.mensaje);
+                   //        $("#mensajeError").show();
+                   //    }
+                   //}
                 },
                error: function (error) {
 

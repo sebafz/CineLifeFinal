@@ -95,51 +95,51 @@ namespace CapaNegocio
 
         }
 
-        //public bool Editar(Pelicula obj, out string Mensaje)
-        //{
+        public bool Editar(Pelicula obj, out string Mensaje)
+        {
 
-        //    Mensaje = string.Empty;
-
-
-        //    if (string.IsNullOrEmpty(obj.Nombre) || string.IsNullOrWhiteSpace(obj.Nombre))
-        //    {
-        //        Mensaje = "El nombre del producto no puede ser vacio";
-        //    }
-        //    else if (string.IsNullOrEmpty(obj.Descripcion) || string.IsNullOrWhiteSpace(obj.Descripcion))
-        //    {
-        //        Mensaje = "La descripción del producto no puede estar vacía";
-        //    }
-        //    else if (obj.Duracion == 0)
-        //    {
-        //        Mensaje = "Debe seleccionar una duracion";
-        //    }
-        //    else if (string.IsNullOrEmpty(obj.Genero) || string.IsNullOrWhiteSpace(obj.Genero))
-        //    {
-        //        Mensaje = "Debe seleccionar un Genero";
-        //    }
-
-        //    //if (string.IsNullOrEmpty(Mensaje))
-        //    //{
-        //    //    return objCapaDato.Editar(obj, out Mensaje);
-        //    //}
-        //    //else
-        //    //{
-        //    //    return false;
-        //    //}
-        //}
-
-        //public bool GuardarDatosImagen(Pelicula obj, out string Mensaje)
-        //{
-
-        //    return objCapaDato.GuardarDatosImagen(obj, out Mensaje);
-        //}
+            Mensaje = string.Empty;
 
 
+            if (string.IsNullOrEmpty(obj.Nombre) || string.IsNullOrWhiteSpace(obj.Nombre))
+            {
+                Mensaje = "El nombre del producto no puede ser vacio";
+            }
+            else if (string.IsNullOrEmpty(obj.Descripcion) || string.IsNullOrWhiteSpace(obj.Descripcion))
+            {
+                Mensaje = "La descripción del producto no puede estar vacía";
+            }
+            else if (obj.Duracion == 0)
+            {
+                Mensaje = "Debe seleccionar una duracion";
+            }
+            else if (string.IsNullOrEmpty(obj.Genero) || string.IsNullOrWhiteSpace(obj.Genero))
+            {
+                Mensaje = "Debe seleccionar un Genero";
+            }
 
-        //    public bool Eliminar(int id, out string Mensaje)
-        //    {
-        //        return objCapaDato.Eliminar(id, out Mensaje);
-        //    }
+            if (string.IsNullOrEmpty(Mensaje))
+            {
+                return objCapaDato.Editar(obj, out Mensaje);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool GuardarDatosImagen(Pelicula obj, out string Mensaje)
+        {
+
+            return objCapaDato.GuardarDatosImagen(obj, out Mensaje);
+        }
+
+
+
+        public bool Eliminar(int id, out string Mensaje)
+        {
+            return objCapaDato.Eliminar(id, out Mensaje);
+        }
         //    public bool EliminarProductoXDeposito(int idart, int iddep, out string Mensaje)
         //    {
         //        return objCapaDato.EliminarXDeposito(idart, iddep, out Mensaje);

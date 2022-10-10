@@ -18,6 +18,8 @@ namespace CapaEntidad
 
         public bool Activo { get; set; }
 
+        public string Horario { get; set; }
+
         //public string FechaVencimiento { get; set; }
         //public string FechaRegistro { get; set; }
 
