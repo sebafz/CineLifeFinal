@@ -20,6 +20,12 @@ namespace CapaNegocio
         {
             return objCapaDato.Vincular(id, tipo, out Mensaje);
         }
+        public int Registrar(Comprobante comp, List<Producto> list, out string Mensaje)
+        {
+
+        return objCapaDato.Registrar(comp, list, out Mensaje);
+
+        }
 
     }
 }

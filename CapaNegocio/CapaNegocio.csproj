@@ -207,6 +207,8 @@
     <Compile Include="CN_Deposito.cs" />
     <Compile Include="CN_FireBase.cs" />
     <Compile Include="CN_Marca.cs" />
+    <Compile Include="CN_MedioPago.cs" />
+    <Compile Include="CN_MotivoMovimiento.cs" />
     <Compile Include="CN_Movimiento.cs" />
     <Compile Include="CN_Paypal.cs" />
     <Compile Include="CN_Producto.cs" />

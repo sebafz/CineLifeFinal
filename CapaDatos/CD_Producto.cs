@@ -84,7 +84,7 @@ namespace CapaDatos
 
                     StringBuilder sb = new StringBuilder();
 
-                    sb.AppendLine("select IdProducto a,Nombre,a.Precio,IdProducto b");
+                    sb.AppendLine("select IdProducto,Nombre,IdProducto Cantidad,Precio");
                     sb.AppendLine("from PRODUCTO where IdProducto=-1");
 
 
@@ -99,9 +99,10 @@ namespace CapaDatos
                         {
                             lista.Add(new Producto()
                             {
-                                IdProducto = Convert.ToInt32(dr["a"]),
+                                IdProducto = Convert.ToInt32(dr["IdProducto"]),
                                 Nombre = dr["Nombre"].ToString(),
-                                Cantidad = Convert.ToInt32(dr["b"])
+                                Cantidad = Convert.ToInt32(dr["Cantidad"]),
+                                Precio = Convert.ToDecimal(dr["Precio"], new CultureInfo("es-PE"))
                             });
                         }
                     }

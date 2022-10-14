@@ -20,6 +20,11 @@ namespace CapaNegocio
             return objCapaDato.Listar();
         }
 
+        public List<Proveedor> ListarActivos()
+        {
+            return objCapaDato.ListarActivos();
+        }
+
         public int Registrar(Proveedor obj, out string Mensaje)
         {
 

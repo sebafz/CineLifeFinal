@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/png" href="~/Images/faviconAdmin.png" />
-    <title>@ViewBag.Title (Admin) - Fun House</title>
+    <title>@ViewBag.Title - Cinelife (Admin)</title>
 
     @Styles.Render("~/Content/css")
     <link href="~/Content/extras.css" rel="stylesheet">
@@ -61,7 +61,7 @@
                         </a>
 
 
-                        <div class="sb-sidenav-menu-heading navbar-link-padding" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <div id="collapseStock" class="sb-sidenav-menu-heading navbar-link-padding" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                             Stock <i class="fas fa-caret-down"></i>
                         </div>
                         <div class="collapse" id="collapseExample">
@@ -89,7 +89,7 @@
                             </div>
                         </div>
 
-                        <div class="sb-sidenav-menu-heading navbar-link-padding" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <div id="collapseCompras" class="sb-sidenav-menu-heading navbar-link-padding" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
                             Compras <i class="fas fa-caret-down"></i>
                         </div>
                         <div class="collapse" id="collapseExample2">
@@ -105,10 +105,10 @@
                             </div>
                         </div>
 
-                        <div class="sb-sidenav-menu-heading navbar-link-padding" data-bs-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <div id="collapseVentas" class="sb-sidenav-menu-heading navbar-link-padding" data-bs-toggle="collapse" href="#collapseExample5" role="button" aria-expanded="false" aria-controls="collapseExample">
                             Ventas <i class="fas fa-caret-down"></i>
                         </div>
-                        <div class="collapse" id="collapseExample3">
+                        <div class="collapse" id="collapseExample5">
                             <div class="card card-body card-bg-expand">
                                 <a class="nav-link" href="@Url.Action("FacturasVenta","Ventas")">
                                     <div class="sb-nav-link-icon"><i class="fas fa-cash-register"></i></div>
@@ -117,6 +117,26 @@
                                 <a class="nav-link" href="@Url.Action("NotasVenta","Ventas")">
                                     <div class="sb-nav-link-icon"><i class="fas fa-money-bill"></i></div>
                                     Notas
+                                </a>
+                            </div>
+                        </div>
+
+                        <div id="collapseVentas" class="sb-sidenav-menu-heading navbar-link-padding" data-bs-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            Cine <i class="fas fa-caret-down"></i>
+                        </div>
+                        <div class="collapse" id="collapseExample3">
+                            <div class="card card-body card-bg-expand">
+                                <a class="nav-link" href="@Url.Action("Salas","Cine")">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-chair"></i></div>
+                                    Salas
+                                </a>
+                                <a class="nav-link" href="@Url.Action("Peliculas","Cine")">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-film"></i></div>
+                                    Películas
+                                </a>
+                                <a class="nav-link" href="@Url.Action("Funciones","Cine")">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-ticket-alt"></i></div>
+                                    Funciones
                                 </a>
                             </div>
                         </div>

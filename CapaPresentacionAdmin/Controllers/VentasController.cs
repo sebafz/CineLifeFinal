@@ -36,5 +36,15 @@ namespace CapaPresentacionAdmin.Controllers
             oLista = new CN_Comprobante().Listar(tipo, 0);
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public JsonResult RegistrarComprobante(Comprobante comp, List<Producto> list)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+
+            resultado = new CN_Comprobante().Registrar(comp, list, out mensaje);
+
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

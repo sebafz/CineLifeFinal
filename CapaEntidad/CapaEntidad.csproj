@@ -56,6 +56,8 @@
     <Compile Include="Distrito.cs" />
     <Compile Include="Localidad.cs" />
     <Compile Include="Marca.cs" />
+    <Compile Include="MedioPago.cs" />
+    <Compile Include="MotivoMovimiento.cs" />
     <Compile Include="Movimiento.cs" />
     <Compile Include="Paypal\Checkout_Order.cs" />
     <Compile Include="Paypal\Response_Capture.cs" />

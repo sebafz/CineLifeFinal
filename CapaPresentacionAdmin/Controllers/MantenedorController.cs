@@ -334,6 +334,17 @@ namespace CapaPresentacionAdmin.Controllers
 
             return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public JsonResult ObtenerDepositosActivos(string IdSede)
+        {
+
+            List<Deposito> oLista = new List<Deposito>();
+
+            oLista = new CN_Deposito().ObtenerActivos(IdSede);
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
         #endregion;
 
         // ++++++++++++++++ SEDE ++++++++++++++++++++
@@ -345,6 +356,17 @@ namespace CapaPresentacionAdmin.Controllers
             List<Sede> oLista = new List<Sede>();
 
             oLista = new CN_Sede().ObtenerSede(IdLocalidad);
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult ObtenerSedesActivas()
+        {
+
+            List<Sede> oLista = new List<Sede>();
+
+            oLista = new CN_Sede().ObtenerActivas();
 
             return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
         }
@@ -372,7 +394,6 @@ namespace CapaPresentacionAdmin.Controllers
 
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
-
 
         public JsonResult GuardarDeposito(Deposito objeto)
         {

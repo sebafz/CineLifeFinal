@@ -159,3 +159,8 @@
 .navbar-cuerppo-padding {
     padding: 0 0 40px 0;
 }
+
+body.swal2-shown > [aria-hidden="true"] {
+    transition: 0.1s filter;
+    filter: blur(10px);
+}

@@ -110,6 +110,46 @@ namespace CapaDatos
 
         }
 
+        public List<Sede> ObtenerActivas()
+        {
+            List<Sede> lista = new List<Sede>();
+
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
+                {
+                    string query = "select IdSede, Nombre from Sede where Activo=1";
+
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    cmd.CommandType = CommandType.Text;
+
+                    oconexion.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(
+                                new Sede()
+                                {
+                                    IdSede = Convert.ToInt32(dr["IdSede"]),
+                                    Nombre = dr["Nombre"].ToString(),
+                                });
+                        }
+                    }
+                }
+
+            }
+            catch
+            {
+                lista = new List<Sede>();
+
+            }
+
+            return lista;
+
+        }
+
         public List<Sede> ObtenerTodasLasSedes()
         {
             List<Sede> lista = new List<Sede>();

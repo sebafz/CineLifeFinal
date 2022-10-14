@@ -16,7 +16,7 @@ namespace CapaEntidad
         public int DNI { get; set; }
         public string Correo { get; set; }
         public string Telefono { get; set; }
-        public string Direccion { get; set; }
+        public string Direccion { get; set; } 
         public string Clave { get; set; }
         public string ConfirmarClave { get; set; }
         public bool Reestablecer { get; set; }

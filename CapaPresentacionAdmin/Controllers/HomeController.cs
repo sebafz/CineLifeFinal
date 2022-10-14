@@ -74,6 +74,20 @@ namespace CapaPresentacionAdmin.Controllers
         }
 
         [HttpGet]
+        public JsonResult ListarProveedoresActivos()
+        {
+
+
+            List<Proveedor> oLista = new List<Proveedor>();
+
+            oLista = new CN_Proveedores().ListarActivos();
+
+
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+
+        }
+
+        [HttpGet]
         public JsonResult ListarClientes()
         {
 
@@ -95,6 +109,32 @@ namespace CapaPresentacionAdmin.Controllers
             List<Sede> oLista = new List<Sede>();
 
             oLista = new CN_Sede().Listar();
+
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+
+        }
+
+        [HttpGet]
+        public JsonResult ListarMotivos()
+        {
+
+
+            List<MotivoMovimiento> oLista = new List<MotivoMovimiento>();
+
+            oLista = new CN_MotivoMovimiento().Listar();
+
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+
+        }
+
+        [HttpGet]
+        public JsonResult ListarMediosPago()
+        {
+
+
+            List<MedioPago> oLista = new List<MedioPago>();
+
+            oLista = new CN_MedioPago().Listar();
 
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
 

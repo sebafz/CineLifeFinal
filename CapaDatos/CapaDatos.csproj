@@ -49,6 +49,8 @@
     <Compile Include="CD_Comprobante.cs" />
     <Compile Include="CD_Deposito.cs" />
     <Compile Include="CD_Marca.cs" />
+    <Compile Include="CD_MedioPago.cs" />
+    <Compile Include="CD_MotivoMovimiento.cs" />
     <Compile Include="CD_Movimiento.cs" />
     <Compile Include="CD_Producto.cs" />
     <Compile Include="CD_Proveedores.cs" />

@@ -24,6 +24,11 @@ namespace CapaNegocio
 
             return objCapaDato.ObtenerTodasLasSedes();
         }
+        public List<Sede> ObtenerActivas()
+        {
+
+            return objCapaDato.ObtenerActivas();
+        }
 
         public List<Sede> Listar()
         {

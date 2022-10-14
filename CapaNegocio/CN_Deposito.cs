@@ -15,6 +15,11 @@ namespace CapaNegocio
         {
             return objCapaDato.Listar();
         }
+        public List<Deposito> ObtenerActivos(string idprovincia)
+        {
+
+            return objCapaDato.ObtenerActivos(idprovincia);
+        }
 
         public List<Deposito> ObtenerDeposito(string idsede)
         {
