@@ -102,6 +102,20 @@ namespace CapaPresentacionAdmin.Controllers
         }
 
         [HttpGet]
+        public JsonResult ListarClientesActivos()
+        {
+
+
+            List<Cliente> oLista = new List<Cliente>();
+
+            oLista = new CN_Cliente().ListarActivos();
+
+
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+
+        }
+
+        [HttpGet]
         public JsonResult ListarSedes()
         {
 

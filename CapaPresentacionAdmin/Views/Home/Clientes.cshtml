@@ -137,11 +137,14 @@
 
 @section scripts{
     <script>
+        $("#collapseMantenedor").click();
+        document.getElementById("menuclientes").style.fontWeight = "bold";
+        document.getElementById("menuclientes").style.color = "#c2c2c2";
+        document.getElementById("iconoclientes").style.color = "#c2c2c2";
 
+        ListarProvincia();
         var tabladata;
         var filaSeleccionada;
-
-
 
         tabladata = $("#tabla").DataTable({
             responsive: true,
@@ -253,7 +256,7 @@
                 document.getElementById('txtnombres').disabled = true;
                 $("#txtapellidos").val(json.Apellidos);
                 document.getElementById('txtapellidos').disabled = true;
-                $("#txtdni").val(json.CUIL);
+                $("#txtdni").val(json.DNI);
                 document.getElementById('txtdni').disabled = true;
                 $("#txttelefono").val(json.Telefono);
                 document.getElementById('txttelefono').disabled = true;
@@ -264,10 +267,12 @@
                 $("#txtdireccion").val(json.Direccion);
                 document.getElementById('txtdireccion').disabled = true;
                 $("#cboprovincia").val(json.oLocalidad.oProvincia.IdProvincia);
-                document.getElementById('cboprovincia').disabled = true;
                 ListarLocalidad();
                 $("#cbolocalidad").val(json.oLocalidad.IdLocalidad);
+                
+                document.getElementById('cboprovincia').disabled = true;
                 document.getElementById('cbolocalidad').disabled = true;
+
 
             }
 
@@ -329,7 +334,6 @@
             })
 
         }
-
 
 
         $("#tabla tbody").on("click", '.btn-ver', function () {

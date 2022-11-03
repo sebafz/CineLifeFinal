@@ -152,8 +152,8 @@
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="cboprocliente" class="form-label">Cliente</label>
-                        <select id="cboprocliente" class="form-select">
+                        <label for="cboproveedor" class="form-label">Proveedor</label>
+                        <select id="cboproveedor" class="form-select">
                         </select>
                         <label for="cbosede" class="form-label">Sede</label>
                         <select id="cbosede" class="form-select">
@@ -238,6 +238,10 @@
     <script>
         $("#txtfecha").datepicker({ dateFormat: 'dd/mm/yy' }).datepicker('setDate', new Date())
         $("#collapseCompras").click();
+        document.getElementById("menufacturasc").style.fontWeight = "bold";
+        document.getElementById("menufacturasc").style.color = "#c2c2c2";
+        document.getElementById("iconofacturasc").style.color = "#c2c2c2";
+
 
         var tabladata;
         var tabladataAgregar;
@@ -564,6 +568,7 @@
                 $("#mensajeError").show();
             }
         }
+
         function CancelarProv() {
             $("#mensajeError").hide();
         }

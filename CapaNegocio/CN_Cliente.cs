@@ -45,11 +45,11 @@ namespace CapaNegocio
             if (string.IsNullOrEmpty(Mensaje))
             {
 
-                string asunto = "Fun House: Te damos la bienvenida";
-                string mensaje_correo = "<h3 style='background-color: #f5f6fa;padding: 15px;margin: 0 5px 0;color: #004aad;border-radius: 15px;'>Bienvenido a Fun House</h3>" +
-                    "<h4 style='padding-left: 10px; color:black'>¡Ya podés empezar a comprar!</h4>" +
-                    "<p style='margin: 15px 8px'>Ingresá a funhouse.com.ar y mirá nuestro catalogo de juguetes.</p>" +
-                    "<p style='margin: 15px 8px 5px; color: #004aad'>Fun Huse, diversión que se comparte</p>";
+                string asunto = "CineLife: Te damos la bienvenida";
+                string mensaje_correo = "<h3 style='background-color: #fdf3e4;padding: 15px;margin: 0 5px 0;color: #c4a475;border-radius: 15px;'>Bienvenido a Cinelife</h3>" +
+                    "<h4 style='padding-left: 10px; color:black'>¡Ya podés disfrutar de las mejores películas!</h4>" +
+                    "<p style='margin: 15px 8px'>Ingresá a cinelife.com.ar y mirá todo lo que tenemos para vos.</p>" +
+                    "<p style='margin: 15px 8px 5px; color: #c4a475'>CineLife ¡Y que comience la función!</p>";
                 bool respuesta = CN_Recursos.EnviarCorreo(obj.Correo, asunto, mensaje_correo);
 
                 if (respuesta)
@@ -152,6 +152,11 @@ namespace CapaNegocio
         public List<Cliente> Listar()
         {
             return objCapaDato.Listar();
+        }
+
+        public List<Cliente> ListarActivos()
+        {
+            return objCapaDato.ListarActivos();
         }
 
         public bool Editar(Cliente obj, out string Mensaje)

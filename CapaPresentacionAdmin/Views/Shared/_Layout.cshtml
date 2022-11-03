@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="~/Images/faviconAdmin.png" />
+    <link rel="shortcut icon" type="image/png" href="~/Images/faviconSinFondo.png" />
     <title>@ViewBag.Title - Cinelife (Admin)</title>
 
     @Styles.Render("~/Content/css")
@@ -35,108 +35,120 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu navbar-cuerppo-padding">
                     <div class="nav">
-                        <div class="sb-sidenav-menu-heading navbar-link-padding">Resumen</div>
-                        <a class="nav-link" href="@Url.Action("Index","Home")">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <div class="sb-sidenav-menu-heading navbar-link-padding blanco">Resumen</div>
+                        <a class="nav-link" id="menutablero" href="@Url.Action("Index","Home")">
+                            <div class="sb-nav-link-icon" id="iconotablero"><i class="fas fa-tachometer-alt"></i></div>
                             Tablero
                         </a>
 
-
-                        <div class="sb-sidenav-menu-heading navbar-link-padding">Mantenimiento</div>
-                        <a class="nav-link" href="@Url.Action("Usuarios","Home")">
-                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-                            Usuarios
-                        </a>
-                        <a class="nav-link" href="@Url.Action("Clientes","Home")">
-                            <div class="sb-nav-link-icon"><i class="fas fa-smile"></i></div>
-                            Clientes
-                        </a>
-                        <a class="nav-link" href="@Url.Action("Proveedores","Home")">
-                            <div class="sb-nav-link-icon"><i class="fas fa-dolly"></i></div>
-                            Proveedores
-                        </a>
-                        <a class="nav-link" href="@Url.Action("Sedes","Home")">
-                            <div class="sb-nav-link-icon"><i class="fas fa-map-pin"></i></div>
-                            Sedes
-                        </a>
-
-
-                        <div id="collapseStock" class="sb-sidenav-menu-heading navbar-link-padding" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <div id="collapseMantenedor" class="sb-sidenav-menu-heading navbar-link-padding blanco" data-bs-toggle="collapse" href="#collapseExample0" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            Mantenimiento <i class="fas fa-caret-down"></i>
+                        </div>
+                        <div class="collapse" id="collapseExample0"> 
+                            <div class="card card-body card-bg-expand">
+                                <a class="nav-link" id="menuusuarios" href="@Url.Action("Usuarios","Home")">
+                                    <div class="sb-nav-link-icon" id="iconousuarios"><i class="fas fa-users"></i></div>
+                                    Usuarios
+                                </a>
+                                <a class="nav-link" id="menuclientes" href="@Url.Action("Clientes","Home")">
+                                    <div class="sb-nav-link-icon" id="iconoclientes"><i class="fas fa-smile"></i></div>
+                                    Clientes
+                                </a>
+                                <a class="nav-link" id="menuproveedores" href="@Url.Action("Proveedores","Home")">
+                                    <div class="sb-nav-link-icon" id="iconoproveedores"><i class="fas fa-dolly"></i></div>
+                                    Proveedores
+                                </a>
+                                <a class="nav-link" id="menusedes" href="@Url.Action("Sedes","Home")">
+                                    <div class="sb-nav-link-icon" id="iconosedes"><i class="fas fa-map-pin"></i></div>
+                                    Sedes
+                                </a>
+                            </div>
+                        </div>
+                    
+                        <div id="collapseStock" class="sb-sidenav-menu-heading navbar-link-padding blanco" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                             Stock <i class="fas fa-caret-down"></i>
                         </div>
                         <div class="collapse" id="collapseExample">
                             <div class="card card-body card-bg-expand">
-                                <a class="nav-link" href="@Url.Action("Movimientos","Mantenedor")">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-truck"></i></div>
+                                <a class="nav-link" id="menumovimientos" href="@Url.Action("Movimientos","Mantenedor")">
+                                    <div class="sb-nav-link-icon" id="iconomovimientos"><i class="fas fa-truck"></i></div>
                                     Movimientos de stock
                                 </a>
-                                <a class="nav-link" href="@Url.Action("Deposito","Mantenedor")">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-store"></i></div>
+                                <a class="nav-link" id="menudepositos" href="@Url.Action("Deposito","Mantenedor")">
+                                    <div class="sb-nav-link-icon" id="iconodepositos"><i class="fas fa-store"></i></div>
                                     Depósitos
                                 </a>
-                                <a class="nav-link" href="@Url.Action("Producto","Mantenedor")">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-boxes"></i></div>
+                                <a class="nav-link" id="menuarticulos" href="@Url.Action("Producto","Mantenedor")">
+                                    <div class="sb-nav-link-icon" id="iconoarticulos"><i class="fas fa-boxes"></i></div>
                                     Artículos
                                 </a>
-                                <a class="nav-link" href="@Url.Action("Categoria","Mantenedor")">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                <a class="nav-link" id="menucategorias" href="@Url.Action("Categoria","Mantenedor")">
+                                    <div class="sb-nav-link-icon" id="iconocategorias"><i class="fas fa-table"></i></div>
                                     Categorías
                                 </a>
-                                <a class="nav-link" href="@Url.Action("Marca","Mantenedor")">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-bookmark"></i></div>
+                                <a class="nav-link" id="menumarcas" href="@Url.Action("Marca","Mantenedor")">
+                                    <div class="sb-nav-link-icon" id="iconomarcas"><i class="fas fa-bookmark"></i></div>
                                     Marcas
                                 </a>
                             </div>
                         </div>
 
-                        <div id="collapseCompras" class="sb-sidenav-menu-heading navbar-link-padding" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <div id="collapseCompras" class="sb-sidenav-menu-heading navbar-link-padding blanco" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
                             Compras <i class="fas fa-caret-down"></i>
                         </div>
                         <div class="collapse" id="collapseExample2">
                             <div class="card card-body card-bg-expand">
-                                <a class="nav-link" href="@Url.Action("FacturasCompra","Compras")">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-cash-register"></i></div>
+                                <a class="nav-link" id="menufacturasc" href="@Url.Action("FacturasCompra","Compras")">
+                                    <div class="sb-nav-link-icon" id="iconofacturasc"><i class="fas fa-cash-register"></i></div>
                                     Facturas
                                 </a>
-                                <a class="nav-link" href="@Url.Action("NotasCompra","Compras")">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-money-bill"></i></div>
+                                <a class="nav-link" id="menunotasc" href="@Url.Action("NotasCompra","Compras")">
+                                    <div class="sb-nav-link-icon" id="icononotasc"><i class="fas fa-money-bill"></i></div>
                                     Notas
                                 </a>
                             </div>
                         </div>
 
-                        <div id="collapseVentas" class="sb-sidenav-menu-heading navbar-link-padding" data-bs-toggle="collapse" href="#collapseExample5" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <div id="collapseVentas" class="sb-sidenav-menu-heading navbar-link-padding blanco" data-bs-toggle="collapse" href="#collapseExample5" role="button" aria-expanded="false" aria-controls="collapseExample">
                             Ventas <i class="fas fa-caret-down"></i>
                         </div>
                         <div class="collapse" id="collapseExample5">
                             <div class="card card-body card-bg-expand">
-                                <a class="nav-link" href="@Url.Action("FacturasVenta","Ventas")">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-cash-register"></i></div>
+                                <a class="nav-link" id="menufacturasv" href="@Url.Action("FacturasVenta","Ventas")">
+                                    <div class="sb-nav-link-icon" id="iconofacturasv"><i class="fas fa-cash-register"></i></div>
                                     Facturas
                                 </a>
-                                <a class="nav-link" href="@Url.Action("NotasVenta","Ventas")">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-money-bill"></i></div>
+                                <a class="nav-link" id="menunotasv" href="@Url.Action("NotasVenta","Ventas")">
+                                    <div class="sb-nav-link-icon" id="icononotasv"><i class="fas fa-money-bill"></i></div>
                                     Notas
                                 </a>
                             </div>
                         </div>
 
-                        <div id="collapseVentas" class="sb-sidenav-menu-heading navbar-link-padding" data-bs-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <div id="collapseCine" class="sb-sidenav-menu-heading navbar-link-padding blanco" data-bs-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample">
                             Cine <i class="fas fa-caret-down"></i>
                         </div>
                         <div class="collapse" id="collapseExample3">
                             <div class="card card-body card-bg-expand">
-                                <a class="nav-link" href="@Url.Action("Salas","Cine")">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-chair"></i></div>
-                                    Salas
+                                <a class="nav-link" id="menucartelera" href="@Url.Action("Cartelera","Cine")">
+                                    <div class="sb-nav-link-icon" id="iconocartelera"><i class="fas fa-sign"></i></div>
+                                    Cartelera
                                 </a>
-                                <a class="nav-link" href="@Url.Action("Peliculas","Cine")">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-film"></i></div>
+                                <a class="nav-link" id="menufunciones" href="@Url.Action("Funciones","Cine")">
+                                    <div class="sb-nav-link-icon" id="iconofunciones"><i class="fas fa-video"></i></div>
+                                    Funciones
+                                </a>
+                                <a class="nav-link" id="menupeliculas" href="@Url.Action("Peliculas","Cine")">
+                                    <div class="sb-nav-link-icon" id="iconopeliculas"><i class="fas fa-film"></i></div>
                                     Películas
                                 </a>
-                                <a class="nav-link" href="@Url.Action("Funciones","Cine")">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-ticket-alt"></i></div>
-                                    Funciones
+                                <a class="nav-link" id="menusalas" href="@Url.Action("Salas","Cine")">
+                                    <div class="sb-nav-link-icon" id="iconosalas"><i class="fas fa-couch"></i></div>
+                                    Salas
+                                </a>
+                                <a class="nav-link" id="menuboleto" href="@Url.Action("Boletos","Cine")">
+                                    <div class="sb-nav-link-icon" id="iconoboleto"><i class="fas fa-ticket-alt"></i></div>
+                                    Boletos
                                 </a>
                             </div>
                         </div>
@@ -173,3 +185,27 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+<script>
+    jQuery(function ($) {
+        $.datepicker.regional.sv = {
+            closeText: 'Cerrar',
+            prevText: 'Anterior',
+            nextText: 'Siguiente;',
+            currentText: 'Hoy',
+            monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            monthNamesShort: ['En', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            dayNamesShort: ['Lun', 'Mar', 'Mier', 'Jue', 'Vie', 'Sab', 'Dom'],
+            dayNames: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'viernes', 'Sábado', 'Domingo'],
+            dayNamesMin: ['Lun', 'Mar', 'Mier', 'Jue', 'Vie', 'Sab', 'Dom'],
+            weekHeader: 'Lu',
+            dateFormat: 'dd/mm/yy',
+            firstDay: 0,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: ''
+        };
+
+        $.datepicker.setDefaults($.datepicker.regional.sv);
+    });
+</script>

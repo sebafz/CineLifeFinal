@@ -224,7 +224,55 @@ namespace CapaDatos
             }
             return lista;
         }
+        public List<Producto> ListarXMovimiento(int id)
+        {
 
+            List<Producto> lista = new List<Producto>();
+
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
+                {
+
+                    StringBuilder sb = new StringBuilder();
+
+                    sb.AppendLine("select p.Nombre, p.Descripcion, cast(dm.Precio as int) Precio, Cantidad from DetalleMovimiento dm ");
+                    sb.AppendLine("inner join Comprobante c on dm.IdComprobante=c.IdComprobante ");
+                    sb.AppendLine("inner join ArtXDeposito ad on dm.IdArtXDeposito=ad.IdArtXDeposito ");
+                    sb.AppendLine("inner join Producto p on ad.IdProducto=p.IdProducto ");
+                    sb.AppendLine("where c.IdMovimiento=id");
+
+
+                    SqlCommand cmd = new SqlCommand(sb.ToString(), oconexion);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.CommandType = CommandType.Text;
+
+                    oconexion.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(new Producto()
+                            {
+                                IdProducto = Convert.ToInt32(dr["IdProducto"]),
+                                Nombre = dr["Nombre"].ToString(),
+                                Descripcion = dr["Descripcion"].ToString(),
+                                oMarca = new Marca() { IdMarca = Convert.ToInt32(dr["IdMarca"]), Descripcion = dr["DesMarca"].ToString() },
+                                oCategoria = new Categoria() { IdCategoria = Convert.ToInt32(dr["IdCategoria"]), Descripcion = dr["DesCategoria"].ToString() },
+                                Precio = Convert.ToDecimal(dr["Precio"], new CultureInfo("es-PE"))
+                            });
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                lista = new List<Producto>();
+
+            }
+            return lista;
+        }
         public List<DetalleComprobante> ListarXComprobante(int id)
         {
 

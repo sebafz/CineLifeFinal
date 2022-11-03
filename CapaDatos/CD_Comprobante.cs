@@ -53,7 +53,7 @@ namespace CapaDatos
                                 Total = Convert.ToInt32(dr["Total"]),
                                 Numero = Convert.ToInt32(dr["Numero"]),
                                 Fecha = dr["Fecha"].ToString(),
-                                oComprobante= new Comprobante() { IdComprobante = Convert.ToInt32(dr["IdComprobanteVinculo"]), Numero = Convert.ToInt32(dr["NumeroVinculo"]) },
+                                oComprobanteVinculo= new Comprobante() { IdComprobante = Convert.ToInt32(dr["IdComprobanteVinculo"]), Numero = Convert.ToInt32(dr["NumeroVinculo"]) },
                                 oProveedor = new Proveedor() { IdProveedor = Convert.ToInt32(dr["IdProveedor"]), Nombres = dr["Nombres"].ToString() },
                                 oSede = new Sede() { IdSede = Convert.ToInt32(dr["IdSede"]), Nombre = dr["Nombre"].ToString() }
                             });

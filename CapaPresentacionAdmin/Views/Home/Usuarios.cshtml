@@ -141,6 +141,11 @@
 
 @section scripts{
     <script>
+        $("#collapseMantenedor").click();
+        document.getElementById("menuusuarios").style.fontWeight = "bold";
+        document.getElementById("menuusuarios").style.color = "#c2c2c2";
+        document.getElementById("iconousuarios").style.color = "#c2c2c2";
+
         ListarProvincia();
         CargarTabla()
         var tabladata;
@@ -206,7 +211,6 @@
 
             $("#cbolocalidad").html("");
             $("#cbosede").html("");
-
 
 
             if (json != null) {
@@ -528,8 +532,6 @@
                     })
                 }
             });
-
-
 
 
         }

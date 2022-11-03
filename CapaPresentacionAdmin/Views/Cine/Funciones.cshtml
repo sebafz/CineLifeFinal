@@ -4,5 +4,545 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Funciones</h2>
+
+<ol class="breadcrumb mb-4 mt-4">
+    <li class="breadcrumb-item">Peliculas</li>
+    <li class="breadcrumb-item active">Funciones</li>
+</ol>
+
+<div class="card">
+    <div class="card-header">
+
+        <i class="fas fa-video me-1"></i> Lista de funciones
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <button type="button" class="btn btn-primary" onclick="abrirModal(null)">Crear nueva</button>
+            </div>
+        </div>
+
+        <hr />
+
+        <table id="tabla" class="display cell-border" style="width: 100%">
+            <thead>
+                <tr>
+                    <th>Película</th>
+                    <th>Sala</th>
+                    <th>Idioma</th>
+                    <th>Precio</th>
+                    <th>Activo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="FormModalPelicula" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Registar función</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6 class='alert alert-warning'>
+                    Seleccione película para asignar una función.
+                </h6>
+                <table id="tablaPelicula" class="display cell-border" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Descripción</th>
+                            <th>Género</th>
+                            <th>Fecha ingreso</th>
+                            <th>Fecha retiro</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="FormModalFuncion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Registrar función</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <input id="txtidfuncion" type="hidden" value="0" />
+                <input id="txtidpelicula" type="hidden" value="0" />
+
+                <form id="contenedor">
+
+                    <div class="row g-1">
+                        <div class="col-sm-12">
+                            <div class="mb-3" id="divpelicula">
+                                <label class="form-label">Película</label>
+                                <input type="text" class="form-control" id="txtpelicula" name="pelicula" autocomplete="off" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="cboidioma" class="form-label">Idioma</label>
+                                <select id="cboidioma" class="form-select">
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cbosala" class="form-label">Sala</label>
+                                <select id="cbosala" class="form-select">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Precio</label>
+                                <input type="text" class="form-control" id="txtprecio" name="precio" autocomplete="off" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="cboactivo" class="form-label">Activo</label>
+                                <select id="cboactivo" class="form-select">
+                                    <option value="1">Sí</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <!--Mensaje de alerta-->
+                <div class="row mt-2">
+                    <div class="col-12">
+
+                        <div id="mensajeErrorFuncion" class="alert alert-danger" role="alert">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script>
+        $("#collapseCine").click();
+        document.getElementById("menufunciones").style.fontWeight = "bold";
+        document.getElementById("menufunciones").style.color = "#c2c2c2";
+        document.getElementById("iconofunciones").style.color = "#c2c2c2";
+        document.getElementById('txtpelicula').disabled = true;
+
+        var tabladataPelicula;
+        var tabladata;
+        var filaSeleccionada;
+        var funcionseleccinada;
+
+
+        tabladata = $("#tabla").DataTable({
+            responsive: true,
+            ordering: true,
+            "ajax": {
+                url: '@Url.Action("ListarFunciones", "Cine")',
+                type: "GET",
+                dataType: "json"
+            },
+            "columns": [
+                {
+                    "data": "oPelicula", "render": function (data) {
+                        return data.Nombre
+                    }
+                },
+                {
+                    "data": "oSala", "render": function (data) {
+                        return data.Descripcion
+                    }
+                },
+                {
+                    "data": "oIdioma", "render": function (data) {
+                        return data.Descripcion
+                    }
+                },
+                { "data": "Precio" },
+                {
+                    "data": "Activo", "render": function (valor) {
+                        if (valor) {
+                            return '<span class="badge bg-success">Sí</span>'
+                        } else {
+                            return '<span class="badge bg-danger">No</span>'
+                        }
+                    }
+                },
+                {
+                    "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-editar"><i class="fas fa-pen"></i></button>' +
+                        '<button type="button" class="btn btn-danger btn-sm ms-2 btn-eliminar"><i class="fas fa-trash"></i></button>',
+                    "orderable": false,
+                    "searchable": false,
+                    "width": "90px"
+                }
+
+            ],
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+            }
+
+        });
+
+        $("<option>").attr({ "value": "0", "disabled": "disabled", "selected": "true" }).text("Seleccionar").appendTo("#cbosala")
+        jQuery.ajax({
+            url: '@Url.Action("ListarSalasActivas", "Cine")',
+            type: "GET",
+            data: null,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+
+                $.each(data.data, function (index, item) {
+
+                    $("<option>").attr({ "value": item.IdSala }).text(item.Descripcion).appendTo("#cbosala");
+                })
+            },
+            error: function (error) {
+                console.log(error)
+            }
+        });
+
+        $("<option>").attr({ "value": "0", "disabled": "disabled", "selected": "true" }).text("Seleccionar").appendTo("#cboidioma")
+        jQuery.ajax({
+            url: '@Url.Action("ListarIdiomas", "Cine")',
+            type: "GET",
+            data: null,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+
+                $.each(data.data, function (index, item) {
+
+                    $("<option>").attr({ "value": item.IdIdioma }).text(item.Descripcion).appendTo("#cboidioma");
+                })
+            },
+            error: function (error) {
+                console.log(error)
+            }
+        });
+
+        tabladataPelicula = $("#tablaPelicula").DataTable({
+            responsive: true,
+            ordering: true,
+            "ajax": {
+                url: '@Url.Action("ListarPeliculasActivas", "Cine")',
+                type: "GET",
+                dataType: "json"
+            },
+            "columns": [
+                { "data": "Nombre" },
+                {"data":"Descripcion"},
+                {
+                    "data": "oGenero", "render": function (data) {
+                        return data.Descripcion
+                    }
+                },
+                { "data": "FechaIngreso" },
+                { "data": "FechaEgreso" },
+                {
+                    "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-agregar"><i class="fas fa-plus"></i></button>',
+                    "orderable": false,
+                    "searchable": false,
+                    "width": "70px"
+                }
+
+            ],
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+            }
+
+        });
+
+
+        function abrirModalFuncionEditar(json) {
+
+            $("#txtidpelicula").val(0);
+            $("#txtidfuncion").val(0);
+            $("#cboidioma").val(0);
+            $("#cbosala").val(0);
+            $("#txtprecio").val("");
+            $("#cboactivo").val(1);
+
+            $("#mensajeErrorFuncion").hide();
+
+            if (json != null) {
+
+                $("#txtidpelicula").val(json.oPelicula.IdPelicula);
+                $("#txtpelicula").val(json.oPelicula.Nombre);
+                document.getElementById('divpelicula').hidden = false;
+                $("#txtidfuncion").val(json.IdFuncion);
+                $("#cboidioma").val(json.oIdioma.IdIdioma);
+                $("#cbosala").val(json.oSala.IdSala);
+                $("#txtprecio").val(json.Precio);
+                $("#cboactivo").val(json.Activo == true ? 1 : 0);
+
+            }
+
+            $("#FormModalFuncion").modal("show");
+        }
+
+        function abrirModalFuncionAgregar(json) {
+
+            $("#txtidpelicula").val(0);
+            $("#txtidfuncion").val(0);
+            $("#cboidioma").val(0);
+            $("#cbosala").val(0);
+            $("#txtprecio").val("");
+            $("#cboactivo").val(1);
+
+            $("#mensajeErrorFuncion").hide();
+
+            if (json != null) {
+
+                $("#txtidpelicula").val(json.IdPelicula);
+                $("#txtpelicula").val(json.Nombre);
+                document.getElementById('divpelicula').hidden = true;
+                $("#txtidfuncion").val(0);
+                $("#cboidioma").val(0);
+                $("#cbosala").val(0);
+                $("#txtprecio").val("");
+                $("#cboactivo").val(1);
+
+            }
+
+            $("#FormModalFuncion").modal("show");
+        }
+
+        function abrirModal() {
+
+            $("#FormModalPelicula").modal("show");
+        }
+
+
+        $("#tabla tbody").on("click", '.btn-editar', function () {
+
+            filaSeleccionada = $(this).closest("tr");
+
+            var data =  tabladata.row(filaSeleccionada).data();
+
+            abrirModalFuncionEditar(data)
+
+        })
+
+
+        $("#tabla tbody").on("click", '.btn-eliminar', function () {
+
+            funcionseleccionada = $(this).closest("tr");
+
+            var data = tabladata.row(funcionseleccionada).data();
+
+            var Funcion = {
+
+                IdFuncion: data.IdFuncion,
+                Activo: 0,
+                Precio: data.Precio,
+                oPelicula: {
+                    IdPelicula: data.oPelicula.IdPelicula,
+                    Nombre: data.oPelicula.Nombre,
+                },
+                oSala: {
+                    IdSala: data.oSala.IdSala,
+                    Descripcion: data.oSala.Descripcion,
+                },
+                oIdioma: {
+                    IdIdioma: data.oIdioma.IdIdioma,
+                    Descripcion: data.oIdioma.Descripcion,
+                },
+            };
+
+            swal({
+                title: "Esta Seguro?",
+                text: "¿Desea eliminar la función?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-primary",
+                confirmButtonText: "Sí",
+                cancelButtonText: "No",
+                closeOnConfirm: true
+            },
+            function () {
+
+                 jQuery.ajax({
+                    url: '@Url.Action("EliminarFuncion", "Cine")',
+                    type: "POST",
+                     data: JSON.stringify({ id: data.IdFuncion }),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+
+                        if (data.resultado) {
+                            tabladata.row(funcionseleccionada).data(Funcion).draw(false);
+                        } else {
+
+                            swal("No se pudo eliminar", data.mensaje, "error")
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error)
+                    }
+                });
+
+            });
+
+
+            console.log(data);
+
+        })
+
+        $("#tablaPelicula").on("click", '.btn-agregar', function () {
+
+            filaSeleccionada = $(this).closest("tr");
+
+            var data = tabladataPelicula.row(filaSeleccionada).data();
+
+            abrirModalFuncionAgregar(data)
+
+            $("#FormModalPelicula").modal("hide");
+
+
+        })
+
+        jQuery.validator.addMethod("preciodecimal", function (value, element) {
+            return this.optional(element) || /^\d{0,5}(\.\d{0,2})?$/i.test(value);
+        }, "El formato correcto del precio es ####.##");
+
+
+        $("#contenedor").validate({
+            rules: {
+                precio: {
+                    required: true,
+                    preciodecimal: true
+                }
+            },
+            messages: {
+                precio: { required: "El campo precio es obligario", preciodecimal: "El formato correcto del precio es ####.##" }
+            },
+            errorElement: "div",
+            errorLabelContainer: ".alert-danger"
+        });
+
+        function Guardar() {
+
+            if (!$("#contenedor").valid()) {
+                return;
+            }
+
+            $("#mensajeErrorFuncion").hide();
+            if ($("#cbosala").val() >= 1 && $("#cboidioma").val() >= 1) {
+
+                var Funcion = {
+
+                    IdFuncion: $("#txtidfuncion").val(),
+                    Activo: $("#cboactivo").val() == 1 ? true : false,
+                    Precio: $("#txtprecio").val(),
+                    oPelicula: {
+                        IdPelicula: $("#txtidpelicula").val(),
+                        Nombre: $("#txtpelicula").val(),
+                    },
+                    oSala: {
+                        IdSala: $("#cbosala option:selected").val(),
+                        Descripcion: $("#cbosala option:selected").text(),
+                    },
+                    oIdioma: {
+                        IdIdioma: $("#cboidioma option:selected").val(),
+                        Descripcion: $("#cboidioma option:selected").text(),
+                    },
+                };
+
+
+                jQuery.ajax({
+                    url: '@Url.Action("GuardarFuncion", "Cine")',
+                    type: "POST",
+                    data: JSON.stringify({ objeto: Funcion }),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+
+                        $(".modal-body").LoadingOverlay("hide");
+
+                        //FUNCION NUEVA
+                        if (Funcion.IdFuncion == 0) {
+
+                            if (data.resultado != 0) {
+
+                                Funcion.IdFuncion = data.resultado;
+                                tabladata.row.add(Funcion).draw(false);
+                                $("#FormModalFuncion").modal("hide");
+
+                            } else {
+                                $("#mensajeErrorFuncion").text(data.mensaje);
+                                $("#mensajeErrorFuncion").show();
+                            }
+                        }
+                        //FUNCION EDITAR
+                        else {
+
+                            if (data.resultado) {
+
+                                tabladata.row(filaSeleccionada).data(Funcion).draw(false);
+                                filaSeleccionada = null;
+                                $("#FormModalFuncion").modal("hide");
+                            } else {
+                                $("#mensajeErrorFuncion").text(data.mensaje);
+                                $("#mensajeErrorFuncion").show();
+                            }
+                        }
+                    },
+                    error: function (error) {
+
+                        $(".modal-body").LoadingOverlay("hide");
+                        $("#mensajeErrorFuncion").text("Error Ajax");
+                        $("#mensajeErrorFuncion").show();
+                    },
+                    beforeSend: function () {
+                        $(".modal-body").LoadingOverlay("show", {
+                            imageResizeFactor: 2,
+                            text: "Cargando...",
+                            size: 14
+                        })
+                    }
+                });
+
+            }
+            else {
+                $("#mensajeErrorFuncion").text("Rellene todos los campos solicitados");
+                $("#mensajeErrorFuncion").show();
+            }
+
+        }
+
+    </script>
+
+
+}
 

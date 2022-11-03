@@ -11,5 +11,10 @@ namespace CapaNegocio
 {
     public class CN_Movimiento
     {
+        private CD_Movimiento objCapaDato = new CD_Movimiento();
+        public List<Movimiento> Listar()
+        {
+            return objCapaDato.Listar();
+        }
     } 
 }

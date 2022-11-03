@@ -135,7 +135,8 @@ namespace CapaDatos
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
                 {
 
-                    string query = "select IdCliente,Nombres,Apellidos,Correo,Clave,Reestablecer from Cliente";
+                    string query = "select IdCliente,DNI,Nombres,Apellidos,Correo,Clave,Reestablecer,Telefono,Direccion,l.IdLocalidad, l.descripcion DesLoc, p.IdProvincia, p.Descripcion DesProv from Cliente c "+
+                        "inner join Localidad l on c.IdLocalidad=l.IdLocalidad inner join provincia p on p.IdProvincia=l.IdProvincia";
 
                     SqlCommand cmd = new SqlCommand(query, oconexion);
                     cmd.CommandType = CommandType.Text;
@@ -155,7 +156,63 @@ namespace CapaDatos
                                     Apellidos = dr["Apellidos"].ToString(),
                                     Correo = dr["Correo"].ToString(),
                                     Clave = dr["Clave"].ToString(),
-                                    Reestablecer = Convert.ToBoolean(dr["Reestablecer"])
+                                    Telefono= dr["Telefono"].ToString(),
+                                    DNI = Convert.ToInt32(dr["DNI"]),
+                                    Direccion = dr["Direccion"].ToString(),
+                                    Reestablecer = Convert.ToBoolean(dr["Reestablecer"]),
+                                    oLocalidad = new Localidad()
+                                    {
+                                        IdLocalidad = Convert.ToInt32(dr["IdLocalidad"]),
+                                        Descripcion = dr["DesLoc"].ToString(),
+                                        oProvincia = new Provincia() { IdProvincia = Convert.ToInt32(dr["IdProvincia"]), Descripcion = dr["DesProv"].ToString() }
+                                    }
+                                }
+
+                                );
+                        }
+                    }
+                }
+
+            }
+            catch
+            {
+                lista = new List<Cliente>();
+
+            }
+
+
+            return lista;
+
+
+        }
+
+        public List<Cliente> ListarActivos()
+        {
+
+            List<Cliente> lista = new List<Cliente>();
+
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
+                {
+
+                    string query = "select IdCliente,Nombres,Apellidos from Cliente where activo=1";
+
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    cmd.CommandType = CommandType.Text;
+
+                    oconexion.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+
+                            lista.Add(
+                                new Cliente()
+                                {
+                                    IdCliente = Convert.ToInt32(dr["IdCliente"]),
+                                    Nombres = dr["Nombres"].ToString() + dr["Apellidos"].ToString(),
                                 }
 
                                 );

@@ -1,52 +1,130 @@
-﻿@model CapaEntidad.Producto
+﻿@model CapaEntidad.Pelicula
 @{
-    ViewBag.Title = "DetalleProducto";
+    ViewBag.Title = "Detalle de película";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
 
-<section class="py-5">
-    <div class="container px-4 px-lg-5 my-5">
+<section class="container-fluid py-5">
+    <div class="container" style=" padding: 40px 60px">
         <div class="row gx-4 gx-lg-5 align-items-center">
-            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="data:image/@Html.DisplayTextFor(m => m.Extension);base64,@Html.DisplayTextFor(m=> m.Base64)" alt="..."/></div>
-            <div class="col-md-6">
-                <div class="small mb-1">Marca: @Html.DisplayTextFor(m => m.oMarca.Descripcion)</div>
-                <h1 class="display-5 fw-bolder">@Html.DisplayTextFor(m => m.Nombre)</h1>
-                <div class="fs-5 mb-5">
-                    <span>$ @Html.DisplayTextFor(m => m.Precio)</span>
+
+            <div class="col-md-3">
+                <a href="@Url.Action("Index","Tienda")" class="btn w-50 text-center me-3 ml-1 my-2 d-block">
+                    <i class="fas fa-angle-left"></i> Volver
+                </a>
+                <img class="card-img-top mb-5 mb-md-0" src="data:image/@Html.DisplayTextFor(m => m.Extension);base64,@Html.DisplayTextFor(m => m.Base64)" alt="..." />
+                <div class="small mb-1">Género: @Html.DisplayTextFor(m => m.oGenero.Descripcion)</div>
+                <div class="small mb-1">Clasificación: @Html.DisplayTextFor(m => m.oClasificacion.Descripcion)</div>
+                <div class="small mb-1">Calificación: @Html.DisplayTextFor(m => m.Calificacion) ⭐</div>
+            </div>
+            <div class="col-md-9">
+
+                <h1 class="display-5 fw-bolder m-0">@Html.DisplayTextFor(m => m.Nombre)</h1>
+
+                <p class="lead fs-5">@Html.DisplayTextFor(m => m.Descripcion)</p>
+
+                <div id="contenedor_dias" class="my-2 d-flex">
+                    <button class="btn btn-negro color-gris mr-1 btn-dia" onclick="ClickDia(this)" value="1">LUN 31/10</button>
+                    <button class="btn btn-negro color-gris mr-1 btn-dia" onclick="ClickDia(this)" value="2">MAR 01/11</button>
+                    <button class="btn btn-negro color-gris mr-1 btn-dia" onclick="ClickDia(this)" value="3">MIER/02/11</button>
                 </div>
-                <p class="lead">@Html.DisplayTextFor(m => m.Descripcion)</p>
+                <input id="txtid" type="hidden" value="0" />
+                <div id="contenedor_funciones" class="d-none">
+                    <hr class="color-gris" />
+                    <div class="my-2">
+                        <p>
+                            <button class="btn btn-negro color-gris btn-idoma" value="1" onclick="ClickIdioma(this)">
+                                3D castellano
+                            </button>
+                            <button class="btn btn-negro color-gris btn-idoma" value="2" onclick="ClickIdioma(this)">
+                                3D subtitulado
+                            </button>
+                            <button class="btn btn-negro color-gris btn-idoma" value="3" onclick="ClickIdioma(this)">
+                                2D castellano
+                            </button>
+                            <button class="btn btn-negro color-gris btn-idoma" value="4" onclick="ClickIdioma(this)">
+                                2D subtitulado
+                            </button>
+                        </p>
+                        <div id="collapseExample">
+                            <div class="card card-body fondo-gris" id="contenedor_horas">
+                                Seleccione un idioma para ver las funciones disponibles.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="d-flex">
-
-                    <a href="@Url.Action("Index","Tienda")" class="btn btn-danger w-50 text-center me-3 marg-b">
-                        <i class="fas fa-angle-left"></i> Volver
-
-                    </a>
 
                     @if (Session["Cliente"] != null)
                     {
 
-                        <button class="btn btn-success agregarcarrito flex-shink-0 w-50" type="button" data-idproducto="@Html.DisplayTextFor(m => m.IdProducto)">
-                            <i class="fas fa-cart-plus"></i> Agregar al carrito
+                        <button class="btn btn-primary agregarcarrito flex-shink-0 w-50" type="button" data-idproducto="@Html.DisplayTextFor(m => m.IdPelicula)" id="btncomprar">
+                            <i class="fas fa-cart-plus"></i> Comprar
                         </button>
                     }
-                    <br />
+                    @if (Session["Cliente"] == null)
+                    {
+                        <a class="tip" href="@Url.Action("Index", "Acceso")"> Iniciá sesión para comprar esta película</a>
+                    }
                 </div>
-                @if (Session["Cliente"]== null)
-                {
-                    <a class="tip" href="@Url.Action("Index", "Acceso")"> Iniciá sesión para agregar este producto a tu carrito</a>
-                }
-                </div>
+
+            </div>
         </div>
     </div>
 </section>
 
 
 @section scripts{
-    
-    
     <script>
+
+        document.getElementById('btncomprar').disabled = true;
+
+        function ClickDia(btn) {
+            $(".btn-dia").removeClass('active')
+            $(btn).addClass('active')
+            $('#contenedor_funciones').removeClass('d-none')
+        };
+
+        function ClickIdioma(btn) {
+            $(".btn-idoma").removeClass('active')
+            $(btn).addClass('active')
+
+            $('#contenedor_dias .active').each(function () {
+                act = $(this).attr('value');
+            });
+
+            jQuery.ajax({
+                url: "@Url.Action("ListarFuncionesTienda", "Tienda")",
+                type: "POST",
+                data: JSON.stringify({ idfecha: act, ididioma: $(btn).val() }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    $("#contenedor_horas").html("");
+                    $("#contenedor_horas").LoadingOverlay("hide", {
+                        background: "rgba(28,28,28, 0.5)",
+                        imageColor: "#ffffff"
+                    });
+
+                    $.each(response.data, function (i, element) {
+
+                        $("<div>").addClass("col mb-5").append(
+
+                        ).appendTo("#contenedor_horas")
+
+                    })
+                },
+                beforeSend: function () {
+                    $("#contenedor_producto").LoadingOverlay("show", {
+                        background: "rgba(28,28,28, 0.5)",
+                        imageColor: "black"
+                    });
+                }
+            })
+        };
 
          $(document).on("click", "button.agregarcarrito", function () {
 

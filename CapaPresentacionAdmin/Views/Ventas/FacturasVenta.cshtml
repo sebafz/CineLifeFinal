@@ -250,6 +250,9 @@
     <script>
         $("#txtfecha").datepicker({ dateFormat: 'dd/mm/yy' }).datepicker('setDate', new Date())
         $("#collapseVentas").click();
+        document.getElementById("menufacturasv").style.fontWeight = "bold";
+        document.getElementById("menufacturasv").style.color = "#c2c2c2";
+        document.getElementById("iconofacturasv").style.color = "#c2c2c2";
 
         var tabladata;
         var tabladataAgregar;
@@ -277,7 +280,7 @@
 
                 $.each(data.data, function (index, item) {
 
-                    $("<option>").attr({ "value": item.IdProveedor }).text(item.Nombres).appendTo("#cbocliente");
+                    $("<option>").attr({ "value": item.IdCliente }).text(item.Nombres).appendTo("#cbocliente");
                 })
             },
             error: function (error) {

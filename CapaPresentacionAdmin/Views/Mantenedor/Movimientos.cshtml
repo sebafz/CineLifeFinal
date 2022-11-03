@@ -31,10 +31,11 @@
                 <tr>
                     <th>Número</th>
                     <th>Motivo</th>
-                    <th>Ingreso</th>
                     <th>Depósito</th>
+                    <th>Sede</th>
                     <th>Fecha</th>
-                    <th>Nro. comprobante</th>
+                    <th>Nro. factura</th>
+                    <th>Tipo</th>
                     <th></th>
                 </tr>
             </thead>
@@ -87,24 +88,30 @@
                 <div class="row g-2">
 
                     <div class="mb-4">
-                        <label class="form-label">Motivo de movimiento</label>
-                        <select id="cbomotivo" class="form-select">
-                        </select>
-
-                        <label class="form-label">Tipo de movimiento</label>
-                        <select id="cboingreso" class="form-select">
-                            <option value="1">Ingreso</option>
-                            <option value="0">Egreso</option>
-                        </select>
-
-                        <label for="cbosede" class="form-label">Sede</label>
-                        <select id="cbosede" class="form-select">
-                        </select>
-                        <label for="cbodeposito" class="form-label">Deposito</label>
-                        <select id="cbodeposito" class="form-select">
-                        </select>
+                        <div class="mb-3">
+                            <label class="form-label">Motivo de movimiento</label>
+                            <select id="cbomotivo" class="form-select">
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tipo de movimiento</label>
+                            <select id="cboingreso" class="form-select">
+                                <option value="1">Ingreso</option>
+                                <option value="0">Egreso</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cbosede" class="form-label">Sede</label>
+                            <select id="cbosede" class="form-select">
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cbodeposito" class="form-label">Deposito</label>
+                            <select id="cbodeposito" class="form-select">
+                            </select>
+                        </div>
                     </div>
-                </div>
+                    </div>
 
                 <div class="row mt-2">
                     <div class="col-12">
@@ -312,14 +319,18 @@
                 <div class="row g-2">
 
                     <div class="mb-4">
-                        <label class="form-label">Motivo de movimiento</label>
-                        <select id="cbomotivo2" class="form-select">
-                        </select>
-                        <label class="form-label">Tipo de movimiento</label>
-                        <select id="cboingreso2" class="form-select">
-                            <option value="1">Ingreso</option>
-                            <option value="0">Egreso</option>
-                        </select>
+                        <div class="mb-3">
+                            <label class="form-label">Motivo de movimiento</label>
+                            <select id="cbomotivo2" class="form-select">
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tipo de movimiento</label>
+                            <select id="cboingreso2" class="form-select">
+                                <option value="1">Ingreso</option>
+                                <option value="0">Egreso</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
@@ -382,6 +393,9 @@
 
     <script>
         $("#collapseStock").click();
+        document.getElementById("menumovimientos").style.fontWeight = "bold";
+        document.getElementById("menumovimientos").style.color = "#c2c2c2";
+        document.getElementById("iconomovimientos").style.color = "#c2c2c2";
 
         var tabladata;
         var tabladataIngeso;
@@ -496,24 +510,36 @@
             },
             "columns": [
                 { "data": "Numero" },
-                { "data": "Motivo" },
                 {
-                    "data": "Tipo", "render": function (valor) {
-                        if (valor==1) {
-                            return '<span class="badge bg-success">Ingreso</span>'
-                        } else {
-                            return '<span class="badge bg-danger">Egreso</span>'
-                        }
+                    "data": "oMotivoMovimiento", "render": function (data) {
+                        return data.Descripcion
                     }
-
                 },
                 {
                     "data": "oDeposito", "render": function (data) {
                         return data.Descripcion
                     }
                 },
+                {
+                    "data": "oDeposito", "render": function (data) {
+                        return data.oSede.Nombre
+                    }
+                },
                 { "data": "Fecha" },
-                { "data": "Nro. comprobante" },
+                {
+                    "data": "oComprobante", "render": function (data) {
+                        return data.IdComprobante
+                    }
+                },
+                {
+                    "data": "Ingreso", "render": function (valor) {
+                        if (valor == 1) {
+                            return '<span class="badge bg-success">Ingreso</span>'
+                        } else {
+                            return '<span class="badge bg-danger">Egreso</span>'
+                        }
+                    }
+                },
                 {
                     "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-ver"><i class="fas fa-eye"></i></button>',
                     "orderable": false,
@@ -792,7 +818,7 @@
         }
 
         function CancelarNuevo() {
-            $("#cbomotivo").val($("#cboproveedor option:first").val());
+            $("#cbomotivo").val($("#cbomotivo option:first").val());
             $("#cbodeposito").val($("#cbodeposito option:first").val());
         }
 

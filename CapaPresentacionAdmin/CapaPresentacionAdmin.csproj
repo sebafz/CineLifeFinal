@@ -143,6 +143,7 @@
     <Compile Include="Controllers\ComprasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MantenedorController.cs" />
+    <Compile Include="Controllers\PeliculasController.cs" />
     <Compile Include="Controllers\VentasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -355,6 +356,8 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\faviconAdmin.png" />
+    <Content Include="Images\faviconSinFondo.png" />
+    <Content Include="Images\FondoTablero.png" />
     <Content Include="Images\logoCompletoAdmin.png" />
     <Content Include="Images\logoGrandeAdmin.png" />
     <Content Include="Images\LogoNavBarOscuro.png" />
@@ -545,6 +548,8 @@
     <Content Include="Views\Cine\Peliculas.cshtml" />
     <Content Include="Views\Cine\Funciones.cshtml" />
     <Content Include="Views\Cine\Salas.cshtml" />
+    <Content Include="Views\Cine\Cartelera.cshtml" />
+    <Content Include="Views\Cine\Boletos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

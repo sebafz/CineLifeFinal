@@ -4,5 +4,485 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Peliculas</h2>
+
+
+
+<ol class="breadcrumb mb-4 mt-4">
+    <li class="breadcrumb-item">Peliculas</li>
+    <li class="breadcrumb-item active">Listado</li>
+</ol>
+
+<div class="card">
+    <div class="card-header">
+
+        <i class="fas fa-film me-1"></i> Lista de películas
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+
+            <div class="col-12">
+                <button type="button" class="btn btn-primary" onclick="abrirModal(null)">Crear nueva</button>
+            </div>
+        </div>
+
+        <hr />
+        <table id="tabla" class="display cell-border" style="width: 100%">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Descripción</th>
+                    <th>Género</th>
+                    <th>Fecha ingreso</th>
+                    <th>Fecha egreso</th>
+                    <th>Activo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Registrar película</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <input id="txtid" type="hidden" value="0" />
+
+                <form id="contenedor" class="row">
+
+                    <div class="col-sm-3">
+                        <div class="mb-2">
+                            <img id="img_producto" height="197" width="200" class="border rounded mx-auto d-block img-fluid" />
+                        </div>
+                        <div class="mb-2">
+                            <input class="form-control" type="file" id="fileProducto" accept="image/png, image/jpg, image/jpeg" onchange="mostrarImagen(this)" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="mb-3">
+                            <label class="form-label">Título</label>
+                            <input type="text" class="form-control" id="txtnombre" name="nombre" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Descripción</label>
+                            <textarea type="text" class="form-control" id="txtdescripcion" name="descripcion" style="height:125px;resize:none"></textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+                        <div class="mb-3">
+                            <label class="form-label">Calificación</label>
+                            <select id="cbocalificacion" class="form-select">
+                                <option value="1">⭐</option>
+                                <option value="2">⭐⭐</option>
+                                <option value="3">⭐⭐⭐</option>
+                                <option value="4">⭐⭐⭐⭐</option>
+                                <option value="5">⭐⭐⭐⭐⭐</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Clasificación</label>
+                            <select id="cboclasificacion" class="form-select">
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Género</label>
+                            <select id="cbogenero" class="form-select">
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+                        <div class="mb-3">
+                            <label class="form-label">Fecha ingreso</label>
+                            <input class="form-control" type="text" id="txtfechaingreso" name="fecha" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Fecha egreso</label>
+                            <input class="form-control" type="text" id="txtfechaegreso" name="fecha" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Activo</label>
+                            <select id="cboactivo" class="form-select">
+                                <option value="1">Sí</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                    </div>
+</form>
+
+                <!--Mensaje de alerta-->
+                <div class="row mt-2">
+                    <div class="col-12">
+
+                        <div id="mensajeError" class="alert alert-danger" role="alert">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script>
+        $("#txtfechaingreso").datepicker({ dateFormat: 'dd/mm/yy' }).datepicker('setDate', new Date())
+        $("#txtfechaegreso").datepicker({ dateFormat: 'dd/mm/yy' }).datepicker('setDate', new Date(new Date().getTime() + 1123200000))
+        $("#collapseCine").click();
+        document.getElementById("menupeliculas").style.fontWeight = "bold";
+        document.getElementById("menupeliculas").style.color = "#c2c2c2";
+        document.getElementById("iconopeliculas").style.color = "#c2c2c2";
+
+        var tabladata;
+        var filaSeleccionada;
+        var peliseleccionada;
+
+        function mostrarImagen(input) {
+            if (input.files) {
+
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $("#img_producto").attr("src",e.target.result).width(200).height(197)
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+
+        }
+
+        $("<option>").attr({ "value": "0", "disabled": "disabled", "selected": "true" }).text("Seleccionar").appendTo("#cboclasificacion")
+        jQuery.ajax({
+            url: '@Url.Action("ListarClasificaciones", "Cine")',
+            type: "GET",
+            data: null,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+
+                $.each(data.data, function (index, item) {
+
+                    $("<option>").attr({ "value": item.IdClasificacion }).text(item.Descripcion).appendTo("#cboclasificacion");
+                })
+            },
+            error: function (error) {
+                console.log(error)
+            }
+        });
+
+        $("<option>").attr({ "value": "0", "disabled": "disabled", "selected": "true" }).text("Seleccionar").appendTo("#cbogenero")
+        jQuery.ajax({
+            url: '@Url.Action("ListarGeneros", "Cine")',
+            type: "GET",
+            data: null,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+
+                $.each(data.data, function (index, item) {
+
+                    $("<option>").attr({ "value": item.IdGenero }).text(item.Descripcion).appendTo("#cbogenero");
+                })
+            },
+            error: function (error) {
+                console.log(error)
+            }
+        });
+
+        tabladata = $("#tabla").DataTable({
+            responsive: true,
+            ordering: true,
+            "ajax": {
+                url: '@Url.Action("ListarPeliculas", "Cine")',
+                type: "GET",
+                dataType: "json"
+            },
+            "columns": [
+                { "data": "Nombre" },
+                {"data":"Descripcion"},
+                {
+                    "data": "oGenero", "render": function (data) {
+                        return data.Descripcion
+                    }
+                },
+                { "data": "FechaIngreso" },
+                { "data": "FechaEgreso" },
+                {
+                    "data": "Activo", "render": function (valor) {
+                        if (valor) {
+                            return '<span class="badge bg-success">Sí</span>'
+                        } else {
+                            return '<span class="badge bg-danger">No</span>'
+                        }
+                    }
+                },
+                {
+                    "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-editar"><i class="fas fa-pen"></i></button>' +
+                        '<button type="button" class="btn btn-danger btn-sm ms-2 btn-eliminar"><i class="fas fa-trash"></i></button>',
+                    "orderable": false,
+                    "searchable": false,
+                    "width": "70px"
+                }
+
+            ],
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+            }
+
+        });
+
+        function abrirModal(json) {
+
+            $("#txtid").val(0);
+            $("#img_producto").removeAttr("src");
+            $("#txtnombre").val();
+            $("#txtdescripcion").val();
+            $("#cboclasificacion").val(0);
+            $("#cbogenero").val(0);
+            $("#txtfechaingreso").val();
+            $("#txtfechaegreso").val();
+            $("#cboactivo").val(1);
+
+            $("#mensajeError").hide();
+
+          if (json != null) {
+
+                $("#txtid").val(json.IdPelicula);
+                $("#txtnombre").val(json.Nombre);
+                $("#txtdescripcion").val(json.Descripcion);
+                $("#cbocalificacion").val(json.Calificacion);
+                $("#cboclasificacion").val(json.oClasificacion.IdClasificacion);
+                $("#cbogenero").val(json.oGenero.IdGenero);
+                $("#cboactivo").val(json.Activo == true ? 1 : 0);
+
+                 jQuery.ajax({
+                    url: '@Url.Action("ImagenPelicula", "Cine")',
+                     type: "POST",
+                     data: JSON.stringify({ id: json.IdPelicula }),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                     success: function (data) {
+
+                         $("#img_producto").LoadingOverlay("hide");
+
+                        if (data.conversion) {
+                            $("#img_producto").attr({ "src": "data:image/" + data.extension + ";base64," + data.textobase64 });
+                        }
+
+                         $("#img_producto").attr({ "src": data.ruta});
+
+                    },
+                    error: function (error) {
+                        $("#img_producto").LoadingOverlay("hide");
+
+                        $("#mensajeError").show();
+                        $("#mensajeError").text("Error al mostrar imagen");
+
+                    },
+                    beforeSend: function () {
+                        $("#img_producto").LoadingOverlay("show");
+                    },
+                });
+
+            }
+
+            $("#FormModal").modal("show");
+        }
+
+        $("#tabla tbody").on("click", '.btn-editar', function () {
+
+            filaSeleccionada = $(this).closest("tr");
+
+            var data =  tabladata.row(filaSeleccionada).data();
+
+            abrirModal(data)
+
+        })
+
+
+
+        $("#tabla tbody").on("click", '.btn-eliminar', function () {
+
+            peliseleccionada = $(this).closest("tr");
+
+            var data = tabladata.row(peliseleccionada).data();
+
+            var Pelicula = {
+                IdPelicula: data.IdPelicula,
+                Nombre: data.Nombre,
+                Descripcion: data.Descripcion,
+                Calificacion: data.Calificacion,
+                oGenero: {
+                    IdGenero: data.oGenero.IdGenero,
+                    Descripcion: data.oGenero.Descripcion
+                },
+                oClasificacion: {
+                    IdClasificacion: data.oClasificacion.IdClasificacion,
+                    Descripcion: data.oClasificacion.Descripcion
+                },
+                FechaIngreso: data.FechaIngreso,
+                FechaEgreso: data.FechaEgreso,
+                Activo: 0,
+            }
+
+            swal({
+                title: "¿Estás seguro?",
+                text: "¿Desea eliminar la película?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-primary",
+                confirmButtonText: "Sí",
+                cancelButtonText: "No",
+                closeOnConfirm: true
+            },
+            function () {
+
+                 jQuery.ajax({
+                    url: '@Url.Action("EliminarPelicula", "Cine")',
+                    type: "POST",
+                     data: JSON.stringify({ id: data.IdPelicula }),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                     success: function (data) {
+                         console.log(data)
+
+                        if (data.resultado) {
+                            tabladata.row(peliseleccionada).data(Pelicula).draw(false);
+                        } else {
+
+                            swal("No se pudo eliminar", data.mensaje, "error")
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error)
+                    }
+                });
+
+
+            });
+
+
+            console.log(data);
+
+        })
+
+        function Guardar() {
+
+            if (!$("#contenedor").valid()) {
+                return;
+            }
+
+            var ImagenSeleccionada = $("#fileProducto")[0].files[0];
+
+            var Pelicula = {
+                IdPelicula: $("#txtid").val(),
+                Nombre: $("#txtnombre").val(),
+                Descripcion: $("#txtdescripcion").val(),
+                Calificacion: $("#cbocalificacion").val(),
+                oGenero: {
+                    IdGenero: $("#cbogenero option:selected").val(),
+                    Descripcion: $("#cbogenero option:selected").text()
+                },
+                oClasificacion: {
+                    IdClasificacion: $("#cboclasificacion option:selected").val(),
+                    Descripcion: $("#cboclasificacion option:selected").text()
+                },
+                FechaIngreso: $("#txtfechaingreso").val(),
+                FechaEgreso: $("#txtfechaegreso").val(),
+                Activo: $("#cboactivo").val() == 1 ? true : false,
+            }
+
+
+            var request = new FormData();
+            request.append("objeto", JSON.stringify(Pelicula))
+            request.append("archivoImagen", ImagenSeleccionada)
+
+
+           jQuery.ajax({
+                url: '@Url.Action("GuardarPelicula", "Cine")',
+                type: "POST",
+               data: request,
+               processData: false,
+               contentType:false,
+               success: function (data) {
+
+                   $(".modal-body").LoadingOverlay("hide");
+
+                   //PRODUCTO NUEVO
+                   if (Pelicula.IdPelicula == 0) {
+
+                       if (data.idGenerado != 0) {
+
+                            Pelicula.IdPelicula = data.idGenerado;
+                            tabladata.row.add(Pelicula).draw(false);
+                            $("#FormModal").modal("hide");
+
+                        } else {
+                            $("#mensajeError").text(data.mensaje);
+                            $("#mensajeError").show();
+                        }
+                    }
+                    //PRODUCTO EDITAR
+                    else {
+
+                       if (data.operacionExitosa) {
+
+                           tabladata.row(filaSeleccionada).data(Pelicula).draw(false);
+                           filaSeleccionada = null;
+                           $("#FormModal").modal("hide");
+                        } else {
+                            $("#mensajeError").text(data.mensaje);
+                            $("#mensajeError").show();
+                        }
+                   }
+
+                },
+               error: function (error) {
+
+                   $(".modal-body").LoadingOverlay("hide");
+                   $("#mensajeError").text("Error Ajax");
+                   $("#mensajeError").show();
+                },
+                beforeSend: function () {
+                    $(".modal-body").LoadingOverlay("show", {
+                        imageResizeFactor: 2,
+                        text: "Cargando...",
+                        size: 14
+                    })
+                }
+            });
+
+
+        }
+
+
+    </script>
+
+
+}
+
+
+
 
