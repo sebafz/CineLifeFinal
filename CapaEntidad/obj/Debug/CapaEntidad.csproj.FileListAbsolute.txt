@@ -21,3 +21,9 @@ C:\Proyectos\SistemasIII\CineLife2\CapaEntidad\obj\Debug\CapaEntidad.csproj.Asse
 C:\Proyectos\SistemasIII\CineLife2\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
 C:\Proyectos\SistemasIII\CineLife2\CapaEntidad\obj\Debug\CapaEntidad.dll
 C:\Proyectos\SistemasIII\CineLife2\CapaEntidad\obj\Debug\CapaEntidad.pdb
+B:\sistemas3\BASEFINAL\CineLifeFinal\CapaEntidad\bin\Debug\CapaEntidad.dll
+B:\sistemas3\BASEFINAL\CineLifeFinal\CapaEntidad\bin\Debug\CapaEntidad.pdb
+B:\sistemas3\BASEFINAL\CineLifeFinal\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+B:\sistemas3\BASEFINAL\CineLifeFinal\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+B:\sistemas3\BASEFINAL\CineLifeFinal\CapaEntidad\obj\Debug\CapaEntidad.dll
+B:\sistemas3\BASEFINAL\CineLifeFinal\CapaEntidad\obj\Debug\CapaEntidad.pdb
