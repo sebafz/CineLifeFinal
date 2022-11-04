@@ -10903,25 +10903,25 @@ a:focus {
 }
 
 .bg-login-image {
-    background-image: url('../images/LogoLargoClaro.png');
+    background-image: url('../images/logoCompleto.png');
     background-position: center;
     background-size: cover;
 }
 
 .bg-register-image {
-    background: url("../Images/juguetes.jpg");
+    background-image: url('../images/logoChicoHD.png');
     background-position: center;
     background-size: cover;
 }
 
 .bg-password-image {
-    background: url("../Images/juguetes2.jpg");
+    background-image: url('../images/logogrande.png');
     background-position: center;
     background-size: cover;
 }
 
 .bg-rest-image {
-    background: url("../Images/juguetes.jpg");
+    background-image: url('../images/logogrande.png');
     background-position: center;
     background-size: cover;
 }

@@ -4,23 +4,25 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="~/Images/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="~/Images/faviconSinFondo.png" />
     <title>@ViewBag.Title - Fun House</title>
 
     @Styles.Render("~/Content/css")
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100 fondo-negro">
 
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-azul">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid px-4">
-            <img src="~/Images/LogoNavBarClaro.png" href="@Url.Action("Index","Tienda")"/>
+            <img src="~/Images/logoNavBarSinFondo.png" href="@Url.Action("Index","Tienda")" />
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link-blue" href="@Url.Action("Index","Tienda")">Inicio</a></li>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 ">
+                    <li class="nav-item"><a class="nav-link-blue text-white" href="@Url.Action("Index","Tienda")">PELÍCULAS</a></li>
+                    <li class="nav-item"><a class="nav-link-blue text-white" href="">CANDY</a></li>
+                    <li class="nav-item"><a class="nav-link-blue text-white" href="">PRÓXIMOS ESTRENOS</a></li>
                 </ul>
                 <form class="d-flex">
 
@@ -35,7 +37,7 @@
                         <a class="btn btn-primary" href="@Url.Action("Carrito","Tienda")">
                             <i class="fas fa-shopping-cart me-1"></i>
                             Carrito
-                            <span class="badge bg-dark text-white ms-1 rounded-pill" id="cantidadcarrito">0</span>
+                            <span class="badge bg-light text-white ms-1 rounded-pill fondo-verde-oscuro" id="cantidadcarrito">0</span>
                         </a>
                         <a class="btn btn-primary" href="@Url.Action("MisCompras","Tienda")" style="margin-left: 10px">
                             <i class="fas fa-shopping-bag me-1"></i>
@@ -45,7 +47,7 @@
 
                         <ul class="navbar-nav ms-auto me-0 me-md-3 my-2 my-md-0">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                                <a class="nav-link dropdown-toggle text-white" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw text-white"></i></a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="@Url.Action("Perfil","Tienda")"><b>@User.Identity.Name</b></a></li>
                                     <li><hr class="dropdown-divider" /></li>
@@ -61,13 +63,15 @@
             </div>
         </div>
     </nav>
-    @RenderBody()
+
+    <div class="flex-centrar"><div class="fondo-negro">@RenderBody()<div class="push fondo-negro"></div></div></div>
+    
 
 
-    <div id="layoutAuthentication_footer">
-        <footer class="py-4 bg-footer mt-auto">
-            <div class="container-fluid px-4">
-                <div class="d-flex align-items-center justify-content-between small">
+    <div id="layoutAuthentication_footer" class="fondo-negro">
+        <footer class="py-4 bg-footer mt-auto fondo-negro bg-dark dark">
+            <div class="container-fluid px-4 fondo-negro">
+                <div class="d-flex align-items-center justify-content-between small fondo-negro">
                     <div class="text-muted">Sistemas III - 2022 <i class="fas fa-bolt"></i> Fernandez Zavalía, Díaz, Dagum, Valdez Kao</div>
                 </div>
             </div>

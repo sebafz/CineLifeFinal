@@ -15,6 +15,11 @@ namespace CapaNegocio
         {
             return objCapaDato.Listar();
         }
+        public List<Deposito> ObtenerActivos(string idprovincia)
+        {
+
+            return objCapaDato.ObtenerActivos(idprovincia);
+        }
 
         public List<Deposito> ObtenerDeposito(string idsede)
         {
@@ -53,21 +58,12 @@ namespace CapaNegocio
                 return 0;
             }
 
-
-
         }
 
         public bool Editar(Deposito obj, out string Mensaje)
         {
 
             Mensaje = string.Empty;
-
-
-            if (string.IsNullOrEmpty(obj.Descripcion) || string.IsNullOrWhiteSpace(obj.Descripcion))
-            {
-                Mensaje = "La descripción de la categoría no puede estar vacía ";
-            }
-
 
             if (string.IsNullOrEmpty(Mensaje))
             {

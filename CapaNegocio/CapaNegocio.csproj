@@ -201,18 +201,27 @@
   <ItemGroup>
     <Compile Include="CN_ArtXDeposito.cs" />
     <Compile Include="CN_Carrito.cs" />
+    <Compile Include="CN_Cartelera.cs" />
     <Compile Include="CN_Categoria.cs" />
+    <Compile Include="CN_Clasificacion.cs" />
     <Compile Include="CN_Cliente.cs" />
     <Compile Include="CN_Comprobante.cs" />
     <Compile Include="CN_Deposito.cs" />
     <Compile Include="CN_FireBase.cs" />
+    <Compile Include="CN_Funcion.cs" />
+    <Compile Include="CN_Genero.cs" />
+    <Compile Include="CN_Idioma.cs" />
     <Compile Include="CN_Marca.cs" />
+    <Compile Include="CN_MedioPago.cs" />
+    <Compile Include="CN_MotivoMovimiento.cs" />
     <Compile Include="CN_Movimiento.cs" />
     <Compile Include="CN_Paypal.cs" />
+    <Compile Include="CN_Pelicula.cs" />
     <Compile Include="CN_Producto.cs" />
     <Compile Include="CN_Proveedores.cs" />
     <Compile Include="CN_Recursos.cs" />
     <Compile Include="CN_Reporte.cs" />
+    <Compile Include="CN_Sala.cs" />
     <Compile Include="CN_Sede.cs" />
     <Compile Include="CN_Ubicacion.cs" />
     <Compile Include="CN_Usuarios.cs" />

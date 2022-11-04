@@ -18,7 +18,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-12">
-                <button type="button" class="btn btn-primary" onclick="abrirModal(null)">Registar neuva</button>
+                <button type="button" class="btn btn-primary" onclick="abrirModal(null)">Registar nueva</button>
             </div>
         </div>
 
@@ -33,7 +33,6 @@
                     <th>Sede</th>
                     <th>Fecha</th>
                     <th>Total</th>
-                    <th>Tipo</th>
                     <th></th>
                 </tr>
             </thead>
@@ -53,7 +52,7 @@
             </div>
             <div class="modal-body">
                 <h6 class='alert alert-warning'>
-                    A continuación se visualizan los productos cargados en el sistema.
+                    A continuación se visualizan los productos del proveedor seleccionado.
                 </h6>
                 <table id="tablaAgregar" class="display cell-border" style="width: 100%">
                     <thead>
@@ -70,7 +69,7 @@
                     </tbody>
                 </table>
                 <h6 class='alert alert-warning mt-5'>
-                    En la tabla de abajo se cargan los productos que selecciones de la taba superior.
+                    En la tabla de abajo se cargarán los productos que selecciones de la taba superior.
                 </h6>
                 <table id="tablaProducto" class="display cell-border" style="width: 100%">
                     <thead>
@@ -115,7 +114,7 @@
                     <tbody>
                     </tbody>
                 </table>
-                
+
             </div>
 
             <div class="modal-footer">
@@ -137,12 +136,30 @@
 
                 <div class="row g-2">
 
-                    <div class="col-sm-12">
-                        <label for="cboproveedor1" class="form-label">Proveedor</label>
-                        <select id="cboproveedor1" class="form-select">
+                    <div class="col-sm-6">
+                        <label class="form-label">Fecha</label>
+                        <input class="form-control" type="text" id="txtfecha" name="fecha" />
+                        <label for="cboletra" class="form-label">Letra</label>
+                        <select id="cboletra" class="form-select">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="E">E</option>
                         </select>
-                        <label for="cbodeposito1" class="form-label">Deposito</label>
-                        <select id="cbodeposito1" class="form-select">
+                        <label for="cbomediopago" class="form-label">Medio de pago</label>
+                        <select id="cbomediopago" class="form-select">
+                        </select>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="cboproveedor" class="form-label">Proveedor</label>
+                        <select id="cboproveedor" class="form-select">
+                        </select>
+                        <label for="cbosede" class="form-label">Sede</label>
+                        <select id="cbosede" class="form-select">
+                        </select>
+                        <label for="cbodeposito" class="form-label">Deposito</label>
+                        <select id="cbodeposito" class="form-select">
                         </select>
                     </div>
 
@@ -186,7 +203,7 @@
 
                     <div class="col-sm-6">
                         <label for="txtcantidad" class="form-label">Cantidad</label>
-                        <input type="number" class="form-control" id="txtcantidad" autocomplete="off">
+                        <input type="number" class="form-control" id="txtcantidad" autocomplete="off" min="1">
                     </div>
                     <div class="col-sm-6">
                         <label for="txtprecio" class="form-label">Precio</label>
@@ -219,6 +236,12 @@
 
 @section scripts{
     <script>
+        $("#txtfecha").datepicker({ dateFormat: 'dd/mm/yy' }).datepicker('setDate', new Date())
+        $("#collapseCompras").click();
+        document.getElementById("menufacturasc").style.fontWeight = "bold";
+        document.getElementById("menufacturasc").style.color = "#c2c2c2";
+        document.getElementById("iconofacturasc").style.color = "#c2c2c2";
+
 
         var tabladata;
         var tabladataAgregar;
@@ -226,19 +249,27 @@
         var tabladataProducto;
         var filaSeleccionada;
 
-        $("<option>").attr({ "value": "0", "disabled": "disabled", "selected": "true" }).text("Seleccionar").appendTo("#cboproveedor1")
+        jQuery(document).ready(function () {
+            jQuery("#txtcantidad").on('input', function (evt) {
+                jQuery(this).val(jQuery(this).val().replace(/^0[0-9]+/g, ''));
+            });
+            jQuery("#txtprecio").on('input', function (evt) {
+                jQuery(this).val(jQuery(this).val().replace(/^0[0-9]+/g, ''));
+            });
+        });
+
+        $("<option>").attr({ "value": "0", "disabled": "disabled", "selected": "true" }).text("Seleccionar").appendTo("#cboproveedor")
         jQuery.ajax({
-            url: '@Url.Action("ListarProveedores", "Home")',
+            url: '@Url.Action("ListarProveedoresActivos", "Home")',
             type: "GET",
             data: null,
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
 
-
                 $.each(data.data, function (index, item) {
 
-                    $("<option>").attr({ "value": item.IdProveedor }).text(item.Nombres).appendTo("#cboproveedor1");
+                    $("<option>").attr({ "value": item.IdProveedor }).text(item.Nombres).appendTo("#cboproveedor");
                 })
             },
             error: function (error) {
@@ -246,25 +277,70 @@
             }
         });
 
-        $("<option>").attr({ "value": "0", "disabled": "disabled", "selected": "true" }).text("Seleccionar").appendTo("#cbodeposito1")
+        $("<option>").attr({ "value": "0", "disabled": "disabled", "selected": "true" }).text("Seleccionar").appendTo("#cbomediopago")
         jQuery.ajax({
-            url: '@Url.Action("ListarDepositos", "Home")',
+            url: '@Url.Action("ListarMediosPago", "Home")',
             type: "GET",
             data: null,
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
 
-
                 $.each(data.data, function (index, item) {
 
-                    $("<option>").attr({ "value": item.IdDeposito }).text(item.Nombre).appendTo("#cbodeposito1");
+                    $("<option>").attr({ "value": item.IdMedioPago }).text(item.Descripcion).appendTo("#cbomediopago");
                 })
             },
             error: function (error) {
                 console.log(error)
             }
         });
+
+        $("<option>").attr({ "value": "00", "disabled": "disabled", "selected": "true" }).text("Seleccionar").appendTo("#cbosede")
+            jQuery.ajax({
+                url: '@Url.Action("ObtenerSedesActivas", "Mantenedor")',
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                    if (data.lista != null) {
+
+                        $.each(data.lista, function (i, item) {
+
+                            $("<option>").attr({ "value": item.IdSede }).text(item.Nombre).appendTo("#cbosede")
+                        })
+                        ListarDepositos();
+                    }
+                }
+            })
+
+        $("#cbosede").on("change", function () {
+            ListarDepositos();
+        })
+
+        function ListarDepositos() {
+            $("#cbodeposito").html("")
+            $("<option>").attr({ "value": "0", "disabled": "disabled", "selected": "true" }).text("Seleccionar").appendTo("#cbodeposito")
+
+            jQuery.ajax({
+                url: '@Url.Action("ObtenerDepositosActivos", "Mantenedor")',
+                type: "POST",
+                data: JSON.stringify({ IdSede: $("#cbosede option:selected").val() }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                    if (data.lista != null) {
+
+                        $.each(data.lista, function (i, item) {
+
+                            $("<option>").attr({ "value": item.IdDeposito }).text(item.Descripcion).appendTo("#cbodeposito")
+                        })
+                    }
+                }
+            })
+        }
 
         tabladata = $("#tabla").DataTable({
             responsive: true,
@@ -272,7 +348,7 @@
             "ajax": {
                 url: '@Url.Action("ListarComprobantes", "Compras")',
                 type: "GET",
-                data: { tipo: 0},
+                data: { tipo: 1},
                 dataType: "json",
                 contentType: "application/json; charset=utf-8"
             },
@@ -290,6 +366,7 @@
                     }
                 },
                 { "data": "Fecha" },
+                { "data": "Total" },
                 {
                     "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-ver"><i class="fas fa-eye"></i></button>',
                     "orderable": false,
@@ -339,7 +416,7 @@
                 "ajax": {
                     url: '@Url.Action("ListarProductosXProveedor", "Mantenedor")',
                     type: "GET",
-                    data: { id: $("#cboproveedor1").val() },
+                    data: { id: $("#cboproveedor").val() },
                     dataType: "json",
                     contentType: "application/json; charset=utf-8"
                 },
@@ -423,12 +500,7 @@
 
         $("#tablaProducto tbody").on("click", '.btn-eliminar', function () {
 
-
-            filaSeleccionada = $(this).closest("tr");
-
-            var data = tabladata.row(filaSeleccionada).data();
-
-            tabladataProducto.row(filaSeleccionada).remove().draw();
+            tabladataProducto.row($(this).closest("tr")).remove().draw();
 
         })
 
@@ -441,8 +513,9 @@
             abrirModalProducto(data)
 
             $("#FormModalAgregar").modal("hide");
-        })
 
+
+        })
 
         function abrirModalProducto(json) {
             $("#txtidprod").val(json.IdProducto);
@@ -460,40 +533,65 @@
         }
 
         function AceptarCantidad() {
-            $("#FormModalProducto").modal("hide");
-            $("#FormModalAgregar").modal("show");
+            $("#mensajeErrorProd").hide();
+            if (parseInt($("#txtcantidad").val()) > 0 && parseInt($("#txtprecio").val()) > 0) {
 
-            var Producto = {
-                IdProducto: $("#txtidprod").val(),
-                Nombre: $("#txtnomprod").val(),
-                Precio: $("#txtprecio").val(),
-                Cantidad: $("#txtcantidad").val()
+                $("#FormModalProducto").modal("hide");
+                $("#FormModalAgregar").modal("show");
+
+                var Producto = {
+                    IdProducto: $("#txtidprod").val(),
+                    Nombre: $("#txtnomprod").val(),
+                    Precio: $("#txtprecio").val(),
+                    Cantidad: $("#txtcantidad").val()
+                }
+
+                tabladataProducto.row.add(Producto).draw(false);
             }
-
-            tabladataProducto.row.add(Producto).draw(false);
+            else {
+                $("#mensajeErrorProd").text("Cantidad y precio no pueden ser cero");
+                $("#mensajeErrorProd").show();
+            }
         }
 
         function Siguiente() {
             $("#mensajeError").hide();
-            if ($("#cboproveedor1").val() >= 1 && $("#cbodeposito1").val() >= 1) {
+            if ($("#cboproveedor").val() >= 1 && $("#cbodeposito").val() >= 1 && $("#cbomediopago").val() >= 1) {
                 $("#FormModal").modal("hide");
                 cargarTablaAgregar();
                 cargarTabladataProducto();
                 $("#FormModalAgregar").modal("show");
+                $("#mensajeErrorAgregar").hide();
             }
             else {
-                $("#mensajeError").text("Seleccione proveedor y depósito");
+                $("#mensajeError").text("Rellene todos los campos solicitados");
                 $("#mensajeError").show();
             }
         }
+
         function CancelarProv() {
             $("#mensajeError").hide();
         }
 
+        function Cerrar() {
+            tabladataAgregar.destroy();
+            tabladataProducto.destroy();
+            $("#cbomediopago").val($("#cbomediopago option:first").val());
+            $("#cboproveedor").val($("#cboproveedor option:first").val());
+            $("#cbodeposito").val($("#cbodeposito option:first").val());
+        }
+
+        function CerrarVer() {
+            tabladataVer.destroy();
+        }
+
         function Registrar() {
-            swal({
+            $("#mensajeErrorAgregar").hide();
+            if (tabladataProducto.data().count()) {
+
+                swal({
                 title: "Estás por registrar una nueva factura",
-                text: "Verificá los datos ingresados, estos no podrán ser modificados luego.",
+                text: "Verificá los datos ingresados. Estos no podrán ser modificados luego.",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-primary",
@@ -502,79 +600,77 @@
                 closeOnConfirm: true
             },
                 function () {
+
+                    var Comprobante = {
+                        Letra: $("#cboletra option:selected").val(),
+                        Fecha: $("#txtfecha").val(),
+                        Ingreso: 0,
+                        Tipo: 1,
+                        oMedioPago: {
+                            IdMedioPago: $("#cbomediopago option:selected").val()
+                        },
+                        oProveedor: {
+                            IdProveedor: $("#cboproveedor option:selected").val()
+                        },
+                        oSede: {
+                            IdSede: $("#cbosede option:selected").val()
+                        },
+                    };
+
+                    jQuery.ajax({
+                        url: '@Url.Action("RegistrarComprobante", "Ventas")',
+                        type: "POST",
+                        data: JSON.stringify({ comprobante: Comprobante, productos: tabladataProducto.rows().data() }),
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+
+                            $(".modal-body").LoadingOverlay("hide");
+
+                            if (data.resultado != 0) {
+
+                                tabladata.row.add(Comprobante).draw(false);
+                                $("#FormModalAgregar").modal("hide");
+
+                            } else {
+                                $("#mensajeErrorAgregar").text(data.mensaje);
+                                $("#mensajeErrorAgregar").show();
+                            }
+                        },
+                        error: function (error) {
+
+                            $(".modal-body").LoadingOverlay("hide");
+                            $("#mensajeErrorAgregar").text("Error Ajax");
+                            $("#mensajeErrorAgregar").show();
+                        },
+                        beforeSend: function () {
+                            $(".modal-body").LoadingOverlay("show", {
+                                imageResizeFactor: 2,
+                                text: "Cargando...",
+                                size: 14
+                            })
+                        }
+                    });
+
                     tabladataAgregar.destroy();
                     tabladataProducto.destroy();
-                    $("#cboproveedor1").val($("#cboproveedor1 option:first").val());
-                    $("#cbodeposito1").val($("#cbodeposito1 option:first").val());
+                    $("#cbomediopago").val($("#cbomediopago option:first").val());
+                    $("#cboproveedor").val($("#cboproveedor option:first").val());
+                    $("#cbodeposito").val($("#cbodeposito option:first").val());
+
                 });
-        }
 
-        function Cerrar() {
-            tabladataAgregar.destroy();
-            tabladataProducto.destroy();
-            $("#cboproveedor1").val($("#cboproveedor1 option:first").val());
-            $("#cbodeposito1").val($("#cbodeposito1 option:first").val());
-        }
-
-        function CerrarVer() {
-            tabladataVer.destroy();
-        }
-
-        function Guardar() {
-            var Comprobante = {
-
-                IdComprobante: $("#txtid").val(),
-                Letra: $("#txtletra").val(),
-                Ingreso: 1,
-                Tipo: 0,
-                oProveedor: {
-                    IdProveedor: $("#cboproveedor1 option:selected").val()
-                },
-                oDeposito: {
-                    IdDeposito: $("#cbodeposito1 option:selected").val()
-                },
             }
-
-
-           jQuery.ajax({
-                url: '@Url.Action("RegistrarComprobante", "Compras")',
-                type: "POST",
-                data: JSON.stringify({ objeto : Comprobante}),
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-               success: function (data) {
-
-                   $(".modal-body").LoadingOverlay("hide");
-
-                        if (data.resultado != 0) {
-
-                            tabladata.row.add(Comprobante).draw(false);
-                            $("#FormModalAgregar").modal("hide");
-
-                        } else {
-                            $("#mensajeError").text(data.mensaje);
-                            $("#mensajeError").show();
-                        }
-                },
-               error: function (error) {
-
-                   $(".modal-body").LoadingOverlay("hide");
-                   $("#mensajeError").text("Error Ajax");
-                   $("#mensajeError").show();
-                },
-                beforeSend: function () {
-                    $(".modal-body").LoadingOverlay("show", {
-                        imageResizeFactor: 2,
-                        text: "Cargando...",
-                        size: 14
-                    })
-                }
-            });
-
-
+            else {
+                $("#mensajeErrorAgregar").text('La tabla con productos no puede estar vacía');
+                $("#mensajeErrorAgregar").show();
+            }
         }
 
-        $("#cboproveedor1").on("change", function () {
+        $("#cboproveedor").on("change", function () {
+            $("#mensajeError").hide();
+        })
+        $("#cbodeposito").on("change", function () {
             $("#mensajeError").hide();
         })
 
@@ -582,7 +678,3 @@
 
 
 }
-
-
-
-

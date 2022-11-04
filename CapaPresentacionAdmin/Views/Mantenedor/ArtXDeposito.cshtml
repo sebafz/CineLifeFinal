@@ -23,7 +23,7 @@
         <div class="row">
 
             <div class="col-12">
-                <button type="button" class="btn btn-primary" onclick="abrirModalAgregar()">Crear nuevo</button>
+                <button type="button" class="btn btn-primary" onclick="abrirModalAgregar()">Agregar artículo</button>
             </div>
         </div>
 
@@ -215,6 +215,11 @@
 
 @section scripts{
     <script>
+        $("#collapseStock").click();
+        document.getElementById("menudeposito").style.fontWeight = "bold";
+        document.getElementById("menudeposito").style.color = "#c2c2c2";
+        document.getElementById("menudeposito").style.color = "#c2c2c2";
+
         ListarDeposito();
         var tabladata;
         var tabladataAgregar;
@@ -581,7 +586,7 @@
 
                             Producto.IdProducto = data.resultado;
                             tabladata.row.add(ArtXDeposito).draw(false);
-                            $("#FormModalAgregar").modal("hide");
+                            $("#FormModal").modal("hide");
 
                         } else {
                             $("#mensajeError").text(data.mensaje);

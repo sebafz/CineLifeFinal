@@ -35,22 +35,44 @@ namespace CapaPresentacionTienda.Controllers
             return View();
         }
 
-        public ActionResult DetalleProducto(int idproducto = 0)
+        [HttpPost]
+        public JsonResult ObtenerProvinciaArg()
         {
 
-            Producto oProducto = new Producto();
+            List<Provincia> oLista = new List<Provincia>();
+
+            oLista = new CN_Ubicacion().ObtenerProvinciaArg();
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult ObtenerLocalidadArg(string IdProvincia)
+        {
+
+            List<Localidad> oLista = new List<Localidad>();
+
+            oLista = new CN_Ubicacion().ObtenerLocalidadArg(IdProvincia);
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult DetalleProducto(int idpelicula = 0)
+        {
+
+            Pelicula oPelicula = new Pelicula();
             bool conversion;
 
 
-            oProducto = new CN_Producto().Listar().Where(p => p.IdProducto == idproducto).FirstOrDefault();
+            oPelicula = new CN_Pelicula().Listar().Where(p => p.IdPelicula == idpelicula).FirstOrDefault();
 
 
-            if (oProducto != null) {
-                oProducto.Base64 = CN_Recursos.ConvertirBase64(Path.Combine(oProducto.RutaImagen, oProducto.NombreImagen), out conversion);
-                oProducto.Extension = Path.GetExtension(oProducto.NombreImagen);
+            if (oPelicula != null) {
+                oPelicula.Base64 = CN_Recursos.ConvertirBase64(Path.Combine(oPelicula.RutaImagen, oPelicula.NombreImagen), out conversion);
+                oPelicula.Extension = Path.GetExtension(oPelicula.NombreImagen);
             }
 
-            return View(oProducto);
+            return View(oPelicula);
         }
 
         [HttpGet]
@@ -64,59 +86,42 @@ namespace CapaPresentacionTienda.Controllers
         }
 
         [HttpGet]
-        public JsonResult ListaCategorias() {
-            List<Categoria> lista = new List<Categoria>();
-            lista = new CN_Categoria().Listar();
+        public JsonResult ListarGeneros() {
+            List<Genero> lista = new List<Genero>();
+            lista = new CN_Genero().Listar();
             return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
-        public JsonResult ListaCategoriasActivas()
+        public JsonResult ListarClasificaciones()
         {
-            List<Categoria> lista = new List<Categoria>();
-            lista = new CN_Categoria().Listar();
-
-            List<Categoria> listaActivas = new List<Categoria>();
-            foreach (Categoria cat in lista)
-            {
-                if (cat.Activo)
-                {
-                    listaActivas.Add(cat);
-                }
-            }
-            return Json(new { data = listaActivas }, JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpPost]
-        public JsonResult ListarMarcaporCategoria(int idcategoria)
-        {
-            List<Marca> lista = new List<Marca>();
-            lista = new CN_Marca().ListarMarcaporCategoria(idcategoria);
+            List<Clasificacion> lista = new List<Clasificacion>();
+            lista = new CN_Clasificacion().Listar();
             return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public JsonResult ListarProducto(int idcategoria, int idmarca, int nroPagina) {
-            List<Producto> lista = new List<Producto>();
+        public JsonResult ListarPeliculasTienda(int idgenero, int idclasificacion, int nroPagina) {
+            List<Pelicula> lista = new List<Pelicula>();
 
             bool conversion;
 
             int _TotalRegistros;
             int _TotalPaginas;
 
-            lista = new CN_Producto().ObtenerProductos(idmarca, idcategoria, nroPagina, 8, out _TotalRegistros, out _TotalPaginas).Select(p => new Producto()
+            lista = new CN_Pelicula().ObtenerPeliculasTienda(idgenero, idclasificacion, nroPagina, 8, out _TotalRegistros, out _TotalPaginas).Select(p => new Pelicula()
             {
-                IdProducto = p.IdProducto,
+                IdPelicula = p.IdPelicula,
                 Nombre = p.Nombre,
                 Descripcion = p.Descripcion,
-                oMarca = p.oMarca,
-                oCategoria = p.oCategoria,
+                Calificacion=p.Calificacion,
+                oClasificacion=p.oClasificacion,
+                oGenero = p.oGenero,
                 Precio = p.Precio,
-                Stock = p.Stock,
                 RutaImagen = p.RutaImagen,
                 Base64 = CN_Recursos.ConvertirBase64(Path.Combine(p.RutaImagen, p.NombreImagen), out conversion),
                 Extension = Path.GetExtension(p.NombreImagen),
-                Activo = p.Activo
+                Activo=p.Activo
             }).ToList();
 
 
@@ -124,7 +129,6 @@ namespace CapaPresentacionTienda.Controllers
             jsonresult.MaxJsonLength = int.MaxValue;
 
             return jsonresult;
-
 
         }
 

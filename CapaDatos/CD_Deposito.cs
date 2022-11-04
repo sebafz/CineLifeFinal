@@ -76,6 +76,46 @@ namespace CapaDatos
 
 
         }
+        public List<Deposito> ObtenerActivos(string idprovincia)
+        {
+            List<Deposito> lista = new List<Deposito>();
+
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
+                {
+                    string query = "select IdDeposito, Nombre from deposito where IdSede = @idprovincia";
+
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    cmd.Parameters.AddWithValue("@idprovincia", idprovincia);
+                    cmd.CommandType = CommandType.Text;
+
+                    oconexion.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(
+                                new Deposito()
+                                {
+                                    IdDeposito = Convert.ToInt32(dr["IdDeposito"]),
+                                    Descripcion = dr["Nombre"].ToString(),
+                                });
+                        }
+                    }
+                }
+
+            }
+            catch
+            {
+                lista = new List<Deposito>();
+
+            }
+
+            return lista;
+
+        }
 
         public List<Deposito> ObtenerDeposito(string idsede)
         {

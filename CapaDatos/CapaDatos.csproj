@@ -44,15 +44,24 @@
   <ItemGroup>
     <Compile Include="CD_ArtXDeposito.cs" />
     <Compile Include="CD_Carrito.cs" />
+    <Compile Include="CD_Cartelera.cs" />
     <Compile Include="CD_Categoria.cs" />
+    <Compile Include="CD_Clasificacion.cs" />
     <Compile Include="CD_Cliente.cs" />
     <Compile Include="CD_Comprobante.cs" />
     <Compile Include="CD_Deposito.cs" />
+    <Compile Include="CD_Funcion.cs" />
+    <Compile Include="CD_Genero.cs" />
+    <Compile Include="CD_Idioma.cs" />
     <Compile Include="CD_Marca.cs" />
+    <Compile Include="CD_MedioPago.cs" />
+    <Compile Include="CD_MotivoMovimiento.cs" />
     <Compile Include="CD_Movimiento.cs" />
+    <Compile Include="CD_Pelicula.cs" />
     <Compile Include="CD_Producto.cs" />
     <Compile Include="CD_Proveedores.cs" />
     <Compile Include="CD_Reporte.cs" />
+    <Compile Include="CD_Sala.cs" />
     <Compile Include="CD_Sede.cs" />
     <Compile Include="CD_Ubicacion.cs" />
     <Compile Include="CD_Usuarios.cs" />

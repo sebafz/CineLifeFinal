@@ -171,7 +171,13 @@ namespace CapaPresentacionAdmin.Controllers
             oLista = new CN_Producto().ListarXProveedor(id);
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
-
+        [HttpGet]
+        public JsonResult ListarProductosXMovimiento(int id)
+        {
+            List<Producto> oLista = new List<Producto>();
+            oLista = new CN_Producto().ListarXMovimiento(id);
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
         [HttpGet]
         public JsonResult ListarProductosXComprobante(int id)
         {
@@ -334,6 +340,17 @@ namespace CapaPresentacionAdmin.Controllers
 
             return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public JsonResult ObtenerDepositosActivos(string IdSede)
+        {
+
+            List<Deposito> oLista = new List<Deposito>();
+
+            oLista = new CN_Deposito().ObtenerActivos(IdSede);
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
         #endregion;
 
         // ++++++++++++++++ SEDE ++++++++++++++++++++
@@ -345,6 +362,17 @@ namespace CapaPresentacionAdmin.Controllers
             List<Sede> oLista = new List<Sede>();
 
             oLista = new CN_Sede().ObtenerSede(IdLocalidad);
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult ObtenerSedesActivas()
+        {
+
+            List<Sede> oLista = new List<Sede>();
+
+            oLista = new CN_Sede().ObtenerActivas();
 
             return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
         }
@@ -372,7 +400,6 @@ namespace CapaPresentacionAdmin.Controllers
 
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
-
 
         public JsonResult GuardarDeposito(Deposito objeto)
         {
@@ -474,6 +501,18 @@ namespace CapaPresentacionAdmin.Controllers
             respuesta = new CN_Producto().EliminarProductoXDeposito(idart, iddep, out mensaje);
 
             return Json(new { resultado = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+        #endregion;
+        // ++++++++++++++++ MOVIMIENTO ++++++++++++++++++++
+        #region MOVIMIENTO;
+        [HttpGet]
+        public JsonResult ListarMovimientos()
+        {
+
+            List<Movimiento> oLista = new List<Movimiento>();
+            oLista = new CN_Movimiento().Listar();
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+
         }
         #endregion;
     }

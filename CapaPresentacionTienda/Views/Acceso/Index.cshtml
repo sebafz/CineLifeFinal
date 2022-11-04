@@ -8,8 +8,8 @@
     <html>
     <head>
         <meta name="viewport" content="width=device-width" />
-        <link rel="shortcut icon" type="image/png" href="~/Images/favicon.png" />
-        <title>Login - Fun House</title>
+        <link rel="shortcut icon" type="image/png" href="~/Images/faviconSinFondo.png" />
+        <title>Inicio de sesión - CineLife</title>
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/bootstrap")
         @Scripts.Render("~/bundles/jquery")
@@ -28,7 +28,7 @@
                                         <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
                                         <div class="col-lg-6">
 
-                                            <div class="card-header"><h3 class="text-center font-weight-light my-4 h-100">¡Bienvenido de nuevo!</h3></div>
+                                            <div class="card-header fondo-blanco"><h3 class="text-center font-weight-light my-4 h-100">¡Bienvenido de nuevo!</h3></div>
                                             <div class="card-body">
                                                 <form action="@Url.Action("Index","Acceso")" method="post">
                                                     <div class="form-floating mb-3">
@@ -51,13 +51,13 @@
                                                     }
 
                                                     <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                        <a class="small" href="@Url.Action("Reestablecer","Acceso")">¿Olvidaste tu contraseña?</a>
+                                                        <a class="small link-verde" href="@Url.Action("Reestablecer","Acceso")">¿Olvidaste tu contraseña?</a>
                                                         <button class="btn btn-primary" type="submit">Ingresar</button>
                                                     </div>
                                                 </form>
                                             </div>
-                                            <div class="card-footer text-center py-3">
-                                                <div class="small"><a href="@Url.Action("Registrar","Acceso")">¿No tenés una cuenta? Registrate acá</a></div>
+                                            <div class="card-footer text-center py-3 fondo-blanco">
+                                                <div class="small"><a href="@Url.Action("Registrar","Acceso")" class="link-verde">¿No tenés una cuenta? Registrate acá</a></div>
                                             </div>
                                         </div>
                                     </div>
@@ -68,10 +68,10 @@
                 </main>
             </div>
             <div id="layoutAuthentication_footer">
-                <footer class="py-4 bg-light mt-auto">
+                <footer class="py-4 bg-light mt-auto color-footer">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Lenguajes III - 2022 <i class="fas fa-bolt"></i> Sebastián Fernandez Zavalía</div>
+                            <div class="text-muted color-texto-footer">Sistemas III - 2022 <i class="fas fa-bolt"></i> Fernandez Zavalía, Díaz, Dagum, Valdez Kao</div>
                         </div>
                     </div>
                 </footer>

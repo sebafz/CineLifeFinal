@@ -120,11 +120,14 @@
 
 @section scripts{
     <script>
+        $("#collapseMantenedor").click();
+        document.getElementById("menusedes").style.fontWeight = "bold";
+        document.getElementById("menusedes").style.color = "#c2c2c2";
+        document.getElementById("iconosedes").style.color = "#c2c2c2";
+
         ListarProvincia();
         var tabladata;
         var filaSeleccionada;
-
-
 
         tabladata = $("#tabla").DataTable({
             responsive: true,

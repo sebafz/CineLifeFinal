@@ -8,8 +8,8 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link rel="shortcut icon" type="image/png" href="~/Images/favicon.png" />
-    <title>Restablecer - Fun House</title>
+    <link rel="shortcut icon" type="image/png" href="~/Images/faviconSinFondo.png" />
+    <title>Restablecer cuenta- CineLife</title>
     <link href="~/Content/Site.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/bootstrap")
@@ -29,7 +29,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 d-none d-lg-block bg-rest-image"></div>
                                     <div class="col-lg-6">
-                                        <div class="card-header"><h3 class="text-center font-weight-light my-4">Recuperación de contraseña</h3></div>
+                                        <div class="card-header fondo-blanco"><h3 class="text-center font-weight-light my-4">Recuperación de contraseña</h3></div>
                                         <div class="card-body">
                                             <div class="small mb-3 text-muted">Ingresá tu dirección de correo electrónico y te enviaremos tu nueva contraseña</div>
                                             <form action="@Url.Action("Reestablecer","Acceso")" method="post">
@@ -52,12 +52,12 @@
 
 
                                                 <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                    <a class="small" href="@Url.Action("Index","Acceso")">Regresar al Login</a>
+                                                    <a class="small" href="@Url.Action("Index","Acceso")" class="link-verde">Regresar al Login</a>
                                                     <button class="btn btn-primary" type="submit">Restablecer la contraseña</button>
                                                 </div>
                                             </form>
                                         </div>
-                                        <div class="card-footer text-center py-3">
+                                        <div class="card-footer text-center py-3 fondo-blanco">
 
                                         </div>
                                     </div>
@@ -67,10 +67,10 @@
 </main>
         </div>
         <div id="layoutAuthentication_footer">
-            <footer class="py-4 bg-light mt-auto">
+            <footer class="py-4 bg-light mt-auto color-footer">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Lenguajes III - 2022 <i class="fas fa-bolt"></i> Sebastián Fernandez Zavalía</div>
+                        <div class="text-muted color-texto-footer">Sistemas III - 2022 <i class="fas fa-bolt"></i> Fernandez Zavalía, Díaz, Dagum, Valdez Kao</div>
                     </div>
                 </div>
             </footer>

@@ -26,7 +26,7 @@ namespace CapaDatos
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
                 {
 
-                    string query = "SELECT IdMarca,Descripcion,Activo FROM MARCA where Tipo=0";
+                    string query = "SELECT IdMarca,Descripcion,Activo FROM MARCA";
 
                     SqlCommand cmd = new SqlCommand(query, oconexion);
                     cmd.CommandType = CommandType.Text;
@@ -70,7 +70,6 @@ namespace CapaDatos
                     SqlCommand cmd = new SqlCommand("sp_RegistrarMarca", oconexion);
                     cmd.Parameters.AddWithValue("Descripcion", obj.Descripcion);
                     cmd.Parameters.AddWithValue("Activo", obj.Activo);
-                    cmd.Parameters.AddWithValue("Tipo", 0);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;

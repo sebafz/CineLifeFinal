@@ -23,7 +23,8 @@ namespace CapaPresentacionTienda
                 
                 "~/Content/Site.css",
                 "~/Content/sweetalert.css",
-                "~/Content/sb-adminTienda-2.css"
+                "~/Content/sb-adminTienda-2.css",
+                "~/Content/extras.css"
                 ));
         }
     }
