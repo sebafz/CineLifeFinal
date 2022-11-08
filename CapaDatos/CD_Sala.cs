@@ -96,7 +96,43 @@ namespace CapaDatos
             }
             return lista;
         }
+        public List<Sala> ListarXFuncion(int id)
+        {
 
+            List<Sala> lista = new List<Sala>();
+
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
+                {
+
+                    string query = "select s.IdSala, Descripcion from Sala s inner join funcion f on f.idsala=s.idsala where f.idfuncion="+id;
+
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    cmd.CommandType = CommandType.Text;
+
+                    oconexion.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(new Sala()
+                            {
+                                IdSala = Convert.ToInt32(dr["IdSala"]),
+                                Descripcion = dr["Descripcion"].ToString()
+                            });
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                lista = new List<Sala>();
+
+            }
+            return lista;
+        }
         public int Registrar(Sala obj, out string Mensaje)
         {
             int idautogenerado = 0;

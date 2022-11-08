@@ -280,6 +280,34 @@ namespace CapaPresentacionAdmin.Controllers
             oLista = new CN_Cartelera().Listar();
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public JsonResult GuardarCartelera(Cartelera objeto)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+
+
+            if (objeto.IdCartelera == 0)
+            {
+                resultado = new CN_Cartelera().Registrar(objeto, out mensaje);
+            }
+            else
+            {
+                resultado = new CN_Cartelera().Editar(objeto, out mensaje);
+            }
+
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult EliminarCartelera(int id)
+        {
+            bool respuesta = false;
+            string mensaje = string.Empty;
+
+            respuesta = new CN_Cartelera().Eliminar(id, out mensaje);
+
+            return Json(new { resultado = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
 
         #endregion;
 

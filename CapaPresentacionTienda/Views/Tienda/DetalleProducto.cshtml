@@ -19,154 +19,284 @@
                 <div class="small mb-1">Clasificación: @Html.DisplayTextFor(m => m.oClasificacion.Descripcion)</div>
                 <div class="small mb-1">Calificación: @Html.DisplayTextFor(m => m.Calificacion) ⭐</div>
             </div>
+
             <div class="col-md-9">
 
                 <h1 class="display-5 fw-bolder m-0">@Html.DisplayTextFor(m => m.Nombre)</h1>
 
                 <p class="lead fs-5">@Html.DisplayTextFor(m => m.Descripcion)</p>
 
-                <div id="contenedor_dias" class="my-2 d-flex">
-                    <button class="btn btn-negro color-gris mr-1 btn-dia" onclick="ClickDia(this)" value="1">LUN 31/10</button>
-                    <button class="btn btn-negro color-gris mr-1 btn-dia" onclick="ClickDia(this)" value="2">MAR 01/11</button>
-                    <button class="btn btn-negro color-gris mr-1 btn-dia" onclick="ClickDia(this)" value="3">MIER/02/11</button>
-                </div>
-                <input id="txtid" type="hidden" value="0" />
-                <div id="contenedor_funciones" class="d-none">
-                    <hr class="color-gris" />
-                    <div class="my-2">
-                        <p>
-                            <button class="btn btn-negro color-gris btn-idoma" value="1" onclick="ClickIdioma(this)">
-                                3D castellano
-                            </button>
-                            <button class="btn btn-negro color-gris btn-idoma" value="2" onclick="ClickIdioma(this)">
-                                3D subtitulado
-                            </button>
-                            <button class="btn btn-negro color-gris btn-idoma" value="3" onclick="ClickIdioma(this)">
-                                2D castellano
-                            </button>
-                            <button class="btn btn-negro color-gris btn-idoma" value="4" onclick="ClickIdioma(this)">
-                                2D subtitulado
-                            </button>
-                        </p>
-                        <div id="collapseExample">
-                            <div class="card card-body fondo-gris" id="contenedor_horas">
-                                Seleccione un idioma para ver las funciones disponibles.
+                @* collapse *@
+                <div class="collapse show" id="collapseExample">
+                    <div class="card card-body fondo-negro" style="border-color: black">
+                        <div class="row g-1">
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label for="cbosede" class="form-label text-white">SEDE</label>
+                                    <select id="cbosede" class="form-select btn-negro color-gris">
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="cboidioma" class="form-label text-white">IDIOMA</label>
+                                    <select id="cboidioma" class="form-select btn-negro color-gris">
+                                    </select>
+                                </div>
                             </div>
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label for="cbofecha" class="form-label text-white">FECHA</label>
+                                    <select id="cbofecha" class="form-select btn-negro color-gris">
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="cbohora" class="form-label text-white">HORA</label>
+                                    <select id="cbohora" class="form-select btn-negro color-gris">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="d-flex justify-content-center">
+
+                            @if (Session["Cliente"] != null)
+                            {
+
+                                <button class="btn btn-primary agregarcarrito flex-shink-0 w-50" type="button" id="btnsiguiente"
+                                        data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                    <i class="fas fa-arrow-circle-down"></i> Siguiente
+                                </button>
+                            }
+                            @if (Session["Cliente"] == null)
+                            {
+                                <a class="tip" href="@Url.Action("Index", "Acceso")"> Iniciá sesión para comprar esta película</a>
+                            }
                         </div>
                     </div>
                 </div>
 
-                <div class="d-flex">
-
-                    @if (Session["Cliente"] != null)
-                    {
-
-                        <button class="btn btn-primary agregarcarrito flex-shink-0 w-50" type="button" data-idproducto="@Html.DisplayTextFor(m => m.IdPelicula)" id="btncomprar">
-                            <i class="fas fa-cart-plus"></i> Comprar
-                        </button>
-                    }
-                    @if (Session["Cliente"] == null)
-                    {
-                        <a class="tip" href="@Url.Action("Index", "Acceso")"> Iniciá sesión para comprar esta película</a>
-                    }
+                <div class="collapse" id="collapseExample2">
+                    <div class="card card-body fondo-negro" style="border-color: black">
+                        <p class="lead fs-5 font-weight-bold" id="txtpreciodelaentrada">ENTRADA</p>
+                        <div class="row justify-content-center">
+                            <div class="col-sm-6">
+                                <label for="quantity" class="form-label text-white">CANTIDAD</label>
+                                <div class="input-group mb-3">
+                                    <button class="quantity-left-minus btn btn-outline-secondary" type="button" id="button-addon1"><i class="fas fa-minus"></i></button>
+                                    <input type="text" class="form-control btn-negro" placeholder="" aria-label="Cantidad de entradas" aria-describedby="button-addon1" id="quantity" name="quantity" value="1" min="1" max="10">
+                                    <button class="quantity-right-plus btn btn-outline-secondary" type="button" id="button-addon2"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-sm-6 d-flex justify-content-center">
+                                <button class="btn btn-primary agregarcarrito w-50" type="button" id="btncomprar"
+                                        data-bs-toggle="collapse" onclick="Comprar()" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                    <i class="fas fa-arrow-alt-circle-right"></i> Elegir asientos
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
             </div>
         </div>
     </div>
 </section>
 
 
+@if (Session["Cliente"] != null)
+{
+    <script>
+        document.getElementById('btnsiguiente').disabled = true;
+    </script>
+}
+
 @section scripts{
     <script>
 
-        document.getElementById('btncomprar').disabled = true;
+        $(document).ready(function () {
 
-        function ClickDia(btn) {
-            $(".btn-dia").removeClass('active')
-            $(btn).addClass('active')
-            $('#contenedor_funciones').removeClass('d-none')
-        };
+            var quantitiy = 0;
+            $('.quantity-right-plus').click(function (e) {
+                e.preventDefault();
+                var quantity = parseInt($('#quantity').val());
+                if (quantity <10) {
+                    $('#quantity').val(quantity + 1);
+                }
 
-        function ClickIdioma(btn) {
-            $(".btn-idoma").removeClass('active')
-            $(btn).addClass('active')
-
-            $('#contenedor_dias .active').each(function () {
-                act = $(this).attr('value');
             });
 
-            jQuery.ajax({
-                url: "@Url.Action("ListarFuncionesTienda", "Tienda")",
-                type: "POST",
-                data: JSON.stringify({ idfecha: act, ididioma: $(btn).val() }),
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                success: function (response) {
-                    $("#contenedor_horas").html("");
-                    $("#contenedor_horas").LoadingOverlay("hide", {
-                        background: "rgba(28,28,28, 0.5)",
-                        imageColor: "#ffffff"
-                    });
-
-                    $.each(response.data, function (i, element) {
-
-                        $("<div>").addClass("col mb-5").append(
-
-                        ).appendTo("#contenedor_horas")
-
-                    })
-                },
-                beforeSend: function () {
-                    $("#contenedor_producto").LoadingOverlay("show", {
-                        background: "rgba(28,28,28, 0.5)",
-                        imageColor: "black"
-                    });
+            $('.quantity-left-minus').click(function (e) {
+                e.preventDefault();
+                var quantity = parseInt($('#quantity').val());
+                if (quantity > 0) {
+                    $('#quantity').val(quantity - 1);
                 }
-            })
-        };
+            });
 
-         $(document).on("click", "button.agregarcarrito", function () {
+        });
 
-            console.log($(this).data("idproducto"))
-
+        $("#btnsiguiente").on("click", function () {
+            
             jQuery.ajax({
-                url: '@Url.Action("AgregarCarrito", "Tienda")',
+                url: '@Url.Action("ObtenerFuncion", "Tienda")',
                 type: "POST",
-                data: JSON.stringify({ idproducto: $(this).data("idproducto") }),
+                data: JSON.stringify({ IdFuncion: $("#cbohora option:selected").val() }),
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
 
-                    if (data.respuesta) {
+                    if (data.lista != null) {
 
-                        MostrarCantidadCarrito();
+                        $.each(data.lista, function (i, item) {
 
-                        @*swal({
-                            title: "Agregado al carrito",
-                            text: "¿Desea ir al carrito?",
-                            type: "success",
-                            showCancelButton: true,
-                            confirmButtonClass: "btn-primary",
-                            confirmButtonText: "Si",
-                            cancelButtonText: "No",
-                            closeOnConfirm: true
-                        }, function () {
-
-                            window.location.href = '@Url.Action("Carrito","Tienda")'
-
-                        })*@
-                        swal("", "Agregado al carrito", "success");
-
-                    } else {
-                        swal("", data.mensaje, "warning");
+                            document.getElementById('txtpreciodelaentrada').innerHTML = 'Precio: $' + item.Precio;
+                        })
                     }
                 }
+            })
 
-            });
+            $("#collapseExample2").addClass('show')
+        });
 
+    $("#cbohora").on("change", function () {
+        if ($("#cbohora").val() != 0) {
+            document.getElementById('btnsiguiente').disabled = false;
+        }
+    });
+
+    $("<option>").attr({ "value": "00", "disabled": "disabled", "selected": "true" }).text("Seleccionar").appendTo("#cbosede");
+
+
+    jQuery.ajax({
+        url: '@Url.Action("ObtenerSedesActivas", "Tienda")',
+        type: "POST",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+
+            if (data.lista != null) {
+
+                $.each(data.lista, function (i, item) {
+
+                    $("<option>").attr({ "value": item.IdSede }).text(item.Nombre).appendTo("#cbosede")
+                })
+                ListarFechas();
+            }
+        }
+    })
+
+    function ListarFechas() {
+
+        $("#cbofecha").html("")
+
+        $("<option>").attr({ "value": "00", "disabled": "disabled", "selected": "true" }).text("Seleccionar").appendTo("#cbofecha")
+
+        jQuery.ajax({
+            url: '@Url.Action("ObtenerFechas", "Tienda")',
+            type: "POST",
+            data: JSON.stringify({ IdPelicula: @Html.DisplayTextFor(m => m.IdPelicula) }),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+
+                if (data.lista != null) {
+
+                    $.each(data.lista, function (i, item) {
+
+                        $("<option>").attr({ "value": item }).text(item).appendTo("#cbofecha")
+                    })
+                    ListarIdioma();
+                }
+            }
         })
 
-    </script>
-    
     }
+
+    $("#cbofecha").on("change", function () {
+        ListarIdioma();
+    })
+
+    function ListarIdioma() {
+
+        $("#cboidioma").html("")
+
+        $("<option>").attr({ "value": "00", "disabled": "disabled", "selected": "true" }).text("Seleccionar").appendTo("#cboidioma")
+
+        jQuery.ajax({
+            url: '@Url.Action("ObtenerIdiomasXFuncion", "Tienda")',
+            type: "POST",
+            data: JSON.stringify({ IdPelicula: @Html.DisplayTextFor(m => m.IdPelicula), Fecha: $("#cbofecha option:selected").val() }),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+
+                $.each(data.data, function (index, item) {
+
+                    $("<option>").attr({ "value": item.IdIdioma }).text(item.Descripcion).appendTo("#cboidioma");
+                })
+                ListarHoras();
+            },
+            error: function (error) {
+                console.log(error)
+            }
+        })
+
+    }
+
+    $("#cboidioma").on("change", function () {
+        ListarHoras();
+    })
+
+    function ListarHoras() {
+
+        $("#cbohora").html("")
+
+        $("<option>").attr({ "value": "00", "disabled": "disabled", "selected": "true" }).text("Seleccionar").appendTo("#cbohora")
+
+        jQuery.ajax({
+            url: '@Url.Action("ObtenerHorasFuncion", "Tienda")',
+            type: "POST",
+            data: JSON.stringify({ IdPelicula: @Html.DisplayTextFor(m => m.IdPelicula), Fecha: $("#cbofecha option:selected").val(), IdIdioma: $("#cboidioma option:selected").val() }),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+
+                if (data.lista != null) {
+
+                    $.each(data.lista, function (i, item) {
+
+                        $("<option>").attr({ "value": item.IdFuncion }).text(item.Hora).appendTo("#cbohora")
+                    })
+                }
+            }
+        })
+    }
+
+        function Comprar() {
+
+
+        jQuery.ajax({
+                url: '@Url.Action("AbrirButacas","Tienda")',
+                type: "POST",
+                data: JSON.stringify({ idfuncion: $("#cbohora option:selected").val(), cantidad: $("#quantity").val() }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                    if (data.Status) {
+
+                        window.location.href = data.Link;
+
+                    } else {
+
+                        swal("", "Error al procesar datos de función. No se puede acceder a las butacas", "warning");
+                    }
+                },
+            });
+
+    }
+
+    </script>
+
+}

@@ -11,6 +11,6 @@ namespace CapaEntidad
         public int IdButaca { get; set; }   
         public Sala oSala { get; set; }
         public int Numero { get; set; }
-        public string Fecha { get; set; }
+        public string Fila { get; set; }
     }
 }

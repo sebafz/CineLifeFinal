@@ -31,8 +31,10 @@
                     <th>Película</th>
                     <th>Sala</th>
                     <th>Idioma</th>
-                    <th>Precio</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
                     <th>Activo</th>
+                    <th>Precio</th>
                     <th></th>
                 </tr>
             </thead>
@@ -94,16 +96,31 @@
                 <form id="contenedor">
 
                     <div class="row g-1">
-                        <div class="col-sm-12">
+                        <div class="col-sm-6">
                             <div class="mb-3" id="divpelicula">
                                 <label class="form-label">Película</label>
                                 <input type="text" class="form-control" id="txtpelicula" name="pelicula" autocomplete="off" />
                             </div>
+                        </div>
+                    </div>
+                    <div class="row g-1">
+                        <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="cboidioma" class="form-label">Idioma</label>
                                 <select id="cboidioma" class="form-select">
                                 </select>
                             </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="txtfecha" class="form-label">Fecha</label>
+                                <input class="form-control" type="text" id="txtfecha" name="fecha" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-1">
+                        <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="cbosala" class="form-label">Sala</label>
                                 <select id="cbosala" class="form-select">
@@ -112,19 +129,28 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label class="form-label">Precio</label>
-                                <input type="text" class="form-control" id="txtprecio" name="precio" autocomplete="off" />
+                                <label for="txthora" class="form-label">Hora</label>
+                                <input class="form-control" type="time" id="txthora" name="hora" />
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="mb-3">
-                                <label for="cboactivo" class="form-label">Activo</label>
-                                <select id="cboactivo" class="form-select">
-                                    <option value="1">Sí</option>
-                                    <option value="0">No</option>
-                                </select>
+                    </div>
+
+                    <div class="row g-1">
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Precio</label>
+                                    <input type="text" class="form-control" id="txtprecio" name="precio" autocomplete="off" />
+                                </div>
                             </div>
-                        </div>
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label for="cboactivo" class="form-label">Activo</label>
+                                    <select id="cboactivo" class="form-select">
+                                        <option value="1">Sí</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
                     </div>
                 </form>
 
@@ -152,6 +178,8 @@
 
 @section scripts{
     <script>
+        $("#txtfecha").datepicker({ dateFormat: 'dd/mm/yy' }).datepicker('setDate', new Date())
+
         $("#collapseCine").click();
         document.getElementById("menufunciones").style.fontWeight = "bold";
         document.getElementById("menufunciones").style.color = "#c2c2c2";
@@ -188,6 +216,8 @@
                         return data.Descripcion
                     }
                 },
+                { "data": "Fecha" },
+                { "data": "Hora" },
                 { "data": "Precio" },
                 {
                     "data": "Activo", "render": function (valor) {
@@ -286,8 +316,10 @@
 
         function abrirModalFuncionEditar(json) {
 
+            $("#txtfecha").datepicker({ dateFormat: 'dd/mm/yy' }).datepicker('setDate', new Date())
             $("#txtidpelicula").val(0);
             $("#txtidfuncion").val(0);
+            $("#txthora").val("");
             $("#cboidioma").val(0);
             $("#cbosala").val(0);
             $("#txtprecio").val("");
@@ -299,6 +331,8 @@
 
                 $("#txtidpelicula").val(json.oPelicula.IdPelicula);
                 $("#txtpelicula").val(json.oPelicula.Nombre);
+                $("#fecha").val(json.Fecha);
+                $("#txthora").val(json.Hora);
                 document.getElementById('divpelicula').hidden = false;
                 $("#txtidfuncion").val(json.IdFuncion);
                 $("#cboidioma").val(json.oIdioma.IdIdioma);
@@ -312,7 +346,8 @@
         }
 
         function abrirModalFuncionAgregar(json) {
-
+            $("#txtfecha").datepicker({ dateFormat: 'dd/mm/yy' }).datepicker('setDate', new Date())
+            $("#txthora").val("00:00");
             $("#txtidpelicula").val(0);
             $("#txtidfuncion").val(0);
             $("#cboidioma").val(0);
@@ -326,6 +361,7 @@
 
                 $("#txtidpelicula").val(json.IdPelicula);
                 $("#txtpelicula").val(json.Nombre);
+                $("#txthora").val("");
                 document.getElementById('divpelicula').hidden = true;
                 $("#txtidfuncion").val(0);
                 $("#cboidioma").val(0);
@@ -365,6 +401,8 @@
 
                 IdFuncion: data.IdFuncion,
                 Activo: 0,
+                Fecha: data.Fecha,
+                Hora: data.Hora,
                 Precio: data.Precio,
                 oPelicula: {
                     IdPelicula: data.oPelicula.IdPelicula,
@@ -465,6 +503,8 @@
                     IdFuncion: $("#txtidfuncion").val(),
                     Activo: $("#cboactivo").val() == 1 ? true : false,
                     Precio: $("#txtprecio").val(),
+                    Fecha: $("#txtfecha").val(),
+                    Hora: $("#txthora").val(),
                     oPelicula: {
                         IdPelicula: $("#txtidpelicula").val(),
                         Nombre: $("#txtpelicula").val(),

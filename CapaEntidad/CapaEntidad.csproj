@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="ArtXDeposito.cs" />
     <Compile Include="ArtXProv.cs" />
-    <Compile Include="Boleto.cs" />
     <Compile Include="Butaca.cs" />
     <Compile Include="Carrito.cs" />
     <Compile Include="Cartelera.cs" />

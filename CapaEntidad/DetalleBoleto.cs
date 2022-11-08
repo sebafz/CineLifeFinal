@@ -10,5 +10,6 @@ namespace CapaEntidad
     {
         public int IdDetalleBoleto { get; set; }
         public Butaca oButaca { get; set; }
+
     }
 }

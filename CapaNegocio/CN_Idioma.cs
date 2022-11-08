@@ -17,5 +17,9 @@ namespace CapaNegocio
         {
             return objCapaDato.Listar();
         }
+        public List<Idioma> ListarXFuncion(int id, string fecha)
+        {
+            return objCapaDato.ListarXFuncion(id, fecha);
+        }
     }
 }

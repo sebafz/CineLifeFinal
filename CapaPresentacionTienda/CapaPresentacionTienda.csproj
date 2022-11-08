@@ -189,6 +189,7 @@
     <Content Include="Images\LogoNavBarClaro.png" />
     <Content Include="Images\logoNavBarOscuro.png" />
     <Content Include="Images\logoNavBarSinFondo.png" />
+    <Content Include="Images\pochoclo_negro.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -286,6 +287,7 @@
     <Content Include="Views\Tienda\MisCompras.cshtml" />
     <Content Include="Views\Tienda\MetodoDePago.cshtml" />
     <Content Include="Views\Tienda\Perfil.cshtml" />
+    <Content Include="Views\Tienda\Butacas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

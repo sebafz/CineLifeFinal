@@ -35,6 +35,11 @@ namespace CapaPresentacionTienda.Controllers
             return View();
         }
 
+        public ActionResult Butacas()
+        {
+            return View();
+        }
+
         [HttpPost]
         public JsonResult ObtenerProvinciaArg()
         {
@@ -74,7 +79,16 @@ namespace CapaPresentacionTienda.Controllers
 
             return View(oPelicula);
         }
+        [HttpPost]
+        public async Task<JsonResult> AbrirButacas(int idfuncion, int cantidad)
+        {
+            Sala oSala = new Sala();
+            oSala = new CN_Sala().ListarXFuncion(idfuncion).FirstOrDefault();
 
+            return Json(new { Status = true, Link = "/Tienda/Butacas/?IdFuncion=" + idfuncion + "&Cantidad=" + cantidad + "&Sala=" + oSala.Descripcion}, JsonRequestBehavior.AllowGet);
+
+
+        }
         [HttpGet]
         public JsonResult VistaPerfil()
         {
@@ -83,6 +97,76 @@ namespace CapaPresentacionTienda.Controllers
             Cliente objeto = new CN_Cliente().VerPerfil(cliente.IdCliente);
 
             return Json(new { resultado = objeto }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult ObtenerSedesActivas()
+        {
+
+            List<Sede> oLista = new List<Sede>();
+
+            oLista = new CN_Sede().ObtenerActivas();
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult ObtenerFechas(int IdPelicula)
+        {
+            List<string> oLista = new List<string>();
+
+            oLista = new CN_Funcion().ObtenerFechas(IdPelicula);
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult ObtenerButacasOcupadas(int IdFuncion)
+        {
+            List<string> oLista = new List<string>();
+
+            oLista = new CN_Funcion().ObtenerButacasOcupadas(IdFuncion);
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult ObtenerHorasFuncion(int IdPelicula, string Fecha, int IdIdioma)
+        {
+            List<Funcion> oLista = new List<Funcion>();
+
+            oLista = new CN_Funcion().ObtenerHoras(IdPelicula, Fecha, IdIdioma);
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult ObtenerFuncion(int IdFuncion)
+        {
+            List<Funcion> oLista = new List<Funcion>();
+
+            oLista = new CN_Funcion().ObtenerFuncion(IdFuncion);
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult ObtenerIdiomasXFuncion(int IdPelicula, string Fecha)
+        {
+
+            List<Idioma> oLista = new List<Idioma>();
+
+            oLista = new CN_Idioma().ListarXFuncion(IdPelicula, Fecha);
+
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+
+        }
+        
+        [HttpPost]
+        public JsonResult ListarIdiomas(int IdPelicula, string Fecha)
+        {
+
+            List<Idioma> oLista = new List<Idioma>();
+
+            oLista = new CN_Idioma().Listar();
+
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+
         }
 
         [HttpGet]
@@ -131,6 +215,8 @@ namespace CapaPresentacionTienda.Controllers
             return jsonresult;
 
         }
+
+
 
         [HttpPost]
         public JsonResult ListarProductoActivo(int idcategoria, int idmarca, int nroPagina)
@@ -328,116 +414,89 @@ namespace CapaPresentacionTienda.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> EnviarPago(List<Carrito> oListaCarrito, Venta oVenta) {
-            Session["Lista1"] = oListaCarrito;
-            Session["Venta1"] = oVenta;
+        public async Task<JsonResult> EnviarPago(int IdFuncion, List<Butaca> Butacas) {
+
+            Funcion oFuncion = new Funcion();
+            oFuncion = new CN_Funcion().Listar().Where(p => p.IdFuncion == IdFuncion).FirstOrDefault();
+
+            Session["Funcion"] = oFuncion;
+            Session["Butacas"] = Butacas;
             return Json(new { Status = true, Link = "/Tienda/MetodoDePago" }, JsonRequestBehavior.AllowGet);
         }
 
-
         [HttpPost]
-        public async Task<JsonResult> ProcesarPago() {
+        public async Task<JsonResult> ProcesarPago(int MedioPago) {
 
-            List<Carrito> oListaCarrito = (List<Carrito>) Session["Lista1"];
-            Venta oVenta = (Venta) Session["Venta1"];
+            List<Butaca> oLista = (List<Butaca>) Session["Butacas"];
+            Funcion oFuncion = (Funcion) Session["Funcion"];
 
-            decimal total = 0;
-            DataTable detalle_venta = new DataTable();
-            detalle_venta.Locale = new CultureInfo("es-PE");
-            detalle_venta.Columns.Add("IdProducto", typeof(string));
-            detalle_venta.Columns.Add("Cantidad", typeof(int));
-            detalle_venta.Columns.Add("Total", typeof(decimal));
+            Random random = new Random();
+            int numTrans = random.Next(100, 10000);
 
-            foreach (Carrito oCarrito in oListaCarrito)
+            //bool idcomprobante = CN_Comprobante.RegistrarVenta(1, numTrans, 'A', ((Cliente)Session["Cliente"]).IdCliente, 0, 0, MedioPago);
+
+            bool respuesta;
+
+            for (int i = 0, len = oLista.Count; i < len; i++)
             {
-                decimal subtotal = Convert.ToDecimal(oCarrito.Cantidad.ToString()) * oCarrito.oProducto.Precio;
-
-                total += subtotal;
-
-                detalle_venta.Rows.Add(new object[] {
-                    oCarrito.oProducto.IdProducto,
-                    oCarrito.Cantidad,
-                    subtotal
-                });
+                //respuesta = new CN_Comprobante().RegistrarDetalleBoleto(oLista[i].Numero, oLista[i].Fila, idcomprobante, oFuncion.IdFuncion, oFuncion.Precio);
             }
-            oVenta.MontoTotal = total;
-            oVenta.IdCliente = ((Cliente)Session["Cliente"]).IdCliente;
+
+            int idcliente = ((Cliente)Session["Cliente"]).IdCliente;
             string correo = ((Cliente)Session["Cliente"]).Correo;
             string nombreCliente= ((Cliente)Session["Cliente"]).Nombres+" "+((Cliente)Session["Cliente"]).Apellidos;
 
-            Random random = new Random();
-            int numTrans = random.Next(1000, 10000);
-
-            TempData["Venta"] = oVenta;
-            TempData["DetalleVenta"] = detalle_venta;
-
             //Envío de mail de confirmación
 
-            string asunto = "Fun House: Comprobante de compra";
+            //string asunto = "CineLife: Información de tu compra";
 
-            StringBuilder mensaje_correo = new StringBuilder();
+            //StringBuilder mensaje_correo = new StringBuilder();
 
-            mensaje_correo.Append(
-                "<h3 style='background-color: #f5f6fa;padding: 15px;margin: 0 5px 0;color: #004aad;border-radius: 15px;'>¡Gracias por tu compra!</h3>" +
-                "<h4 style='padding-left: 10px; color:black'>"+nombreCliente+", te dejamos tu resumen de compra.</h4>" +
-                "<div style='margin: 10px 8px'>Fecha: " + DateTime.Now.ToString("dd-MM-yyyy") +"</div>" +
-                "<div style='margin: 10px 8px;'>Nro. de transacción: code" + numTrans + "</div>" +
-                "<div style='margin: 10px 8px 15px;'>Dirección: " + oVenta.Direccion.ToString() +"</div>" +
-                "<table  style='width: 100 %; border: 1px solid #999;text-align: left;border-collapse: collapse;margin: 0 0 1em 0;caption-side: top;'>" +
-                "<tbody> <tr> <th style='padding: 0.3em; border-bottom: 1px solid #999;width: 25%; background-color: #f5f6fa;'>Nro.</th>" +
-                "<th style='padding: 0.3em; border-bottom: 1px solid #999;width: 25%; background-color: #f5f6fa;'>Producto</th>" +
-                "<th style='padding: 0.3em; border-bottom: 1px solid #999;width: 25%; background-color: #f5f6fa;'>Precio</th>" +
-                "<th style='padding: 0.3em; border-bottom: 1px solid #999;width: 25%; background-color: #f5f6fa;'>Cantidad</th>" +
-                "<th style='padding: 0.3em; border-bottom: 1px solid #999;width: 25%; background-color: #f5f6fa;'>subtotal</th> </tr> ");
+            //mensaje_correo.Append(
+            //    "<h3 style='background-color: #f5f6fa;padding: 15px;margin: 0 5px 0;color: #004aad;border-radius: 15px;'>¡Gracias por tu compra!</h3>" +
+            //    "<h4 style='padding-left: 10px; color:black'>"+nombreCliente+", te dejamos tu resumen de compra.</h4>" +
+            //    "<div style='margin: 10px 8px'>Fecha: " + DateTime.Now.ToString("dd-MM-yyyy") +"</div>" +
+            //    "<div style='margin: 10px 8px;'>Nro. de transacción: code" + numTrans + "</div>" +
+            //    "<table  style='width: 100 %; border: 1px solid #999;text-align: left;border-collapse: collapse;margin: 0 0 1em 0;caption-side: top;'>" +
+            //    "<tbody> <tr> <th style='padding: 0.3em; border-bottom: 1px solid #999;width: 25%; background-color: #f5f6fa;'>Nro.</th>" +
+            //    "<th style='padding: 0.3em; border-bottom: 1px solid #999;width: 25%; background-color: #f5f6fa;'>Producto</th>" +
+            //    "<th style='padding: 0.3em; border-bottom: 1px solid #999;width: 25%; background-color: #f5f6fa;'>Precio</th>" +
+            //    "<th style='padding: 0.3em; border-bottom: 1px solid #999;width: 25%; background-color: #f5f6fa;'>Cantidad</th>" +
+            //    "<th style='padding: 0.3em; border-bottom: 1px solid #999;width: 25%; background-color: #f5f6fa;'>subtotal</th> </tr> ");
 
-            int cont = 0;
-            foreach (Carrito carrito in oListaCarrito)
-            {
-                cont++;
-                mensaje_correo.Append("<tr>" +
-                "<td style='padding: 0.3em; border-bottom: 1px solid #999;width: 25%;'>" + cont + "</td>" +
-                "<td style='padding: 0.3em; border-bottom: 1px solid #999;width: 25%;'>{NomProd" + cont + "}</td>" +
-                "<td style='padding: 0.3em; border-bottom: 1px solid #999;width: 25%;'>$ {Precio" + cont + "}</td>" +
-                "<td style='padding: 0.3em; border-bottom: 1px solid #999;width: 25%;'>{Cantidad" + cont + "}</td>" +
-                "<td style='padding: 0.3em; border-bottom: 1px solid #999;width: 25%;'>$ "+ carrito.oProducto.Precio * carrito.Cantidad + "</td>" +
-                "</tr>");
+            //int cont = 0;
+            //foreach (Butaca but in oLista)
+            //{
+            //    cont++;
+            //    mensaje_correo.Append("<tr>" +
+            //    "<td style='padding: 0.3em; border-bottom: 1px solid #999;width: 25%;'>" + cont + "</td>" +
+            //    "<td style='padding: 0.3em; border-bottom: 1px solid #999;width: 25%;'>{NomProd" + cont + "}</td>" +
+            //    "<td style='padding: 0.3em; border-bottom: 1px solid #999;width: 25%;'>$ {Precio" + cont + "}</td>" +
+            //    "<td style='padding: 0.3em; border-bottom: 1px solid #999;width: 25%;'>{Cantidad" + cont + "}</td>" +
+            //    "<td style='padding: 0.3em; border-bottom: 1px solid #999;width: 25%;'>$ "+ carrito.oProducto.Precio * carrito.Cantidad + "</td>" +
+            //    "</tr>");
 
-                mensaje_correo.Replace("{NomProd" + cont + "}", carrito.oProducto.Nombre);
-                mensaje_correo.Replace("{Precio" + cont + "}", carrito.oProducto.Precio.ToString());
-                mensaje_correo.Replace("{Cantidad" + cont + "}", carrito.Cantidad.ToString());
-            }
-            mensaje_correo.Append("<tr> <td></td> <td><strong>Total</strong></td> <td></td> <td></td> <td>$ " + total+"</td></tbody></table>");
-            mensaje_correo.Append("<div style='margin: 22px 8px'>Gracias, Fun House</div>");
-            bool respuesta = CN_Recursos.EnviarCorreo(correo, asunto, mensaje_correo.ToString());
+            //    mensaje_correo.Replace("{NomProd" + cont + "}", carrito.oProducto.Nombre);
+            //    mensaje_correo.Replace("{Precio" + cont + "}", carrito.oProducto.Precio.ToString());
+            //    mensaje_correo.Replace("{Cantidad" + cont + "}", carrito.Cantidad.ToString());
+            //}
+            //mensaje_correo.Append("<tr> <td></td> <td><strong>Total</strong></td> <td></td> <td></td> <td>$ " + total+"</td></tbody></table>");
+            //mensaje_correo.Append("<div style='margin: 22px 8px'>Gracias, Fun House</div>");
+            //bool respuesta = CN_Recursos.EnviarCorreo(correo, asunto, mensaje_correo.ToString());
 
-            return Json(new { Status = true, Link = "/Tienda/PagoEfectuado?idTransaccion=code" + numTrans + "&status=true" }, JsonRequestBehavior.AllowGet);
-
+            return Json(new { Status = true, Link = "/Tienda/PagoEfectuado?idTransaccion=" + numTrans + "&status=true" }, JsonRequestBehavior.AllowGet);
 
         }
 
         //[ValidarSession]
         //[Authorize]
+
+        //VIEW DEL PAGO:
         public async Task<ActionResult> PagoEfectuado() {
 
-            string idtransaccion = Request.QueryString["idTransaccion"];
-            bool status = Convert.ToBoolean(Request.QueryString["status"]);
+            ViewData["Status"] = Convert.ToBoolean(Request.QueryString["status"]);
+            ViewData["IdTransaccion"]= Request.QueryString["idTransaccion"];
 
-            ViewData["Status"] = status;
-
-            if (status)
-            {
-                Venta oVenta = (Venta)TempData["Venta"];
-
-                DataTable detalle_venta = (DataTable)TempData["DetalleVenta"];
-
-                oVenta.IdTransaccion = idtransaccion;
-
-                string mensaje = string.Empty;
-
-                bool respuesta = new CN_Venta().Registrar(oVenta, detalle_venta, out mensaje);
-
-                ViewData["IdTransaccion"] = oVenta.IdTransaccion;
-            }
             return View();
         }
 

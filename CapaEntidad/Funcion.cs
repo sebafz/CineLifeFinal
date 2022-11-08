@@ -14,7 +14,8 @@ namespace CapaEntidad
         public Idioma oIdioma { get; set; }
         public Sala oSala { get; set; }
         public decimal Precio { get; set; }
-
+        public string Hora { get; set; }
+        public string Fecha { get; set; }
         public bool Activo { get; set; }
 
 

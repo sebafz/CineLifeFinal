@@ -101,8 +101,6 @@ namespace CapaNegocio
                 return 0;
             }
 
-
-
         }
 
         public bool Editar(Producto obj, out string Mensaje)

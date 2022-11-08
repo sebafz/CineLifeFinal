@@ -24,10 +24,8 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
                 {
-                    string query = "select c.IdCartelera, Hora, FechaDesde, FechaHasta, c.IdFuncion, p.IdPelicula, p.Nombre, i.Descripcion, c.Activo from Cartelera c " +
-                    "inner join Funcion f on c.IdFuncion=f.IdFuncion " +
-                    "inner join Idioma i on i.IdIdioma=f.IdIdioma " +
-                    "inner join Pelicula p on p.IdPelicula=f.IdPelicula";
+                    string query = "select c.IdCartelera, CONVERT(varchar(30),FechaDesde,103) FechaDesde, CONVERT(varchar(30),FechaHasta,103) FechaHasta, p.IdPelicula, p.Nombre, p.Descripcion, c.Activo from Cartelera c " +
+                    "inner join Pelicula p on p.IdPelicula=c.IdPelicula";
 
                     SqlCommand cmd = new SqlCommand(query, oconexion);
                     cmd.CommandType = CommandType.Text;
@@ -41,13 +39,12 @@ namespace CapaDatos
                             lista.Add(new Cartelera()
                             {
                                 IdCartelera = Convert.ToInt32(dr["IdCartelera"]),
-                                Hora= dr["Hora"].ToString(),
                                 FechaDesde=dr["FechaDesde"].ToString(),
                                 FechaHasta=dr["FechaHasta"].ToString(),
-                                oFuncion= new Funcion() { 
-                                    IdFuncion= Convert.ToInt32(dr["IdFuncion"]),
-                                    oPelicula = new Pelicula() { IdPelicula = Convert.ToInt32(dr["IdPelicula"]), Nombre = dr["Nombre"].ToString() },
-                                    oIdioma = new Idioma() { IdIdioma = Convert.ToInt32(dr["IdIdioma"]), Descripcion = dr["Descripcion"].ToString() },
+                                oPelicula = new Pelicula() {
+                                    IdPelicula = Convert.ToInt32(dr["IdPelicula"]),
+                                    Nombre = dr["Nombre"].ToString(),
+                                    Descripcion= dr["Descripcion"].ToString()
                                 },
                                 Activo = Convert.ToBoolean(dr["Activo"])
                             });
@@ -73,11 +70,11 @@ namespace CapaDatos
 
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
                 {
-                    SqlCommand cmd = new SqlCommand("sp_RegistrarFuncion", oconexion);
-                    //cmd.Parameters.AddWithValue("IdPelicula", obj.oPelicula.IdPelicula);
-                    //cmd.Parameters.AddWithValue("IdIdioma", obj.oIdioma.IdIdioma);
-                    //cmd.Parameters.AddWithValue("IdSala", obj.oSala.IdSala);
-                    //cmd.Parameters.AddWithValue("Precio", obj.Precio);
+                    SqlCommand cmd = new SqlCommand("sp_RegistrarCartelera", oconexion);
+                    cmd.Parameters.AddWithValue("IdCartelera", obj.IdCartelera);
+                    cmd.Parameters.AddWithValue("FechaDesde", obj.FechaDesde);
+                    cmd.Parameters.AddWithValue("FechaHasta", obj.FechaHasta);
+                    cmd.Parameters.AddWithValue("IdPelicula", obj.oPelicula.IdPelicula);
                     cmd.Parameters.AddWithValue("Activo", obj.Activo);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
@@ -143,7 +140,7 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
                 {
-                    SqlCommand cmd = new SqlCommand("update funcion set activo=0 where IdFuncion = @id", oconexion);
+                    SqlCommand cmd = new SqlCommand("update cartelera set activo=0 where idcartelera = @id", oconexion);
                     cmd.Parameters.AddWithValue("@id", id);
                     cmd.CommandType = CommandType.Text;
                     oconexion.Open();

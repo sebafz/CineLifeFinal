@@ -11,21 +11,18 @@
 
         <div class="col-sm-12">
 
-            <div class="card">
-                <div class="card-body" style="padding: 10px 0 20px;">
+            <div class="card borde-negro">
+                <div class="card-body fondo-negro" style="padding: 10px 0 20px;">
 
                     <div class="row" style="justify-content: center">
 
                         <div class="col-sm-9">
 
-                            <div class="d-flex justify-content-between">
-                                <h4 class="ms-2 mt-2" style="margin: 0 0 10px 8px">Último paso 🤩</h4>
-                            </div>
-
-                            <div class="card">
-                                <div class="card-body bg-light" style="display: flex; flex-direction: column;">
-                                    <h5 class="card-title" style="align-self:center;">Completá el formulario con los datos de tu tarjeta</h5>
-
+                            <div class="card borde-negro">
+                                <div class="card-body fondo-negro" style="display: flex; flex-direction: column;">
+                                    <div class="col-md-12 d-flex justify-content-center">
+                                        <h3 class=" fw-bolder m-0 mb-3">Completá los datos de tu tarjeta</h3>
+                                    </div>
                                     <!--formulario-->
                                     <form method="post">
                                         <style>
@@ -37,17 +34,17 @@
                                             <div class="mb-2" style="width: 40%; margin-left: 7%;">
 
                                                 <label for="metodopago" class="form-label">Método de pago</label>
-                                                <select class="form-select form-select-sm" id="metodopago" onchange="displayDivDemo('hideValuesOnSelect', this)">
+                                                <select class="form-select form-select-sm btn-negro color-gris" id="metodopago" onchange="displayDivDemo('hideValuesOnSelect', this)">
                                                     <option value="0">Tarjeta de débito</option>
                                                     <option value="1">Tarjeta de crédito</option>
                                                 </select>
                                             </div>
                                             <div class="mb-2" style="width:40%; margin-left:7%" id="hideValuesOnSelect">
                                                 <label for="cuotas" class="form-label">Cuotas</label>
-                                                <select class="form-select form-select-sm">
-                                                    <option value="1">1 cuota sin interés</option>
-                                                    <option value="2">3 cuotas sin interés</option>
-                                                    <option value="3">6 cuotas sin interés</option>
+                                                <select class="form-select form-select-sm btn-negro color-gris">
+                                                    <option value="1">1 cuota</option>
+                                                    <option value="2">3 cuotas</option>
+                                                    <option value="3">6 cuotas</option>
                                                 </select>
                                             </div>
 
@@ -58,31 +55,32 @@
                                             </script>
 
                                         </div>
-                                        <div class="mb-2" style="width: 40%; margin-left: 7%;">
-                                            <label for="dni" class="form-label">DNI del titular</label>
-                                            <input type="text" class="form-control form-control-sm" id="dni" autocomplete="off" maxlength="8" placeholder="Sin putnos ni espacios">
-                                        </div>
                                         <div style="display: flex; justify-content: space-evenly ">
-                                            <div class="mb-2" style="width:86%">
+                                            <div class="mb-2" style="width: 40%;">
+                                                <label for="dni" class="form-label">DNI del titular</label>
+                                                <input type="text" class="form-control form-control-sm btn-negro color-gris" id="dni" autocomplete="off" maxlength="8" placeholder="Sin putnos ni espacios">
+                                            </div>
+
+                                            <div class="mb-2" style="width:40%">
                                                 <label for="numtarj" class="form-label">Número de tarjeta</label>
-                                                <input type="text" id="numtarj" name="numtarj" class="form-control form-control-sm" placeholder="Sin espacios" maxlength="19" autocomplete="off"/>
+                                                <input type="text" id="numtarj" name="numtarj" class="form-control form-control-sm btn-negro color-gris" placeholder="Sin espacios" maxlength="19" autocomplete="off" />
                                             </div>
                                         </div>
 
                                         <div style="display: flex; justify-content: space-evenly ">
                                             <div class="mb-2" style="width:40%">
                                                 <label for="fechacad" class="form-label">Fecha de caducidad</label>
-                                                <input type="text" class="form-control form-control-sm" id="fechacad" autocomplete="off" placeholder="MM" style="display: inline-block; width: 48%;" maxlength="2">
-                                                <input type="text" class="form-control form-control-sm" id="fechacad" autocomplete="off" placeholder="AA" style="display: inline-block; width: 48%;" maxlength="2">
+                                                <input type="text" class="form-control form-control-sm btn-negro color-gris" id="fechacad" autocomplete="off" placeholder="MM" style="display: inline-block; width: 48%;" maxlength="2">
+                                                <input type="text" class="form-control form-control-sm btn-negro color-gris" id="fechacad" autocomplete="off" placeholder="AA" style="display: inline-block; width: 48%;" maxlength="2">
                                             </div>
                                             <div class="mb-2" style="width:40%">
                                                 <label for="codseg" class="form-label">Código de seguridad</label>
-                                                <input type="text" class="form-control form-control-sm" id="codseg" autocomplete="off" maxlength="3" placeholder="XXX">
+                                                <input type="text" class="form-control form-control-sm btn-negro color-gris" id="codseg" autocomplete="off" maxlength="3" placeholder="XXX">
                                             </div>
                                         </div>
                                         <div class="d-grid">
-                                            <button class="btn btn-success" type="button" onclick="RealizarPago()" style=" margin: 2% 30% 0;">
-                                                Terminar pago
+                                            <button class="btn w-50 btn-verde" type="button" onclick="RealizarPago()" style=" margin: 2% 30% 0;">
+                                                <i class="fas fa-credit-card"></i> Procesar pago
                                             </button>
                                         </div>
                                     </form>
@@ -97,7 +95,7 @@
 </div>
 
 <script>
-      
+
         jQuery(document).ready(function(){
             jQuery("#codseg").on('input', function (evt) {
                 jQuery(this).val(jQuery(this).val().replace(/[^0-9]/g, ''));
@@ -132,12 +130,12 @@
             swal("", "Formato de tarjeta inválido", "warning");
             return
         }
-        
+
 
         jQuery.ajax({
             url: '@Url.Action("ProcesarPago","Tienda")',
             type: "POST",
-            data: JSON.stringify({  }),
+            data: JSON.stringify({ MetodoPago: $("#metodopago option:selected").val(), IdFuncion, Butacas }),
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {

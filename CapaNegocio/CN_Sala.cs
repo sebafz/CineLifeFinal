@@ -25,6 +25,10 @@ namespace CapaNegocio
         {
             return objCapaDato.ListarActivas();
         }
+        public List<Sala> ListarXFuncion(int idfuncion)
+        {
+            return objCapaDato.ListarXFuncion(idfuncion);
+        }
 
         public int Registrar(Sala obj, out string Mensaje)
         {

@@ -11,6 +11,7 @@ namespace CapaEntidad
         public int IdCartelera { get; set; }
         public Funcion oFuncion { get; set; }
         public string Hora { get; set; }
+        public Pelicula oPelicula { get; set; }
         public string FechaDesde { get; set; }
         public string FechaHasta { get; set; }
         public bool Activo { get; set; }

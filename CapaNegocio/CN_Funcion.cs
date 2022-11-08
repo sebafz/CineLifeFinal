@@ -23,6 +23,23 @@ namespace CapaNegocio
         {
             return objCapaDato.ListarXPelicula(idpelicula);
         }
+
+        public List<string> ObtenerFechas(int idpelicula)
+        {
+            return objCapaDato.ObtenerFechas(idpelicula);
+        }
+        public List<string> ObtenerButacasOcupadas(int idfuncion)
+        {
+            return objCapaDato.ObtenerButacasOcupadas(idfuncion);
+        }
+        public List<Funcion> ObtenerHoras(int idpelicula, string fecha, int ididioma)
+        {
+            return objCapaDato.ObtenerHoras(idpelicula, fecha, ididioma);
+        }
+        public List<Funcion> ObtenerFuncion(int idfuncion)
+        {
+            return objCapaDato.ObtenerFuncion(idfuncion);
+        }
         public int Registrar(Funcion obj, out string Mensaje)
         {
 
