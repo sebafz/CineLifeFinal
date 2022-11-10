@@ -135,7 +135,7 @@ namespace CapaDatos
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
                 {
 
-                    string query = "select IdCliente,DNI,Nombres,Apellidos,Correo,Clave,Reestablecer,Telefono,Direccion,l.IdLocalidad, l.descripcion DesLoc, p.IdProvincia, p.Descripcion DesProv from Cliente c "+
+                    string query = "select IdCliente,Activo,DNI,Nombres,Apellidos,Correo,Clave,Reestablecer,Telefono,Direccion,l.IdLocalidad, l.descripcion DesLoc, p.IdProvincia, p.Descripcion DesProv from Cliente c "+
                         "inner join Localidad l on c.IdLocalidad=l.IdLocalidad inner join provincia p on p.IdProvincia=l.IdProvincia";
 
                     SqlCommand cmd = new SqlCommand(query, oconexion);
@@ -158,6 +158,7 @@ namespace CapaDatos
                                     Clave = dr["Clave"].ToString(),
                                     Telefono= dr["Telefono"].ToString(),
                                     DNI = Convert.ToInt32(dr["DNI"]),
+                                    Activo = Convert.ToBoolean(dr["Activo"]),
                                     Direccion = dr["Direccion"].ToString(),
                                     Reestablecer = Convert.ToBoolean(dr["Reestablecer"]),
                                     oLocalidad = new Localidad()
@@ -212,7 +213,8 @@ namespace CapaDatos
                                 new Cliente()
                                 {
                                     IdCliente = Convert.ToInt32(dr["IdCliente"]),
-                                    Nombres = dr["Nombres"].ToString() + dr["Apellidos"].ToString(),
+                                    Nombres = dr["Nombres"].ToString(),
+                                    Apellidos= dr["Apellidos"].ToString()
                                 }
 
                                 );

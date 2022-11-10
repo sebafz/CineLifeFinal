@@ -16,5 +16,13 @@ namespace CapaNegocio
         {
             return objCapaDato.Listar();
         }
+        public int RegistrarComprobante(Comprobante comp, int mot, int ingreso, out string Mensaje)
+        {
+
+            Mensaje = string.Empty;
+
+            return objCapaDato.RegistrarComprobante(comp, mot, ingreso, out Mensaje);
+
+        }
     } 
 }

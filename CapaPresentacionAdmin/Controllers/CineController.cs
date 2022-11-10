@@ -21,10 +21,6 @@ namespace CapaPresentacionAdmin.Controllers
         {
             return View();
         }
-        public ActionResult Peliculas()
-        {
-            return View();
-        }
         public ActionResult Boletos()
         {
             return View();

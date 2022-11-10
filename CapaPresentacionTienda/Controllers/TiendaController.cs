@@ -425,26 +425,23 @@ namespace CapaPresentacionTienda.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> ProcesarPago(int MedioPago) {
-
-            List<Butaca> oLista = (List<Butaca>) Session["Butacas"];
-            Funcion oFuncion = (Funcion) Session["Funcion"];
-
+        public async Task<JsonResult> ProcesarPago()
+        {
             Random random = new Random();
-            int numTrans = random.Next(100, 10000);
+            var numero = random.Next(100, 1000);
 
-            //bool idcomprobante = CN_Comprobante.RegistrarVenta(1, numTrans, 'A', ((Cliente)Session["Cliente"]).IdCliente, 0, 0, MedioPago);
+            object resultado;
+            string mensaje = string.Empty;
 
-            bool respuesta;
+            List<Butaca> oLista = (List<Butaca>)Session["Butacas"];
+            Funcion oFuncion = (Funcion)Session["Funcion"];
 
-            for (int i = 0, len = oLista.Count; i < len; i++)
-            {
-                //respuesta = new CN_Comprobante().RegistrarDetalleBoleto(oLista[i].Numero, oLista[i].Fila, idcomprobante, oFuncion.IdFuncion, oFuncion.Precio);
-            }
+            resultado = new CN_Comprobante().RegistrarVentaPelicula(oFuncion, ((Cliente)Session["Cliente"]).IdCliente, oLista, numero, out mensaje);
+
 
             int idcliente = ((Cliente)Session["Cliente"]).IdCliente;
             string correo = ((Cliente)Session["Cliente"]).Correo;
-            string nombreCliente= ((Cliente)Session["Cliente"]).Nombres+" "+((Cliente)Session["Cliente"]).Apellidos;
+            string nombreCliente = ((Cliente)Session["Cliente"]).Nombres + " " + ((Cliente)Session["Cliente"]).Apellidos;
 
             //Envío de mail de confirmación
 
@@ -484,7 +481,15 @@ namespace CapaPresentacionTienda.Controllers
             //mensaje_correo.Append("<div style='margin: 22px 8px'>Gracias, Fun House</div>");
             //bool respuesta = CN_Recursos.EnviarCorreo(correo, asunto, mensaje_correo.ToString());
 
-            return Json(new { Status = true, Link = "/Tienda/PagoEfectuado?idTransaccion=" + numTrans + "&status=true" }, JsonRequestBehavior.AllowGet);
+            if (mensaje=="")
+            {
+                return Json(new { Status = true, Link = "/Tienda/PagoEfectuado?idTransaccion=" + numero + "&status=true" }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new { Status = true, Link = "/Tienda/PagoEfectuado?idTransaccion=" + numero + "&status=false" }, JsonRequestBehavior.AllowGet);
+            }
+
 
         }
 

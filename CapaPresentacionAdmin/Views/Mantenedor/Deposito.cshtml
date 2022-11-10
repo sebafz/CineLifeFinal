@@ -79,10 +79,6 @@
                         </select>
                     </div>
 
-
-
-
-
                 </div>
 
 
@@ -126,16 +122,32 @@
             responsive: true,
             ordering: true,
             "ajax": {
-                url: '@Url.Action("ListarMarca2", "Mantenedor")',
+                url: '@Url.Action("ListarDepositos", "Mantenedor")',
                 type: "GET",
                 dataType: "json"
             },
             "columns": [
-                { "data": "Nombre" },
-                { "data": "Area" },
-                { "data": "Direccion" },
+                {
+                    "data": "oSede", "render": function (data) {
+                        return data.Nombre
+                    }
+                },
                 { "data": "Descripcion" },
-                { "data": "DescripcionProvincia" },
+                {
+                    "data": "oSede", "render": function (data) {
+                        return data.Direccion
+                    }
+                },
+                {
+                    "data": "oSede", "render": function (data) {
+                        return data.oLocalidad.Descripcion
+                    }
+                },
+                {
+                    "data": "oSede", "render": function (data) {
+                        return data.oLocalidad.oProvincia.Descripcion
+                    }
+                },
                 {
                     "data": "Activo", "render": function (valor) {
                         if (valor) {

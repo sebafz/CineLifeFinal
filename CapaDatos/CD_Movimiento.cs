@@ -27,13 +27,7 @@ namespace CapaDatos
 
                     StringBuilder sb = new StringBuilder();
 
-                    sb.AppendLine("select IdMovimiento, Numero, d.IdDeposito, d.Nombre NomDep, isnull(m.IdComprobante,0) IdComprobante, d.IdSede, s.Nombre NomSede, ");
-                    sb.AppendLine("isnull((select Numero from Comprobante where IdComprobante=m.IdComprobante),0) NumeroComp, CONVERT (varchar(20), m.Fecha, 103) Fecha, ");
-                    sb.AppendLine("Ingreso, mm.IdMotivoMovimiento, mm.Descripcion DescMotivo from Movimiento m ");
-                    sb.AppendLine("inner join Deposito d on d.IdDeposito=m.idDeposito ");
-                    sb.AppendLine("inner join Sede s on s.IdSede=d.IdSede ");
-                    sb.AppendLine("inner join MotivoMovimiento mm on mm.IdMotivoMovimiento=m.IdMotivoMovimiento ");
-
+                    sb.AppendLine("sp_ListarMovimientos");
 
                     SqlCommand cmd = new SqlCommand(sb.ToString(), oconexion);
                     cmd.CommandType = CommandType.Text;
@@ -69,6 +63,44 @@ namespace CapaDatos
 
             }
             return lista;
+        }
+
+        public int RegistrarComprobante(Comprobante comp, int mot, int ingreso, out string Mensaje)
+        {
+            Random random = new Random();
+            int idautogenerado = 0;
+
+            Mensaje = string.Empty;
+            try
+            {
+
+
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
+                {
+                    SqlCommand cmd = new SqlCommand("sp_RegistrarMovimientoComprobante", oconexion);
+                    cmd.Parameters.AddWithValue("IdComprobante", comp.IdComprobante);
+                    cmd.Parameters.AddWithValue("IdDeposito", comp.oDeposito.IdDeposito);
+                    cmd.Parameters.AddWithValue("IdMotivo", mot);
+                    cmd.Parameters.AddWithValue("Ingreso", ingreso);
+                    cmd.Parameters.AddWithValue("Numero", random.Next(100, 1000));
+                    cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    oconexion.Open();
+
+                    cmd.ExecuteNonQuery();
+
+                    idautogenerado = Convert.ToInt32(cmd.Parameters["Resultado"].Value);
+                    Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                idautogenerado = 0;
+                Mensaje = ex.Message;
+            }
+            return idautogenerado;
         }
     }
 }

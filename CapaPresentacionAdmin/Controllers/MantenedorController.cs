@@ -17,8 +17,7 @@ namespace CapaPresentacionAdmin.Controllers
     [Authorize]
     public class MantenedorController : Controller
     {
-        private CN_FireBase cnfirebase = new CN_FireBase();
-
+        
         // GET: Mantenedor
         public ActionResult Categoria()
         {
@@ -179,10 +178,18 @@ namespace CapaPresentacionAdmin.Controllers
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
         [HttpGet]
-        public JsonResult ListarProductosXComprobante(int id)
+        public JsonResult ListarProductosXComprobanteCompra(int id)
         {
             List<DetalleComprobante> oLista = new List<DetalleComprobante>();
-            oLista = new CN_Producto().ListarXComprobante(id);
+            oLista = new CN_Producto().ListarXComprobanteCompra(id);
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult ListarProductosXComprobanteVenta(int id)
+        {
+            List<DetalleComprobante> oLista = new List<DetalleComprobante>();
+            oLista = new CN_Producto().ListarXComprobanteVenta(id);
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
 
@@ -392,9 +399,9 @@ namespace CapaPresentacionAdmin.Controllers
         // ++++++++++++++++ DEPOSITO ++++++++++++++++++++
         #region DEPOSITO;
         [HttpGet]
-        public JsonResult ListarMarca2()
+        public JsonResult ListarDepositos()
         {
-            List<ReporteDeposito> oLista = new List<ReporteDeposito>();
+            List<Deposito> oLista = new List<Deposito>();
 
             oLista = new CN_Deposito().Listar();
 
@@ -439,12 +446,15 @@ namespace CapaPresentacionAdmin.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> AbrirDeposito(ReporteDeposito objeto)
+        public async Task<JsonResult> AbrirDeposito(Deposito objeto)
         {
-            //TempData["NomDeposito"] = objeto.Nombre;
-            //TempData["NomSede"] = objeto.Area;
-            return Json(new { Status = true, Link = "/Mantenedor/ArtXDeposito/?idDeposito="+objeto.IdDeposito+ "&NomDeposito="+objeto.Nombre+"&NomSede="+objeto.Area }, JsonRequestBehavior.AllowGet);
+            return Json(new { Status = true, Link = "/Mantenedor/ArtXDeposito/?idDeposito="+objeto.IdDeposito+ "&NomDeposito="+objeto.Descripcion+"&NomSede="+objeto.oSede.Nombre }, JsonRequestBehavior.AllowGet);
 
+        }
+        [HttpPost]
+        public async Task<JsonResult> AbrirMovimientosAgregar()
+        {
+            return Json(new { Status = true, Link = "/Mantenedor/Movimientos/?Nuevo=1"}, JsonRequestBehavior.AllowGet);
 
         }
         [HttpPost]
@@ -478,16 +488,18 @@ namespace CapaPresentacionAdmin.Controllers
             object resultado;
             string mensaje = string.Empty;
 
-            if (objeto.IdArtXDeposito == 0)
-            {
+            resultado = new CN_ArtXDeposito().Registrar(objeto, out mensaje);
 
-                resultado = new CN_ArtXDeposito().Registrar(objeto, out mensaje);
-            }
-            else
-            {
-                resultado = new CN_ArtXDeposito().Editar(objeto, out mensaje);
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
 
-            }
+        [HttpPost]
+        public JsonResult EditarArtXDeposito(ArtXDeposito objeto)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+
+            resultado = new CN_ArtXDeposito().Editar(objeto, out mensaje);
 
             return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
         }
@@ -513,6 +525,16 @@ namespace CapaPresentacionAdmin.Controllers
             oLista = new CN_Movimiento().Listar();
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
 
+        }
+        [HttpPost]
+        public JsonResult RegistrarMovimientoComprobante(Comprobante comprobante, int mot, int ingreso)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+
+            resultado = new CN_Movimiento().RegistrarComprobante(comprobante, mot, ingreso, out mensaje);
+
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
         }
         #endregion;
     }

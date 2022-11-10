@@ -40,6 +40,21 @@
         </div>
     </div>
     <div class="col-xl-3 col-md-6">
+        <div class="card bg-secondaryext text-white mb-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <h6>Total de películas</h6>
+                        <h5 id="totalpelicula">0</h5>
+                    </div>
+                    <div class="col-sm-3 flex-column justify-content-center">
+                        <i class="fas fa-film fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
         <div class="card bg-primaryext text-white mb-4">
             <div class="card-body">
                 <div class="row">
@@ -54,79 +69,20 @@
             </div>
         </div>
     </div>
-
 </div>
 
-
-<div class="card mb-4">
-    <div class="card-header">
-        <i class="fas fa-tags me-1"></i>
-        Historial de ventas
-    </div>
-    <div class="card-body">
-
-        <form action="@Url.Action("ExportarVenta","Home")" method="post">
-
-            <div class="row align-items-end">
-                <div class="col-sm-2">
-                    <div class="mb-2">
-                        <label class="form-label">Fecha de inicio</label>
-                        <input class="form-control" type="text" id="txtfechainicio" name="fechainicio" />
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="mb-2">
-                        <label class="form-label">Fecha de finalización</label>
-                        <input class="form-control" type="text" id="txtfechafin" name="fechafin" />
-                    </div>
-                </div>
-
-                <div class="col-sm-2">
-                    <div class="mb-2">
-                        <label class="form-label">Nro. de transacción</label>
-                        <input class="form-control" type="text" id="txtidtransaccion" name="idtransaccion" />
-                    </div>
-                </div>
-
-                <div class="col-sm-2">
-                    <div class="d-grid mb-2">
-                        <button class="btn btn-primary" id="btnbuscar" type="button"><i class="fas fa-search"></i>  Buscar</button>
-                    </div>
-                </div>
-
+<div class="row">
+    <div class="col-xl-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-chart-bar me-1"></i>
+                Bar Chart Example
             </div>
-
-        </form>
-
-        <hr />
-
-        <div class="row">
-
-            <div class="col-sm-12">
-                <table id="tabla" class="display cell-border" style="width:100%" >
-                    <thead>
-                        <tr>
-                            <th>Fecha de venta</th>
-                            <th>Cliente</th>
-                            <th>Producto</th>
-                            <th>Precio</th>
-                            <th>Cantidad</th>
-                            <th>Total</th>
-                            <th>Nro. transacción</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-
-                </table>
-            </div>
-
+            <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
         </div>
-
-
     </div>
 </div>
+
 
 
 
@@ -138,16 +94,11 @@
         document.getElementById("menutablero").style.color = "#c2c2c2";
         document.getElementById("iconotablero").style.color = "#c2c2c2";
 
-        var tabladata;
 
         $(document).ready(function () {
 
 
-            $("#txtfechainicio").datepicker({dateFormat : 'dd/mm/yy'}).datepicker('setDate',new Date())
-            $("#txtfechafin").datepicker({ dateFormat: 'dd/mm/yy' }).datepicker('setDate', new Date())
-
-
-             jQuery.ajax({
+            jQuery.ajax({
                 url: '@Url.Action("VistaDashBoard", "Home")',
                 type: "GET",
                 dataType: "json",
@@ -159,59 +110,12 @@
                     $("#totalcliente").text(objeto.TotalCliente)
                     $("#totalventa").text(objeto.TotalVenta)
                     $("#totalproducto").text(objeto.TotalProducto)
+                    $("#totalpelicula").text(objeto.TotalPelicula)
 
                 }
-             });
-
-        // fechainicio,string fechafin,string idtransaccion
-
-            var Url = '@Url.Action("ListaReporte", "Home")' +
-            "?fechainicio=" + $("#txtfechainicio").val() +
-            "&fechafin=" + $("#txtfechafin").val() +
-            "&idtransaccion=" + $("#txtidtransaccion").val()
-
-
-            tabladata = $("#tabla").DataTable({
-                responsive: true,
-                ordering: false,
-                "ajax": {
-                    url: Url,
-                    type: "GET",
-                    dataType: "json"
-                },
-                "columns": [
-                    {"data":"FechaVenta"},
-                    {"data":"Cliente"},
-                    {"data":"Producto"},
-                    {"data":"Precio"},
-                    {"data":"Cantidad"},
-                    {"data":"Total"},
-                    {"data":"IdTransaccion"}
-                ],
-                "language": {
-                    "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
-                }
-
             });
 
-
-        })
-
-        $("#btnbuscar").on("click", function () {
-
-             var nueva_url = '@Url.Action("ListaReporte", "Home")' +
-            "?fechainicio=" + $("#txtfechainicio").val() +
-            "&fechafin=" + $("#txtfechafin").val() +
-                "&idtransaccion=" + $("#txtidtransaccion").val()
-
-
-            tabladata.ajax.url(nueva_url).load();
-
-        })
-
-
-
-
+        });
 
     </script>
     

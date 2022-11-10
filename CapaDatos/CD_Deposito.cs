@@ -13,17 +13,17 @@ namespace CapaDatos
     public class CD_Deposito
     {
 
-        public List<ReporteDeposito> Listar()
+        public List<Deposito> Listar()
         {
 
-            List<ReporteDeposito> lista = new List<ReporteDeposito>();
+            List<Deposito> lista = new List<Deposito>();
 
             try
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
                 {
 
-                    string query = "select IdDeposito, d.Nombre NombreArea, s.Nombre, s.Direccion,s.Telefono,l.Descripcion, p.Descripcion DescripcionProv, d.Activo "+
+                    string query = "select IdDeposito, s.IdSede, d.Nombre NombreArea, s.Nombre, s.Direccion,s.Telefono,l.Descripcion Localidad, p.Descripcion Provincia, d.Activo "+
                         "from Sede s join Deposito d on s.IdSede = d.IdSede join Localidad l on s.IdLocalidad = l.IdLocalidad join Provincia p on l.IdProvincia = p.IdProvincia";
                     SqlCommand cmd = new SqlCommand(query, oconexion);
                     cmd.CommandType = CommandType.Text;
@@ -36,28 +36,27 @@ namespace CapaDatos
                         {
 
                             lista.Add(
-                                new ReporteDeposito()
+                                new Deposito()
                                 {
 
-                                    IdDeposito = Convert.ToInt32(dr["IdDeposito"]),
-                                    //IdSede = Convert.ToInt32(dr["IdSede"]),
-                                    Area = dr["NombreArea"].ToString(),
-                                    Nombre = dr["Nombre"].ToString(),
+                                IdDeposito = Convert.ToInt32(dr["IdDeposito"]),
+                                Descripcion = dr["NombreArea"].ToString(),
+                                oSede=new Sede()
+                                {
+                                    IdSede= Convert.ToInt32(dr["IdSede"]),
+                                    Nombre= dr["Nombre"].ToString(),
                                     Direccion = dr["Direccion"].ToString(),
                                     Telefono = dr["Telefono"].ToString(),
-                                    Descripcion = dr["Descripcion"].ToString(),
-                                    DescripcionProvincia = dr["DescripcionProv"].ToString(),
-                                    Activo = Convert.ToBoolean(dr["Activo"]),
-
-                                    //IdDeposito = new Deposito() {IdDeposito= Convert.ToInt32(dr["IdDeposito"]) },
-                                    //IdSede= new Sede() {IdSede= Convert.ToInt32(dr["IdSede"]) },
-                                    //Area= new Deposito() {Descripcion= dr["NombreArea"].ToString() },
-                                    //Nombre = new Sede() {Nombre= dr["Nombre"].ToString() },
-                                    //Direccion = new Sede() {Direccion= dr["Direccion"].ToString() },
-                                    //Telefono = new Sede() { Telefono = dr["Telefono"].ToString() },
-                                    //Descripcion = new Localidad() { Descripcion= dr["Descripcion"].ToString() },
-                                    //DescripcionProvincia = new Provincia() { Descripcion= dr["DescripcionProv"].ToString() },
-                                    //Activo= new Deposito() { Activo= Convert.ToBoolean(dr["Activo"])}
+                                    oLocalidad=new Localidad()
+                                    {
+                                        Descripcion = dr["Localidad"].ToString(),
+                                        oProvincia =new Provincia()
+                                        {
+                                            Descripcion= dr["Provincia"].ToString(),
+                                        }
+                                    }
+                                },
+                                Activo = Convert.ToBoolean(dr["Activo"])
 
                                 });
                         }
@@ -67,7 +66,7 @@ namespace CapaDatos
             }
             catch
             {
-                lista = new List<ReporteDeposito>();
+                lista = new List<Deposito>();
 
             }
 

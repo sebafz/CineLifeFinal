@@ -12,19 +12,33 @@ namespace CapaNegocio
     public class CN_Comprobante
     {
         private CD_Comprobante objCapaDato = new CD_Comprobante();
-        public List<Comprobante> Listar(int tipo, int ingreso)
+        public List<Comprobante> ListarCompra(int tipo)
         {
-            return objCapaDato.Listar(tipo, ingreso);
+            return objCapaDato.ListarCompra(tipo);
         }
-        public bool Vincular(int id, int tipo, out string Mensaje)
+        public List<Comprobante> ListarNotasCompra()
         {
-            return objCapaDato.Vincular(id, tipo, out Mensaje);
+            return objCapaDato.ListarNotasCompra();
         }
-        public int Registrar(Comprobante comp, List<Producto> list, out string Mensaje)
+        public List<Comprobante> ListarNotasVenta()
         {
-
-        return objCapaDato.Registrar(comp, list, out Mensaje);
-
+            return objCapaDato.ListarNotasVenta();
+        }
+        public List<Comprobante> ListarVenta(int tipo)
+        {
+            return objCapaDato.ListarVenta(tipo);
+        }
+        public int RegistrarCompra(Comprobante comp, List<Producto> list, out string Mensaje)
+        {
+        return objCapaDato.RegistrarCompra(comp, list, out Mensaje);
+        }
+        public int RegistrarVenta(Comprobante comp, List<Producto> list, out string Mensaje)
+        {
+            return objCapaDato.RegistrarVenta(comp, list, out Mensaje);
+        }
+        public int RegistrarVentaPelicula(Funcion funcion, int idcliente, List<Butaca> list, int numero, out string Mensaje)
+        {
+            return objCapaDato.RegistrarVentaPelicula(funcion, idcliente, list, numero, out Mensaje);
         }
 
     }

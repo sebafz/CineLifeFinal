@@ -549,7 +549,6 @@
     <Content Include="Views\Cine\Funciones.cshtml" />
     <Content Include="Views\Cine\Salas.cshtml" />
     <Content Include="Views\Cine\Cartelera.cshtml" />
-    <Content Include="Views\Cine\Boletos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

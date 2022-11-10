@@ -95,6 +95,7 @@ namespace CapaDatos
                                 TotalCliente = Convert.ToInt32(dr["TotalCliente"]),
                                 TotalVenta = Convert.ToInt32(dr["TotalVenta"]),
                                 TotalProducto = Convert.ToInt32(dr["TotalProducto"]),
+                                TotalPelicula = Convert.ToInt32(dr["TotalPelicula"]),
 
                             };
                         }

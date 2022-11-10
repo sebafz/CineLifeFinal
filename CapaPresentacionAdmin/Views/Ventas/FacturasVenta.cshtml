@@ -29,7 +29,7 @@
                 <tr>
                     <th>Número</th>
                     <th>Letra</th>
-                    <th>Proveedor</th>
+                    <th>Cliente</th>
                     <th>Sede</th>
                     <th>Fecha</th>
                     <th>Total</th>
@@ -280,7 +280,7 @@
 
                 $.each(data.data, function (index, item) {
 
-                    $("<option>").attr({ "value": item.IdCliente }).text(item.Nombres).appendTo("#cbocliente");
+                    $("<option>").attr({ "value": item.IdCliente }).text(item.Nombres + " " + item.Apellidos).appendTo("#cbocliente");
                 })
             },
             error: function (error) {
@@ -357,7 +357,7 @@
             responsive: true,
             ordering: true,
             "ajax": {
-                url: '@Url.Action("ListarComprobantes", "Ventas")',
+                url: '@Url.Action("ListarComprobantesVenta", "Ventas")',
                 type: "GET",
                 data: { tipo: 1},
                 dataType: "json",
@@ -367,13 +367,13 @@
                 { "data": "Numero" },
                 { "data": "Letra" },
                 {
-                    "data": "oProveedor", "render": function (data) {
+                    "data": "oCliente", "render": function (data) {
                         return data.Nombres
                     }
                 },
                 {
-                    "data": "oSede", "render": function (data) {
-                        return data.Nombre
+                    "data": "oDeposito", "render": function (data) {
+                        return data.oSede.Nombre
                     }
                 },
                 { "data": "Fecha" },
@@ -479,7 +479,7 @@
                 responsive: true,
                 ordering: true,
                 "ajax": {
-                    url: '@Url.Action("ListarProductosXComprobante", "Mantenedor")',
+                    url: '@Url.Action("ListarProductosXComprobanteVenta", "Mantenedor")',
                     type: "GET",
                     data: { id: data.IdComprobante},
                     dataType: "json",
@@ -600,75 +600,89 @@
             if (tabladataProducto.data().count()) {
 
                 swal({
-                title: "Estás por registrar una nueva factura",
-                text: "Verificá los datos ingresados. Estos no podrán ser modificados luego.",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonClass: "btn-primary",
-                confirmButtonText: "Aceptar",
-                cancelButtonText: "Cancelar",
-                closeOnConfirm: true
-            },
-                function () {
+                    title: "Estás por registrar una nueva factura",
+                    text: "Verificá los datos ingresados. Estos no podrán ser modificados luego",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonClass: "btn-primary",
+                    confirmButtonText: "Aceptar",
+                    cancelButtonText: "Cancelar",
+                    closeOnConfirm: true
+                },
+                    function () {
 
-                    var Comprobante = {
-                        Letra: $("#cboletra option:selected").val(),
-                        Fecha: $("#txtfecha").val(),
-                        Ingreso: 0,
-                        Tipo: 1,
-                        oMedioPago: {
-                            IdMedioPago: $("#cbomediopago option:selected").val()
-                        },
-                        oProveedor: {
-                            IdCliente: $("#cbocliente option:selected").val()
-                        },
-                        oDeposito: {
-                            IdDeposito: $("#cbodeposito option:selected").val()
-                        },
-                    };
+                        var lista=[]
+                        var data = tabladataProducto.rows().data();
 
-                    jQuery.ajax({
-                        url: '@Url.Action("RegistrarComprobante", "Ventas")',
-                        type: "POST",
-                        data: JSON.stringify({ comprobante: Comprobante, productos: tabladataProducto.rows().data() }),
-                        dataType: "json",
-                        contentType: "application/json; charset=utf-8",
-                        success: function (data) {
-
-                            $(".modal-body").LoadingOverlay("hide");
-
-                            if (data.resultado != 0) {
-
-                                tabladata.row.add(Comprobante).draw(false);
-                                $("#FormModalAgregar").modal("hide");
-
-                            } else {
-                                $("#mensajeErrorAgregar").text(data.mensaje);
-                                $("#mensajeErrorAgregar").show();
-                            }
-                        },
-                        error: function (error) {
-
-                            $(".modal-body").LoadingOverlay("hide");
-                            $("#mensajeErrorAgregar").text("Error Ajax");
-                            $("#mensajeErrorAgregar").show();
-                        },
-                        beforeSend: function () {
-                            $(".modal-body").LoadingOverlay("show", {
-                                imageResizeFactor: 2,
-                                text: "Cargando...",
-                                size: 14
+                        for (var i = 0; i < tabladataProducto.data().count(); i++) {
+                            lista.push({
+                                Nombre: data[i].Nombre,
+                                Cantidad: data[i].Cantidad,
+                                Precio: data[i].Precio,
+                                IdProducto: data[i].IdProducto
                             })
                         }
+
+                        var Comprobante = {
+                            Letra: $("#cboletra option:selected").val(),
+                            Fecha: $("#txtfecha").val(),
+                            Tipo: 1,
+                            oMedioPago: {
+                                IdMedioPago: $("#cbomediopago option:selected").val()
+                            },
+                            oCliente: {
+                                IdCliente: $("#cbocliente option:selected").val()
+                            },
+                            oDeposito: {
+                                IdDeposito: $("#cbodeposito option:selected").val()
+                            },
+                            oComprobanteVinculo: {
+                                IdComprobante: 0
+                            }
+                        };
+
+                        jQuery.ajax({
+                            url: '@Url.Action("RegistrarComprobanteVenta", "Ventas")',
+                            type: "POST",
+                            data: JSON.stringify({ comprobante: Comprobante, productos: lista }),
+                            dataType: "json",
+                            contentType: "application/json; charset=utf-8",
+                            success: function (data) {
+
+                                $(".modal-body").LoadingOverlay("hide");
+
+                                if (data.resultado != 0) {
+
+                                    location.reload();
+                                    $("#FormModalAgregar").modal("hide");
+
+                                } else {
+                                    $("#mensajeErrorAgregar").text(data.mensaje);
+                                    $("#mensajeErrorAgregar").show();
+                                }
+                            },
+                            error: function (error) {
+
+                                $(".modal-body").LoadingOverlay("hide");
+                                $("#mensajeErrorAgregar").text("Error Ajax");
+                                $("#mensajeErrorAgregar").show();
+                            },
+                            beforeSend: function () {
+                                $(".modal-body").LoadingOverlay("show", {
+                                    imageResizeFactor: 2,
+                                    text: "Cargando...",
+                                    size: 14
+                                })
+                            }
+                        });
+
+                        tabladataAgregar.destroy();
+                        tabladataProducto.destroy();
+                        $("#cbomediopago").val($("#cbomediopago option:first").val());
+                        $("#cboproveedor").val($("#cboproveedor option:first").val());
+                        $("#cbodeposito").val($("#cbodeposito option:first").val());
+
                     });
-
-                    tabladataAgregar.destroy();
-                    tabladataProducto.destroy();
-                    $("#cbomediopago").val($("#cbomediopago option:first").val());
-                    $("#cbocliente").val($("#cbocliente option:first").val());
-                    $("#cbodeposito").val($("#cbodeposito option:first").val());
-
-                });
 
             }
             else {

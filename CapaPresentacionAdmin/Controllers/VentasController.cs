@@ -29,22 +29,31 @@ namespace CapaPresentacionAdmin.Controllers
         {
             return View();
         }
+
         [HttpGet]
-        public JsonResult ListarComprobantes(int tipo)
+        public JsonResult ListarComprobantesVenta(int tipo)
         {
             List<Comprobante> oLista = new List<Comprobante>();
-            oLista = new CN_Comprobante().Listar(tipo, 0);
+            oLista = new CN_Comprobante().ListarVenta(tipo);
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
+
         [HttpPost]
-        public JsonResult RegistrarComprobante(Comprobante comp, List<Producto> list)
+        public JsonResult RegistrarComprobanteVenta(Comprobante comprobante, List<Producto> productos)
         {
             object resultado;
             string mensaje = string.Empty;
 
-            resultado = new CN_Comprobante().Registrar(comp, list, out mensaje);
+            resultado = new CN_Comprobante().RegistrarVenta(comprobante, productos, out mensaje);
 
             return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public JsonResult ListarNotasVenta()
+        {
+            List<Comprobante> oLista = new List<Comprobante>();
+            oLista = new CN_Comprobante().ListarNotasVenta();
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -169,6 +169,8 @@
     <Content Include="Images\anuncio1.png" />
     <Content Include="Images\anuncio2.png" />
     <Content Include="Images\anuncio3.png" />
+    <Content Include="Images\anuncio4.png" />
+    <Content Include="Images\anuncio5.png" />
     <Content Include="Images\Astronauta.png" />
     <Content Include="Images\DosLeones.png" />
     <Content Include="Images\DosLeonesGrande.png" />
@@ -189,7 +191,9 @@
     <Content Include="Images\LogoNavBarClaro.png" />
     <Content Include="Images\logoNavBarOscuro.png" />
     <Content Include="Images\logoNavBarSinFondo.png" />
-    <Content Include="Images\pochoclo_negro.png" />
+    <Content Include="Images\logoTicket.png" />
+    <Content Include="Images\transaccionCorrecta.png" />
+    <Content Include="Images\transaccionIncorrecta.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />

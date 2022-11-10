@@ -37,9 +37,13 @@ namespace CapaNegocio
             return objCapaDato.ListarXMovimiento(idproveedor);
         }
 
-        public List<DetalleComprobante> ListarXComprobante(int id)
+        public List<DetalleComprobante> ListarXComprobanteCompra(int id)
         {
-            return objCapaDato.ListarXComprobante(id);
+            return objCapaDato.ListarXComprobanteCompra(id);
+        }
+        public List<DetalleComprobante> ListarXComprobanteVenta(int id)
+        {
+            return objCapaDato.ListarXComprobanteVenta(id);
         }
 
         public List<Producto> ListarXDeposito(int id)

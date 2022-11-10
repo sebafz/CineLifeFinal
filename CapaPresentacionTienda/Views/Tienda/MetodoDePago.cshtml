@@ -33,15 +33,15 @@
                                         <div style="display: flex ">
                                             <div class="mb-2" style="width: 40%; margin-left: 7%;">
 
-                                                <label for="metodopago" class="form-label">Método de pago</label>
-                                                <select class="form-select form-select-sm btn-negro color-gris" id="metodopago" onchange="displayDivDemo('hideValuesOnSelect', this)">
+                                                <label for="cbomediopago" class="form-label">Método de pago</label>
+                                                <select class="form-select form-select-sm btn-negro color-gris" style="padding: 6px 10px;" id="cbomediopago" onchange="displayDivDemo('hideValuesOnSelect', this)">
                                                     <option value="0">Tarjeta de débito</option>
                                                     <option value="1">Tarjeta de crédito</option>
                                                 </select>
                                             </div>
                                             <div class="mb-2" style="width:40%; margin-left:7%" id="hideValuesOnSelect">
                                                 <label for="cuotas" class="form-label">Cuotas</label>
-                                                <select class="form-select form-select-sm btn-negro color-gris">
+                                                <select class="form-select form-select-sm btn-negro color-gris" style="padding: 6px 10px;">
                                                     <option value="1">1 cuota</option>
                                                     <option value="2">3 cuotas</option>
                                                     <option value="3">6 cuotas</option>
@@ -58,24 +58,24 @@
                                         <div style="display: flex; justify-content: space-evenly ">
                                             <div class="mb-2" style="width: 40%;">
                                                 <label for="dni" class="form-label">DNI del titular</label>
-                                                <input type="text" class="form-control form-control-sm btn-negro color-gris" id="dni" autocomplete="off" maxlength="8" placeholder="Sin putnos ni espacios">
+                                                <input type="text" class="form-control form-control-sm btn-negro color-gris input-pago" id="dni" autocomplete="off" maxlength="8" placeholder="Sin putnos ni espacios">
                                             </div>
 
                                             <div class="mb-2" style="width:40%">
                                                 <label for="numtarj" class="form-label">Número de tarjeta</label>
-                                                <input type="text" id="numtarj" name="numtarj" class="form-control form-control-sm btn-negro color-gris" placeholder="Sin espacios" maxlength="19" autocomplete="off" />
+                                                <input type="text" id="numtarj" name="numtarj" class="form-control form-control-sm btn-negro color-gris input-pago" placeholder="Sin espacios" maxlength="19" autocomplete="off" />
                                             </div>
                                         </div>
 
                                         <div style="display: flex; justify-content: space-evenly ">
                                             <div class="mb-2" style="width:40%">
                                                 <label for="fechacad" class="form-label">Fecha de caducidad</label>
-                                                <input type="text" class="form-control form-control-sm btn-negro color-gris" id="fechacad" autocomplete="off" placeholder="MM" style="display: inline-block; width: 48%;" maxlength="2">
-                                                <input type="text" class="form-control form-control-sm btn-negro color-gris" id="fechacad" autocomplete="off" placeholder="AA" style="display: inline-block; width: 48%;" maxlength="2">
+                                                <input type="text" class="form-control form-control-sm btn-negro color-gris input-pago" id="fechacad" autocomplete="off" placeholder="MM" style="display: inline-block; width: 48%;" maxlength="2">
+                                                <input type="text" class="form-control form-control-sm btn-negro color-gris input-pago" id="fechacad" autocomplete="off" placeholder="AA" style="display: inline-block; width: 48%;" maxlength="2">
                                             </div>
                                             <div class="mb-2" style="width:40%">
                                                 <label for="codseg" class="form-label">Código de seguridad</label>
-                                                <input type="text" class="form-control form-control-sm btn-negro color-gris" id="codseg" autocomplete="off" maxlength="3" placeholder="XXX">
+                                                <input type="text" class="form-control form-control-sm btn-negro color-gris input-pago" id="codseg" autocomplete="off" maxlength="3" placeholder="XXX">
                                             </div>
                                         </div>
                                         <div class="d-grid">
@@ -122,7 +122,7 @@
 
     function RealizarPago() {
 
-        if ($("#metodopago").val() == null || $("#numtarj").val() == "" || $("#fechacad").val() == "" || $("#codseg").val() == "") {
+        if ($("#cbomediopago").val() == null || $("#numtarj").val() == "" || $("#fechacad").val() == "" || $("#codseg").val() == "") {
             swal("", "Debe completar los datos de pago", "warning");
             return
         }
@@ -132,10 +132,11 @@
         }
 
 
+
         jQuery.ajax({
             url: '@Url.Action("ProcesarPago","Tienda")',
             type: "POST",
-            data: JSON.stringify({ MetodoPago: $("#metodopago option:selected").val(), IdFuncion, Butacas }),
+            data: JSON.stringify({ mediopago: $("#cbomediopago").val()}),
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
@@ -152,7 +153,9 @@
                 }
             },
             beforeSend: function () { $.LoadingOverlay("show") },
-            error: function (error) { $.LoadingOverlay("hide") }
+            error: function (error) {
+                $.LoadingOverlay("hide");
+                swal("", "Volvé a intentarlo más tarde.", "warning");}
         })
     }
 </script>

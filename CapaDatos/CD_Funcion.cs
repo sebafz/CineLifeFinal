@@ -158,7 +158,7 @@ namespace CapaDatos
 
                     StringBuilder sb = new StringBuilder();
 
-                    string query = "select concat(b.Numero, Fila) Descripcion from butaca b " +
+                    string query = "select concat(Fila,b.Numero) Descripcion from butaca b " +
                         "inner join detalleboleto db on db.idbutaca = b.idbutaca "+
                         "inner join comprobanteventa cv on db.idcomprobanteventa = cv.idcomprobanteventa "+
                         "inner join funcion f on f.idfuncion=db.idfuncion "+

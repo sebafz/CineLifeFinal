@@ -19,7 +19,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-12">
-                <button type="button" class="btn btn-primary" onclick="abrirModalNuevo()">Registar desde cero</button>
+                <button type="button" class="btn btn-primary" onclick="abrirModalNuevo()" id="btnregistrar">Registar desde cero</button>
                 <button type="button" class="btn btn-primary" onclick="abrirModalComprobante()">Registrar en base a comprobante</button>
             </div>
         </div>
@@ -87,7 +87,7 @@
             <div class="modal-body">
                 <div class="row g-2">
 
-                    <div class="mb-4">
+                    <div class="mb-1">
                         <div class="mb-3">
                             <label class="form-label">Motivo de movimiento</label>
                             <select id="cbomotivo" class="form-select">
@@ -105,7 +105,7 @@
                             <select id="cbosede" class="form-select">
                             </select>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-0">
                             <label for="cbodeposito" class="form-label">Deposito</label>
                             <select id="cbodeposito" class="form-select">
                             </select>
@@ -318,13 +318,13 @@
 
                 <div class="row g-2">
 
-                    <div class="mb-4">
+                    <div class="mb-1">
                         <div class="mb-3">
                             <label class="form-label">Motivo de movimiento</label>
                             <select id="cbomotivo2" class="form-select">
                             </select>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-0">
                             <label class="form-label">Tipo de movimiento</label>
                             <select id="cboingreso2" class="form-select">
                                 <option value="1">Ingreso</option>
@@ -360,10 +360,12 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
-                <h5 class="modal-title" id="exampleModalLabel">Selección de comprobante</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Selección de comprobante [FormModalVincular]</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <input id="txtiddeposito" type="hidden" value="0" />
+                <input id="txtidcomprobante" type="hidden" value="0" />
                 <table id="tablaVincular" class="display cell-border" style="width: 100%">
                     <thead>
                         <tr>
@@ -379,7 +381,16 @@
                     <tbody>
                     </tbody>
                 </table>
+                <div class="row mt-2">
+                    <div class="col-12">
 
+                        <div id="mensajeErrorVincular" class="alert alert-danger" role="alert">
+                            A simple danger alert—check it out!
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
 
             <div class="modal-footer">
@@ -413,7 +424,16 @@
             jQuery("#txtprecio").on('input', function (evt) {
                 jQuery(this).val(jQuery(this).val().replace(/^0[0-9]+/g, ''));
             });
+
+            var queryString = window.location.search;
+            var urlParams = new URLSearchParams(queryString);
+            var NuevoURL = urlParams.get('nuevo');
+            if (NuevoURL == 1) {
+                $('#btnregistrar').click()
+            }
         });
+
+        //CARGAS EXTRAS
 
         $("<option>").attr({ "value": "0", "disabled": "disabled", "selected": "true" }).text("Seleccionar").appendTo("#cbomotivo")
         jQuery.ajax({
@@ -499,6 +519,8 @@
             })
         }
 
+        //LISTAR MOVIMIENTOS
+
         tabladata = $("#tabla").DataTable({
             responsive: true,
             ordering: true,
@@ -528,7 +550,11 @@
                 { "data": "Fecha" },
                 {
                     "data": "oComprobante", "render": function (data) {
-                        return data.IdComprobante
+                        if (parseInt(data.IdComprobante) == 0) {
+                            return 'No vinculado'
+                        } else {
+                            return data.IdComprobante
+                        }
                     }
                 },
                 {
@@ -553,6 +579,243 @@
             }
 
         });
+
+        //VER MOVIMIENTOS
+        $("#tabla tbody").on("click", '.btn-ver', function () {
+
+            filaSeleccionada = $(this).closest("tr");
+
+            var data = tabladata.row(filaSeleccionada).data();
+
+            tabladataVer = $("#tablaVer").DataTable({
+                responsive: true,
+                ordering: true,
+                "ajax": {
+                    url: '@Url.Action("ListarProductosXMovimiento", "Mantenedor")',
+                    type: "GET",
+                    data: { id: data.IdMovimiento},
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8"
+                },
+                "columns": [
+                    {
+                        "data": "oProducto", "render": function (data) {
+                            return data.Nombre
+                        }
+                    },
+                    {
+                        "data": "oProducto", "render": function (data) {
+                            return data.Descripcion
+                        }
+                    },
+                    { "data": "Precio" },
+                    { "data": "Cantidad" }
+                ],
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+                }
+
+            });
+
+            $("#FormModalVer").modal("show");
+
+        })
+
+        //REGISTRO DESDE CERO
+
+
+        //REGISTRO CON COMPROBANTE
+
+        function abrirModalComprobante() {
+
+            $("#mensajeErrorComprobante").hide();
+            $("#FormModalComprobante").modal("show");
+
+        }
+
+        function SiguienteComprobante() {
+            $("#mensajeErrorComprobante").hide();
+            if ($("#cbomotivo2").val() >= 1) {
+                cargarTablaVincular();
+                $("#FormModalComprobante").modal("hide");
+                $("#mensajeErrorVincular").hide();
+                $("#FormModalVincular").modal("show");
+
+            }
+            else {
+                $("#mensajeErrorComprobante").text("Seleccione motivo");
+                $("#mensajeErrorComprobante").show();
+            }
+        }
+
+        function cargarTablaVincular() {
+            if (parseInt($('#cboingreso2').val()) == 1) {
+
+                tabladataVincular = $("#tablaVincular").DataTable({
+                    responsive: true,
+                    ordering: true,
+                    "ajax": {
+                        url: '@Url.Action("ListarComprobantesCompra", "Compras")',
+                        type: "GET",
+                        data: { tipo: 1 },
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8"
+                    },
+                    "columns": [
+                        { "data": "Numero" },
+                        { "data": "Letra" },
+                        {
+                            "data": "oProveedor", "render": function (data) {
+                                return data.Nombres
+                            }
+                        },
+                        {
+                            "data": "oDeposito", "render": function (data) {
+                                return data.oSede.Nombre
+                            }
+                        },
+                        { "data": "Fecha" },
+                        { "data": "Total" },
+                        {
+                            "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-ver"><i class="fas fa-eye"></i></button>' +
+                                '<button type="button" class="btn btn-primary btn-sm ms-2 btn-agregar"><i class="fas fa-plus"></i></button>',
+                            "orderable": false,
+                            "searchable": false,
+                            "width": "50px"
+                        }
+
+                    ],
+                    "language": {
+                        "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+                    }
+
+                });
+            } else {
+
+                tabladataVincular = $("#tablaVincular").DataTable({
+                    responsive: true,
+                    ordering: true,
+                    "ajax": {
+                        url: '@Url.Action("ListarComprobantesVenta", "Ventas")',
+                        type: "GET",
+                        data: { tipo: 1 },
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8"
+                    },
+                    "columns": [
+                        { "data": "Numero" },
+                        { "data": "Letra" },
+                        {
+                            "data": "oCliente", "render": function (data) {
+                                return data.Nombres
+                            }
+                        },
+                        {
+                            "data": "oDeposito", "render": function (data) {
+                                return data.oSede.Nombre
+                            }
+                        },
+                        { "data": "Fecha" },
+                        { "data": "Total" },
+                        {
+                            "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-ver"><i class="fas fa-eye"></i></button>' +
+                                '<button type="button" class="btn btn-primary btn-sm ms-2 btn-agregar"><i class="fas fa-plus"></i></button>',
+                            "orderable": false,
+                            "searchable": false,
+                            "width": "100px"
+                        }
+
+                    ],
+                    "language": {
+                        "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+                    }
+
+                });
+            }
+        }
+
+        function CerrarComp() {
+            $("#cbomotivo2").val($("#cbomotivo2 option:first").val());
+            tabladataVincular.destroy();
+        }
+
+        $("#tablaVincular").on("click", '.btn-agregar', function () {
+
+            filaSeleccionada = $(this).closest("tr");
+
+            var data = tabladataVincular.row(filaSeleccionada).data();
+
+            registrarComp(data)
+
+        })
+
+        function registrarComp(json) {
+
+            swal({
+                    title: "Estás por registrar una nueva factura",
+                    text: "Verificá los datos ingresados. Estos no podrán ser modificados luego",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonClass: "btn-primary",
+                    confirmButtonText: "Aceptar",
+                    cancelButtonText: "Cancelar",
+                    closeOnConfirm: true
+                },
+                    function () {
+
+                        var Comprobante = {
+                            IdComprobante: json.IdComprobante,
+                            Tipo: 1,
+                            oDeposito: {
+                                IdDeposito: json.oDeposito.IdDeposito
+                            }
+                        };
+
+                        jQuery.ajax({
+                            url: '@Url.Action("RegistrarMovimientoComprobante", "Mantenedor")',
+                            type: "POST",
+                            data: JSON.stringify({ comprobante: Comprobante, mot: $("#cbomotivo2").val(), ingreso: $("#cboingreso2").val() }),
+                            dataType: "json",
+                            contentType: "application/json; charset=utf-8",
+                            success: function (data) {
+
+                                $(".modal-body").LoadingOverlay("hide");
+
+                                if (data.resultado != 0) {
+
+                                    location.reload();
+                                    $("#FormModalVincular").modal("hide");
+
+                                } else {
+                                    $("#mensajeErrorVincular").text(data.mensaje);
+                                    $("#mensajeErrorVincular").show();
+                                }
+                            },
+                            error: function (error) {
+
+                                $(".modal-body").LoadingOverlay("hide");
+                                $("#mensajeErrorVincular").text("Error Ajax");
+                                $("#mensajeErrorVincular").show();
+                            },
+                            beforeSend: function () {
+                                $(".modal-body").LoadingOverlay("show", {
+                                    imageResizeFactor: 2,
+                                    text: "Cargando...",
+                                    size: 14
+                                })
+                            }
+                        });
+
+                        //tabladataVincular.destroy();
+                        //$("#cbomotivo2").val($("#cbomediopago option:first").val());
+                        //$("#cboingreso2").val($("#cboproveedor option:first").val());
+
+                    });
+        }
+
+
+
+        //fin
 
         function cargarTabladataProductoEg() {
             tabladataProductoEg = $("#tablaProductoEg").DataTable({
@@ -698,53 +961,6 @@
 
         }
 
-        function abrirModalComprobante() {
-
-            $("#mensajeErrorComprobante").hide();
-            $("#FormModalComprobante").modal("show");
-
-        }
-
-        $("#tabla tbody").on("click", '.btn-ver', function () {
-
-            filaSeleccionada = $(this).closest("tr");
-
-            var data = tabladata.row(filaSeleccionada).data();
-
-
-            tabladataVer = $("#tablaVer").DataTable({
-                responsive: true,
-                ordering: true,
-                "ajax": {
-                    url: '@Url.Action("ListarProductosXMovimiento", "Mantenedor")',
-                    type: "GET",
-                    data: { id: data.IdMovimiento},
-                    dataType: "json",
-                    contentType: "application/json; charset=utf-8"
-                },
-                "columns": [
-                    {
-                        "data": "oProducto", "render": function (data) {
-                            return data.Nombre
-                        }
-                    },
-                    {
-                        "data": "oProducto", "render": function (data) {
-                            return data.Descripcion
-                        }
-                    },
-                    { "data": "Precio" },
-                    { "data": "Cantidad" }
-                ],
-                "language": {
-                    "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
-                }
-
-            });
-
-            $("#FormModalVer").modal("show");
-
-        })
 
         $("#tablaProductoIng tbody").on("click", '.btn-eliminar', function () {
 
@@ -1011,126 +1227,6 @@
             $("#mensajeError").hide();
         })
 
-
-        /*Parte comprobantes:*/
-        function SiguienteComprobante() {
-            $("#mensajeErrorComprobante").hide();
-            if ($("#cbomotivo2").val() >= 1) {
-                $("#FormModalComprobante").modal("hide");
-                $("#FormModalVincular").modal("show");
-            }
-            else {
-                $("#mensajeErrorComprobante").text("Seleccione motivo");
-                $("#mensajeErrorComprobante").show();
-            }
-        }
-
-        tabladataVincular = $("#tablaVincular").DataTable({
-            responsive: true,
-            ordering: true,
-            "ajax": {
-            url: '@Url.Action("ListarComprobantes", "Ventas")',
-            type: "GET",
-            data: { tipo: $('#cboingreso2').val()},
-            dataType: "json",
-            contentType: "application/json; charset=utf-8"
-        },
-        "columns": [
-            { "data": "Numero" },
-            { "data": "Letra" },
-            {
-                "data": "oProveedor", "render": function (data) {
-                    return data.Nombres
-                }
-            },
-            {
-                "data": "oSede", "render": function (data) {
-                    return data.Nombre
-                }
-            },
-            { "data": "Fecha" },
-            { "data": "Total" },
-            {
-                "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-agregar"><i class="fas fa-plus"></i></button>',
-                "orderable": false,
-                "searchable": false,
-                "width": "50px"
-            }
-
-        ],
-            "language": {
-                "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
-            }
-
-        });
-
-        function CerrarComp() {
-            $("#cbomotivo2").val($("#cbomotivo2 option:first").val())
-        }
-
-        $("#tablaVincular").on("click", '.btn-agregar', function () {
-
-            filaSeleccionada = $(this).closest("tr");
-
-            var data = tabladataVincular.row(filaSeleccionada).data();
-
-            $("#FormModalVincular").modal("hide");
-
-            swal({
-                title: "Estás por registrar un nuevo movimiento de stock",
-                text: "Se creará un movimiento de stock en base al comprobante seleccionado. Podrás ver los cambios reflejados en el depósito del comprobante.",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonClass: "btn-primary",
-                confirmButtonText: "Aceptar",
-                cancelButtonText: "Cancelar",
-                closeOnConfirm: true
-                },
-                function () {
-
-                    jQuery.ajax({
-                        url: '@Url.Action("RegistrarMovimientoConComprobante", "Mantenedor")',
-                        type: "POST",
-                        data: JSON.stringify({ comprobante: data }),
-                        dataType: "json",
-                        contentType: "application/json; charset=utf-8",
-                        success: function (data) {
-
-                            $(".modal-body").LoadingOverlay("hide");
-
-                            if (data.resultado != 0) {
-
-                                tabladata.row.add(Comprobante).draw(false);
-                                $("#FormModalEgreso").modal("hide");
-
-                            } else {
-                                $("#mensajeErrorEgreso").text(data.mensaje);
-                                $("#mensajeErrorEgreso").show();
-                            }
-                        },
-                        error: function (error) {
-
-                            $(".modal-body").LoadingOverlay("hide");
-                            $("#mensajeErrorEgreso").text("Error Ajax");
-                            $("#mensajeErrorEgreso").show();
-                        },
-                        beforeSend: function () {
-                            $(".modal-body").LoadingOverlay("show", {
-                                imageResizeFactor: 2,
-                                text: "Cargando...",
-                                size: 14
-                            })
-                        }
-                    });
-
-                    tabladataIngreso.destroy();
-                    tabladataProductoIng.destroy();
-                    $("#cbosede").val($("#cbosede option:first").val());
-                    $("#cbodeposito").val($("#cbodeposito option:first").val());
-
-                });
-
-        })
     </script>
     
 }

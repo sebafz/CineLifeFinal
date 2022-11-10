@@ -32,11 +32,28 @@ namespace CapaPresentacionAdmin.Controllers
         }
 
         [HttpGet]
-        public JsonResult ListarComprobantes(int tipo)
+        public JsonResult ListarComprobantesCompra(int tipo)
         {
             List<Comprobante> oLista = new List<Comprobante>();
-            oLista = new CN_Comprobante().Listar(tipo, 1);
+            oLista = new CN_Comprobante().ListarCompra(tipo);
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public JsonResult ListarNotasCompra()
+        {
+            List<Comprobante> oLista = new List<Comprobante>();
+            oLista = new CN_Comprobante().ListarNotasCompra();
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult RegistrarComprobanteCompra(Comprobante comprobante, List<Producto> productos)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+
+            resultado = new CN_Comprobante().RegistrarCompra(comprobante, productos, out mensaje);
+
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
         }
         //[HttpPost]
         //public JsonResult VincularMovimientos(int id, int tipo)

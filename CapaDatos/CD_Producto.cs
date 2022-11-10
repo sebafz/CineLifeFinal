@@ -237,11 +237,8 @@ namespace CapaDatos
                     StringBuilder sb = new StringBuilder();
 
                     sb.AppendLine("select p.Nombre, p.Descripcion, cast(dm.Precio as int) Precio, Cantidad from DetalleMovimiento dm ");
-                    sb.AppendLine("inner join Comprobante c on dm.IdComprobante=c.IdComprobante ");
-                    sb.AppendLine("inner join ArtXDeposito ad on dm.IdArtXDeposito=ad.IdArtXDeposito ");
-                    sb.AppendLine("inner join Producto p on ad.IdProducto=p.IdProducto ");
-                    sb.AppendLine("where c.IdMovimiento=id");
-
+                    sb.AppendLine("inner join Producto p on dm.IdProducto=p.IdProducto ");
+                    sb.AppendLine("where dm.IdMovimiento=@id ");
 
                     SqlCommand cmd = new SqlCommand(sb.ToString(), oconexion);
                     cmd.Parameters.AddWithValue("@id", id);
@@ -273,7 +270,7 @@ namespace CapaDatos
             }
             return lista;
         }
-        public List<DetalleComprobante> ListarXComprobante(int id)
+        public List<DetalleComprobante> ListarXComprobanteCompra(int id)
         {
 
             List<DetalleComprobante> lista = new List<DetalleComprobante>();
@@ -285,11 +282,10 @@ namespace CapaDatos
 
                     StringBuilder sb = new StringBuilder();
 
-                    sb.AppendLine("select p.Nombre, p.Descripcion, cast(dc.Precio as int) Precio, Cantidad from DetalleComprobante dc ");
-                    sb.AppendLine("inner join Comprobante c on dc.IdComprobante=c.IdComprobante ");
-                    sb.AppendLine("inner join ArtXDeposito ad on dc.IdArtXDeposito=ad.IdArtXDeposito ");
-                    sb.AppendLine("inner join Producto p on ad.IdProducto=p.IdProducto ");
-                    sb.AppendLine("where c.IdComprobante=@id");
+                    sb.AppendLine("select p.IdProducto, p.Nombre, p.Descripcion, cast(dc.Precio as int) Precio, Cantidad from DetalleComprobanteCompra dc ");
+                    sb.AppendLine("inner join ComprobanteCompra c on dc.IdComprobanteCompra=c.IdComprobanteCompra ");
+                    sb.AppendLine("inner join Producto p on dc.IdProducto=p.IdProducto ");
+                    sb.AppendLine("where c.IdComprobanteCompra=@id");
 
                     SqlCommand cmd = new SqlCommand(sb.ToString(), oconexion);
                     cmd.Parameters.AddWithValue("@id", id);
@@ -305,7 +301,53 @@ namespace CapaDatos
                             {
                                 Cantidad= Convert.ToInt32(dr["Cantidad"]),
                                 Precio = Convert.ToDecimal(dr["Precio"], new CultureInfo("es-PE")),
-                                oProducto = new Producto() { Nombre = dr["Nombre"].ToString(), Descripcion = dr["Descripcion"].ToString()},
+                                oProducto = new Producto() { Nombre = dr["Nombre"].ToString(), Descripcion = dr["Descripcion"].ToString(), IdProducto= Convert.ToInt32(dr["IdProducto"]) },
+                            });
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                lista = new List<DetalleComprobante>();
+
+            }
+            return lista;
+        }
+        public List<DetalleComprobante> ListarXComprobanteVenta(int id)
+        {
+
+            List<DetalleComprobante> lista = new List<DetalleComprobante>();
+
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
+                {
+
+                    StringBuilder sb = new StringBuilder();
+
+                    sb.AppendLine("select p.Nombre, p.Descripcion, cast(dc.Precio as int) Precio, Cantidad from DetalleComprobanteVenta dc ");
+                    sb.AppendLine("inner join ComprobanteVenta c on dc.IdComprobanteVenta=c.IdComprobanteVenta ");
+                    sb.AppendLine("inner join Deposito d on d.IdDeposito=c.IdDeposito ");
+                    sb.AppendLine("inner join ArtXDeposito ad on ad.IdDeposito=d.IdDeposito ");
+                    sb.AppendLine("inner join Producto p on ad.IdProducto=p.IdProducto ");
+                    sb.AppendLine("where c.IdComprobanteVenta=@id");
+
+                    SqlCommand cmd = new SqlCommand(sb.ToString(), oconexion);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.CommandType = CommandType.Text;
+
+                    oconexion.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(new DetalleComprobante()
+                            {
+                                Cantidad = Convert.ToInt32(dr["Cantidad"]),
+                                Precio = Convert.ToDecimal(dr["Precio"], new CultureInfo("es-PE")),
+                                oProducto = new Producto() { Nombre = dr["Nombre"].ToString(), Descripcion = dr["Descripcion"].ToString() },
                             });
                         }
                     }
@@ -328,24 +370,9 @@ namespace CapaDatos
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
                 {
 
-                    StringBuilder sb = new StringBuilder();
-
-                    sb.AppendLine("select ad.IdProducto,p.Nombre,p.Descripcion,");
-                    sb.AppendLine("m.IdMarca,m.Descripcion[DesMarca],");
-                    sb.AppendLine("c.IdCategoria,c.Descripcion[DesCategoria],pp.IdProveedor,pp.Nombres[NomProv],");
-                    sb.AppendLine("p.Precio,ad.Activo,");
-                    sb.AppendLine("ad.Stock, ad.StockMaximo, ad.StockMinimo, ad.PuntoDePedido");
-                    sb.AppendLine("from PRODUCTO p");
-                    sb.AppendLine("inner join MARCA m on m.IdMarca = p.IdMarca");
-                    sb.AppendLine("inner join CATEGORIA c on c.IdCategoria = p.IdCategoria");
-                    sb.AppendLine("inner join PROVEEDOR pp on p.IdProveedor=pp.IdProveedor");
-                    sb.AppendLine("inner join ArtXDeposito ad on p.IdProducto=ad.IdProducto");
-                    sb.AppendLine("where ad.IdDeposito=@id");
-                    
-
-                    SqlCommand cmd = new SqlCommand(sb.ToString(), oconexion);
-                    cmd.Parameters.AddWithValue("@id", id);
-                    cmd.CommandType = CommandType.Text;
+                    SqlCommand cmd = new SqlCommand("sp_ListarArtXDeposito", oconexion);
+                    cmd.Parameters.AddWithValue("IdDeposito", id);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
                     oconexion.Open();
 

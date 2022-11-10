@@ -15,6 +15,7 @@ namespace CapaEntidad
         public Sede oSede { get; set; }
         public Deposito oDeposito { get; set; }
         public Comprobante oComprobanteVinculo { get; set; }
+        public MedioPago oMedioPago { get; set; }
         public string Letra { get; set; }
         public int Ingreso { get; set; }
         public int Tipo { get; set; }
