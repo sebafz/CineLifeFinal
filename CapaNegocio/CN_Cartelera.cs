@@ -25,7 +25,7 @@ namespace CapaNegocio
                 Mensaje = "Fecha desde debe ser menor que fecha hasta";
             }
 
-            if (Convert.ToDateTime(obj.oPelicula.FechaIngreso, cultura) >Convert.ToDateTime(obj.FechaDesde, cultura) && Convert.ToDateTime(obj.FechaHasta, cultura) > Convert.ToDateTime(obj.oPelicula.FechaEgreso, cultura))
+            if (Convert.ToDateTime(obj.FechaDesde, cultura)< Convert.ToDateTime(obj.oPelicula.FechaIngreso, cultura) || Convert.ToDateTime(obj.FechaHasta, cultura) > Convert.ToDateTime(obj.oPelicula.FechaEgreso, cultura))
             {
                 Mensaje ="El rango de fechas no es válido";
             }

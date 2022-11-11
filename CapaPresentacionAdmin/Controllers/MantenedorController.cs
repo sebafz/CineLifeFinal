@@ -336,6 +336,18 @@ namespace CapaPresentacionAdmin.Controllers
 
             return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
         }
+ 
+
+        [HttpPost]
+        public JsonResult ObtenerCompras()
+        {
+
+            List<DetalleComprobante> oLista = new List<DetalleComprobante>();
+
+            oLista = new CN_Ubicacion().ObtenerCompras();
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
 
         [HttpPost]
         public JsonResult ObtenerLocalidadArg(string IdProvincia)

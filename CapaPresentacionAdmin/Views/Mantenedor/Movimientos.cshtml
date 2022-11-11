@@ -111,7 +111,7 @@
                             </select>
                         </div>
                     </div>
-                    </div>
+                </div>
 
                 <div class="row mt-2">
                     <div class="col-12">
@@ -134,70 +134,8 @@
     </div>
 </div>
 
-<!--Modal ingreso-->
-<div class="modal fade" id="FormModalIngreso" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
-    <div class="modal-dialog modal-dialog-scrollable modal-xl">
-        <div class="modal-content">
-            <div class="modal-header bg-dark text-white">
-                <h5 class="modal-title" id="exampleModalLabel">Registar movimiento de ingreso</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <h6 class='alert alert-warning'>
-                    A continuación se visualizan los productos cargados en el sistema.
-                </h6>
-                <table id="tablaIngreso" class="display cell-border" style="width: 100%">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Descripción</th>
-                            <th>Marca</th>
-                            <th>Categoría</th>
-                            <th>Precio</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-                <h6 class='alert alert-warning mt-5'>
-                    En la tabla de abajo se cargarán los productos que selecciones de la taba superior, y que luego serán transferidos al depósito seleccionado.
-                </h6>
-                <table id="tablaProductoIng" class="display cell-border" style="width: 100%">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Cantidad</th>
-                            <th>Precio</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-                <div class="row mt-2">
-                    <div class="col-12">
-
-                        <div id="mensajeErrorIngreso" class="alert alert-danger" role="alert">
-                            A simple danger alert—check it out!
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="CerrarIngreso()">Cancelar</button>
-                <button type="button" class="btn btn-primary" id="btnguardar" onclick="RegistrarIngreso()">Registrar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--Modal egreso-->
-<div class="modal fade" id="FormModalEgreso" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+<!--Modal ingeg-->
+<div class="modal fade" id="FormModalIngEg" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-scrollable modal-xl">
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
@@ -206,9 +144,9 @@
             </div>
             <div class="modal-body">
                 <h6 class='alert alert-warning'>
-                    A continuación se visualizan los productos del depósito seleccionado.
+                    A continuación se visualizan los productos disponibles.
                 </h6>
-                <table id="tablaEgreso" class="display cell-border" style="width: 100%">
+                <table id="tablaIngEg" class="display cell-border" style="width: 100%">
                     <thead>
                         <tr>
                             <th>Nombre</th>
@@ -223,9 +161,9 @@
                     </tbody>
                 </table>
                 <h6 class='alert alert-warning mt-5'>
-                    En la tabla de abajo se cargará la cantidad de productos que selecciones de la taba superior que luego serán quitados del depósito seleccionado.
+                    En la tabla de abajo se cargará la cantidad de productos que selecciones de la taba superior.
                 </h6>
-                <table id="tablaProductoEg" class="display cell-border" style="width: 100%">
+                <table id="tablaProducto" class="display cell-border" style="width: 100%">
                     <thead>
                         <tr>
                             <th>Nombre</th>
@@ -240,7 +178,7 @@
                 <div class="row mt-2">
                     <div class="col-12">
 
-                        <div id="mensajeErrorEgreso" class="alert alert-danger" role="alert">
+                        <div id="mensajeErrorIngEg" class="alert alert-danger" role="alert">
                             A simple danger alert—check it out!
                         </div>
 
@@ -253,6 +191,38 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="CerrarEgreso()">Cancelar</button>
                 <button type="button" class="btn btn-primary" id="btnguardar" onclick="RegistrarEgreso()">Registrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Modal ingreso-->
+<div class="modal fade" id="FormModalIngEg" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-scrollable modal-xl">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Registar movimiento de ingreso</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row mt-2">
+                    <div class="col-12">
+
+                        <div id="mensajeErrorIngEg" class="alert alert-danger" role="alert">
+                            A simple danger alert—check it out!
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="CerrarIngEg()">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="btnguardar" onclick="RegistrarIngreso()">Registrar</button>
             </div>
         </div>
     </div>
@@ -409,12 +379,10 @@
         document.getElementById("iconomovimientos").style.color = "#c2c2c2";
 
         var tabladata;
-        var tabladataIngeso;
-        var tabladataEgreso;
+        var tabladataIngEg;
         var tabladataVincular;
         var tabladataVer;
-        var tabladataProductoIng;
-        var tabladataProductoEg;
+        var tabladataProducto;
         var filaSeleccionada;
 
         jQuery(document).ready(function () {
@@ -598,16 +566,8 @@
                     contentType: "application/json; charset=utf-8"
                 },
                 "columns": [
-                    {
-                        "data": "oProducto", "render": function (data) {
-                            return data.Nombre
-                        }
-                    },
-                    {
-                        "data": "oProducto", "render": function (data) {
-                            return data.Descripcion
-                        }
-                    },
+                    { "data": "Nombre" },
+                    { "data": "Descripcion" },
                     { "data": "Precio" },
                     { "data": "Cantidad" }
                 ],
@@ -806,9 +766,9 @@
                             }
                         });
 
-                        //tabladataVincular.destroy();
-                        //$("#cbomotivo2").val($("#cbomediopago option:first").val());
-                        //$("#cboingreso2").val($("#cboproveedor option:first").val());
+                        tabladataVincular.destroy();
+                        $("#cbomotivo2").val($("#cbomediopago option:first").val());
+                        $("#cboingreso2").val($("#cboproveedor option:first").val());
 
                     });
         }
@@ -817,8 +777,9 @@
 
         //fin
 
-        function cargarTabladataProductoEg() {
-            tabladataProductoEg = $("#tablaProductoEg").DataTable({
+        
+        function cargarTabladataProducto() {
+            tabladataProducto = $("#tablaProducto").DataTable({
                 responsive: true,
                 ordering: true,
                 "ajax": {
@@ -846,81 +807,12 @@
             });
         }
 
-        function cargarTabladataProductoIng() {
-            tabladataProductoIng = $("#tablaProductoIng").DataTable({
+        function cargarTablaIngEg() {
+            tabladataIngEg = $("#tablaIngEg").DataTable({
                 responsive: true,
                 ordering: true,
                 "ajax": {
-                    url: '@Url.Action("ListarProductosVacio", "Mantenedor")',
-                    type: "GET",
-                    dataType: "json"
-                },
-                "columns": [
-                    { "data": "Nombre" },
-                    { "data": "Cantidad" },
-                    { "data": "Precio" },
-                    {
-                        "defaultContent":
-                            '<button type="button" class="btn btn-danger btn-sm btn-eliminar"><i class="fas fa-trash"></i></button>',
-                        "orderable": false,
-                        "searchable": false,
-                        "width": "20px"
-                    }
-
-                ],
-                "language": {
-                    "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
-                }
-
-            });
-        }
-
-        function cargarTablaEgreso() {
-            tabladataEgreso = $("#tablaEgreso").DataTable({
-                responsive: true,
-                ordering: true,
-                "ajax": {
-                    url: '@Url.Action("ListarProductoXDeposito", "Mantenedor")',
-                    type: "GET",
-                    data: { id: $("#cbodeposito").val() },
-                    dataType: "json",
-                    contentType: "application/json; charset=utf-8"
-                },
-                "columns": [
-                    { "data": "Nombre" },
-                    { "data": "Descripcion" },
-                    {
-                        "data": "oMarca", "render": function (data) {
-                            return data.Descripcion
-                        }
-                    },
-                    {
-                        "data": "oCategoria", "render": function (data) {
-                            return data.Descripcion
-                        }
-                    },
-                    { "data": "Precio" },
-                    {
-                        "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-agregar"><i class="fas fa-plus"></i></button>',
-                        "orderable": false,
-                        "searchable": false,
-                        "width": "50px"
-                    }
-
-                ],
-                "language": {
-                    "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
-                }
-
-            });
-        }
-
-        function cargarTablaIngreso() {
-            tabladataEgreso = $("#tablaEgreso").DataTable({
-                responsive: true,
-                ordering: true,
-                "ajax": {
-                    url: '@Url.Action("ListarProductos", "Mantenedor")',
+                    url: '@Url.Action("ListarProductosActivos", "Mantenedor")',
                     type: "GET",
                     dataType: "json",
                     contentType: "application/json; charset=utf-8"
@@ -961,40 +853,24 @@
 
         }
 
+        //fin
 
-        $("#tablaProductoIng tbody").on("click", '.btn-eliminar', function () {
-
-            tabladataProducto.row($(this).closest("tr")).remove().draw();
-
-        })
-
-        $("#tablaProductoEg tbody").on("click", '.btn-eliminar', function () {
+        $("#tablaProducto tbody").on("click", '.btn-eliminar', function () {
 
             tabladataProducto.row($(this).closest("tr")).remove().draw();
 
         })
 
-        $("#tablaIngreso").on("click", '.btn-agregar', function () {
+
+        $("#tablaIngEg").on("click", '.btn-agregar', function () {
 
             filaSeleccionada = $(this).closest("tr");
 
-            var data = tabladataIngreso.row(filaSeleccionada).data();
+            var data = tabladataIngEg.row(filaSeleccionada).data();
 
             abrirModalProducto(data);
 
-            $("#FormModalIngreso").modal("hide");
-
-        })
-
-        $("#tablaEgreso").on("click", '.btn-agregar', function () {
-
-            filaSeleccionada = $(this).closest("tr");
-
-            var data = tabladataEgreso.row(filaSeleccionada).data();
-
-            abrirModalProducto(data);
-
-            $("#FormModalEgreso").modal("hide");
+            $("#FormModalIngEg").modal("hide");
 
         })
 
@@ -1014,18 +890,13 @@
             if ($("#cbodeposito").val() >= 1 && $("#cbomotivo").val() >= 1) {
                 $("#FormModalNuevo").modal("hide");
 
-                if ($("#cboingreso").val()==1) {
-                    cargarTablaProductoIng();
-                    cargarTabladataIngreso();
-                    $("#FormModalIngreso").modal("show");
-                    $("#mensajeErrorIngreso").hide();
-                }
-                else {
-                    cargarTablaProductoEg();
-                    cargarTabladataEgreso();
-                    $("#FormModalEgreso").modal("show");
-                    $("#mensajeErrorEgreso").hide();
-                }
+
+                    cargarTabladataProducto();
+                    cargarTablaIngEg();
+
+                    $("#FormModalIngEg").modal("show");
+                    $("#mensajeErrorIngEg").hide();
+
             }
             else {
                 $("#mensajeErrorNuevo").text("Seleccione depósito y motivo");
@@ -1049,14 +920,10 @@
                     Cantidad: $("#txtcantidad").val()
                 }
                 $("#FormModalProducto").modal("hide");
-                if ($("#cboingreso").val() == 1) {
-                    $("#FormModalIngreso").modal("show");
-                    tabladataProductoIng.row.add(Producto).draw(false);
-                }
-                else {
-                    $("#FormModalEgreso").modal("show");
-                    tabladataProductoEg.row.add(Producto).draw(false);
-                }
+
+                $("#FormModalIngEg").modal("show");
+                tabladataProducto.row.add(Producto).draw(false);
+                
             }
             else {
                 $("#mensajeErrorProd").text("Cantidad y precio no pueden ser cero");
@@ -1068,16 +935,9 @@
             $("#mensajeErrorProducto").hide();
         }
 
-        function CerrarEgreso() {
-            tabladataEgreso.destroy();
-            tabladataProductoEg.destroy();
-            $("#cbosede").val($("#cbosede option:first").val());
-            $("#cbodeposito").val($("#cbodeposito option:first").val());
-        }
-
-        function CerrarIngreso() {
-            tabladataEgreso.destroy();
-            tabladataProductoEg.destroy();
+        function CerrarIngEg() {
+            tabladataIngEg.destroy();
+            tabladataProducto.destroy();
             $("#cbosede").val($("#cbosede option:first").val());
             $("#cbodeposito").val($("#cbodeposito option:first").val());
         }
@@ -1087,8 +947,8 @@
         }
 
         function Registrar() {
-            $("#mensajeErrorIngreso").hide();
-            $("#mensajeErrorEgreso").hide();
+            $("#mensajeErrorIngEg").hide();
+            $("#mensajeErrorIngEg").hide();
 
             var Movimiento = {
                 oMotivoMovimiento: {
@@ -1228,7 +1088,7 @@
         })
 
     </script>
-    
+
 }
 
 

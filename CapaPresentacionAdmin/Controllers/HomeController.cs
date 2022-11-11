@@ -58,7 +58,16 @@ namespace CapaPresentacionAdmin.Controllers
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
 
         }
+        [HttpPost]
+        public JsonResult ObtenerVentas()
+        {
 
+            List<DetalleComprobante> oLista = new List<DetalleComprobante>();
+
+            oLista = new CN_Ubicacion().ObtenerVentas();
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
         [HttpGet]
         public JsonResult ListarProveedores()
         {
@@ -110,6 +119,19 @@ namespace CapaPresentacionAdmin.Controllers
 
             oLista = new CN_Cliente().ListarActivos();
 
+
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+
+        }
+
+        [HttpPost]
+        public JsonResult ObtenerVentasPorMes()
+        {
+
+
+            List<decimal> oLista = new List<decimal>();
+
+            oLista = new CN_Comprobante().ObtenerVentas();
 
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
 

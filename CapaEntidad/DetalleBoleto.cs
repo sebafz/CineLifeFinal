@@ -10,6 +10,9 @@ namespace CapaEntidad
     {
         public int IdDetalleBoleto { get; set; }
         public Butaca oButaca { get; set; }
+        public Comprobante oComprobante {get;set;}
+        public Funcion oFuncion { get; set; }
+        public decimal Precio { get; set; }
 
     }
 }

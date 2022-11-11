@@ -56,10 +56,10 @@ namespace CapaDatos
         }
 
 
-        public List<DetalleVenta> ListarCompras(int idcliente)
+        public List<DetalleBoleto> ListarCompras(int idcliente)
         {
 
-            List<DetalleVenta> lista = new List<DetalleVenta>();
+            List<DetalleBoleto> lista = new List<DetalleBoleto>();
 
             try
             {
@@ -78,19 +78,38 @@ namespace CapaDatos
                     {
                         while (dr.Read())
                         {
-                            lista.Add(new DetalleVenta()
+                            lista.Add(new DetalleBoleto()
                             {
-                                oProducto = new Producto()
+                                Precio = Convert.ToDecimal(dr["Precio"]),
+                                oFuncion = new Funcion()
                                 {
-                                    Nombre = dr["Nombre"].ToString(),
-                                    Precio = Convert.ToDecimal(dr["Precio"], new CultureInfo("es-PE")),
-                                    RutaImagen = dr["RutaImagen"].ToString(),
-                                    NombreImagen = dr["NombreImagen"].ToString(),
+                                    Fecha = dr["FechaFunc"].ToString(),
+                                    Hora = dr["HoraFunc"].ToString(),
+                                    oIdioma = new Idioma()
+                                    {
+                                        Descripcion = dr["DescIdioma"].ToString()
+                                    },
+                                    oSala = new Sala()
+                                    {
+                                        Descripcion = dr["DescSala"].ToString()
+                                    },
+                                    oPelicula = new Pelicula()
+                                    {
+                                        Nombre = dr["Nombre"].ToString(),
+                                        RutaImagen = dr["RutaImagen"].ToString(),
+                                        NombreImagen= dr["NombreImagen"].ToString()
+                                    }
                                 },
-
-                                Cantidad = Convert.ToInt32(dr["Cantidad"]),
-                                Total = Convert.ToDecimal(dr["Total"], new CultureInfo("es-PE")),
-                                IdTransaccion = dr["IdTransaccion"].ToString()
+                                oComprobante = new Comprobante()
+                                {
+                                    Fecha = dr["FechaComp"].ToString(),
+                                    Numero = Convert.ToInt32(dr["NumComp"])
+                                },
+                                oButaca = new Butaca()
+                                {
+                                    Fila = dr["Fila"].ToString(),
+                                    Numero = Convert.ToInt32(dr["Numero"])
+                                }
                             });
                         }
                     }
@@ -98,7 +117,7 @@ namespace CapaDatos
             }
             catch
             {
-                lista = new List<DetalleVenta>();
+                lista = new List<DetalleBoleto>();
 
             }
             return lista;

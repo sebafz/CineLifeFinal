@@ -244,11 +244,11 @@ namespace CapaDatos
 
                     StringBuilder sb = new StringBuilder();
 
-                    string query = "select convert(varchar(30),Hora,108) as Hora, IdFuncion, f.Precio from Funcion f " +
+                    sb.AppendLine("select substring(convert(varchar(10),Hora,108),1,5) as Hora, IdFuncion, f.Precio from Funcion f " +
                     "inner join Pelicula p on p.IdPelicula = f.IdPelicula "+
-                    "where f.Fecha=convert(date,'" + fecha + "',103) and f.IdIdioma=" + ididioma+" and p.IdPelicula="+idpelicula;
+                    "where f.Fecha='"+ fecha + "' and f.IdIdioma=" + ididioma+" and p.IdPelicula="+idpelicula);
 
-                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    SqlCommand cmd = new SqlCommand(sb.ToString(), oconexion);
                     cmd.CommandType = CommandType.Text;
 
                     oconexion.Open();

@@ -439,5 +439,42 @@ namespace CapaDatos
             }
             return idautogenerado;
         }
+        public List<decimal> ObtenerVentas()
+        {
+            List<decimal> lista = new List<decimal>();
+
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
+                {
+                    string query = "select sum(Precio) Total, month(fecha) Fecha from DetalleComprobanteCompra dcc " +
+                    "inner join ComprobanteCompra cc on cc.IdComprobanteCompra = dcc.IdComprobanteCompra " +
+                    "where month(fecha)= month(getdate()) or month(fecha)= month(getdate()) - 1 or month(fecha)= month(getdate()) - 2 or month(fecha)= month(getdate()) - 3 " +
+                    "group by month(fecha) order by 2";
+
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    cmd.CommandType = CommandType.Text;
+
+                    oconexion.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(Convert.ToDecimal(dr["Total"]));
+                        }
+                    }
+                }
+
+            }
+            catch
+            {
+                lista = new List<decimal>();
+
+            }
+
+            return lista;
+
+        }
     }
 }

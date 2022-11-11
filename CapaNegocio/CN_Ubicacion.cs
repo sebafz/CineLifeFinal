@@ -30,6 +30,17 @@ namespace CapaNegocio
 
             return objCapaDato.ObtenerProvinciaArg();
         }
+        public List<DetalleComprobante> ObtenerVentas()
+        {
+
+            return objCapaDato.ObtenerVentas();
+        }
+
+        public List<DetalleComprobante> ObtenerCompras()
+        {
+
+            return objCapaDato.ObtenerCompras();
+        }
 
         public List<Localidad> ObtenerLocalidadArg(string idprovincia)
         {

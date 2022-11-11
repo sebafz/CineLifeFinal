@@ -512,24 +512,43 @@ namespace CapaPresentacionTienda.Controllers
 
             int idcliente = ((Cliente)Session["Cliente"]).IdCliente;
 
-            List<DetalleVenta> oLista = new List<DetalleVenta>();
+            List<DetalleBoleto> oLista = new List<DetalleBoleto>();
 
             bool conversion;
 
-            oLista = new CN_Venta().ListarCompras(idcliente).Select(oc => new DetalleVenta()
+            oLista = new CN_Venta().ListarCompras(idcliente).Select(db => new DetalleBoleto()
             {
-                oProducto = new Producto()
+                Precio = db.Precio,
+                oFuncion = new Funcion()
                 {
-                    Nombre = oc.oProducto.Nombre,
-                    Precio = oc.oProducto.Precio,
-                    RutaImagen = oc.oProducto.RutaImagen,
-                    Base64 = CN_Recursos.ConvertirBase64(Path.Combine(oc.oProducto.RutaImagen, oc.oProducto.NombreImagen), out conversion),
-                    Extension = Path.GetExtension(oc.oProducto.NombreImagen)
-
+                    Fecha = db.oFuncion.Fecha,
+                    Hora=db.oFuncion.Hora,
+                    oIdioma = new Idioma()
+                    {
+                        Descripcion=db.oFuncion.oIdioma.Descripcion
+                    },
+                    oSala=new Sala()
+                    {
+                        Descripcion=db.oFuncion.oSala.Descripcion
+                    },
+                    oPelicula = new Pelicula()
+                    {
+                        Nombre=db.oFuncion.oPelicula.Nombre,
+                        RutaImagen = db.oFuncion.oPelicula.RutaImagen,
+                        Base64 = CN_Recursos.ConvertirBase64(Path.Combine(db.oFuncion.oPelicula.RutaImagen, db.oFuncion.oPelicula.NombreImagen), out conversion),
+                        Extension = Path.GetExtension(db.oFuncion.oPelicula.NombreImagen)
+                    }
                 },
-                Cantidad = oc.Cantidad,
-                Total = oc.Total,
-                IdTransaccion = oc.IdTransaccion
+                oComprobante = new Comprobante()
+                {
+                    Numero=db.oComprobante.Numero,
+                    Fecha=db.oComprobante.Fecha
+                },
+                oButaca=new Butaca()
+                {
+                    Fila=db.oButaca.Fila,
+                    Numero=db.oButaca.Numero
+                }
             }).ToList();
 
             return View(oLista);

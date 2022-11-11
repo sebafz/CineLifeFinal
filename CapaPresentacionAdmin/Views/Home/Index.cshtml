@@ -72,13 +72,13 @@
 </div>
 
 <div class="row">
-    <div class="col-xl-6">
+    <div class="col-xl-12">
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-chart-bar me-1"></i>
-                Bar Chart Example
+                Compras y ventas por mes
             </div>
-            <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+            <div class="card-body"><canvas id="graficacomparativa" width="100%" height="30"></canvas></div>
         </div>
     </div>
 </div>
@@ -89,33 +89,111 @@
 @section scripts{
     
     <script>
+
         $("#collapseMantenedor").click();
         document.getElementById("menutablero").style.fontWeight = "bold";
         document.getElementById("menutablero").style.color = "#c2c2c2";
         document.getElementById("iconotablero").style.color = "#c2c2c2";
 
+        jQuery.ajax({
+            url: '@Url.Action("VistaDashBoard", "Home")',
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
 
-        $(document).ready(function () {
+                var objeto = data.resultado;
+
+                $("#totalcliente").text(objeto.TotalCliente)
+                $("#totalventa").text(objeto.TotalVenta)
+                $("#totalproducto").text(objeto.TotalProducto)
+                $("#totalpelicula").text(objeto.TotalPelicula)
+
+            }
+        });
 
 
-            jQuery.ajax({
-                url: '@Url.Action("VistaDashBoard", "Home")',
-                type: "GET",
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
 
-                    var objeto = data.resultado;
+        const etiquetas = ["Agosto", "Septiembre", "Octubre", "Noviembre"];
 
-                    $("#totalcliente").text(objeto.TotalCliente)
-                    $("#totalventa").text(objeto.TotalVenta)
-                    $("#totalproducto").text(objeto.TotalProducto)
-                    $("#totalpelicula").text(objeto.TotalPelicula)
+        let listacompras = [];
+        let listaventas = [];
+
+        jQuery.ajax({
+            url: '@Url.Action("ObtenerCompras", "Mantenedor")',
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+
+                if (data.lista != null) {
+
+                    $.each(data.lista, function (i, item) {
+                        listacompras[i] = item.Precio
+                    })
 
                 }
-            });
 
+            }
         });
+
+        jQuery.ajax({
+            url: '@Url.Action("ObtenerVentas", "Mantenedor")',
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+
+                if (data.lista != null) {
+
+                    $.each(data.lista, function (i, item) {
+                        listaventas[i] = item.Precio
+                    })
+
+                }
+
+            }
+        });
+
+        const datosVentas = {
+            label: "Ventas por mes",
+            data: listaventas,
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1,
+        };
+
+        const datosCompras = {
+            label: "Compras por mes",
+            data: listacompras,
+            backgroundColor: 'rgba(255, 159, 64, 0.2)',
+            borderColor: 'rgba(255, 159, 64, 1)',
+            borderWidth: 1,
+        };
+
+
+        new Chart(document.querySelector("#graficacomparativa"), {
+            type: 'line',
+            data: {
+                labels: etiquetas,
+                datasets: [
+                    datosVentas,
+                    datosCompras
+
+                ]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                },
+            }
+        });
+
+
 
     </script>
     

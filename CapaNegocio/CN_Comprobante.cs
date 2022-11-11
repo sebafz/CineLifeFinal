@@ -20,6 +20,10 @@ namespace CapaNegocio
         {
             return objCapaDato.ListarNotasCompra();
         }
+        public List<decimal> ObtenerVentas()
+        {
+            return objCapaDato.ObtenerVentas();
+        }
         public List<Comprobante> ListarNotasVenta()
         {
             return objCapaDato.ListarNotasVenta();

@@ -236,7 +236,7 @@ namespace CapaDatos
 
                     StringBuilder sb = new StringBuilder();
 
-                    sb.AppendLine("select p.Nombre, p.Descripcion, cast(dm.Precio as int) Precio, Cantidad from DetalleMovimiento dm ");
+                    sb.AppendLine("select p.Nombre, p.IdProducto, p.Descripcion, cast(dm.Precio as int) Precio, Cantidad from DetalleMovimiento dm ");
                     sb.AppendLine("inner join Producto p on dm.IdProducto=p.IdProducto ");
                     sb.AppendLine("where dm.IdMovimiento=@id ");
 
@@ -255,8 +255,7 @@ namespace CapaDatos
                                 IdProducto = Convert.ToInt32(dr["IdProducto"]),
                                 Nombre = dr["Nombre"].ToString(),
                                 Descripcion = dr["Descripcion"].ToString(),
-                                oMarca = new Marca() { IdMarca = Convert.ToInt32(dr["IdMarca"]), Descripcion = dr["DesMarca"].ToString() },
-                                oCategoria = new Categoria() { IdCategoria = Convert.ToInt32(dr["IdCategoria"]), Descripcion = dr["DesCategoria"].ToString() },
+                                Cantidad = Convert.ToInt32(dr["Cantidad"]),
                                 Precio = Convert.ToDecimal(dr["Precio"], new CultureInfo("es-PE"))
                             });
                         }

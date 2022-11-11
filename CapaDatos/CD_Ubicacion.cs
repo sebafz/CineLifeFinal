@@ -141,6 +141,84 @@ namespace CapaDatos
 
         }
 
+        public List<DetalleComprobante> ObtenerVentas()
+        {
+            List<DetalleComprobante> lista = new List<DetalleComprobante>();
+
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
+                {
+                    string query = "sp_ObtenerVentas";
+
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    cmd.CommandType = CommandType.Text;
+
+                    oconexion.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(
+                                new DetalleComprobante()
+                                {
+                                    Precio= Convert.ToInt32(dr["Total"])
+                                });
+                        }
+                    }
+                }
+
+            }
+            catch
+            {
+                lista = new List<DetalleComprobante>();
+
+            }
+
+            return lista;
+
+        }
+
+        public List<DetalleComprobante> ObtenerCompras()
+        {
+            List<DetalleComprobante> lista = new List<DetalleComprobante>();
+
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
+                {
+                    string query = "sp_ObtenerCompras";
+
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    cmd.CommandType = CommandType.Text;
+
+                    oconexion.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(
+                                new DetalleComprobante()
+                                {
+                                    Precio = Convert.ToInt32(dr["Total"])
+                                });
+                        }
+                    }
+                }
+
+            }
+            catch
+            {
+                lista = new List<DetalleComprobante>();
+
+            }
+
+            return lista;
+
+        }
+
 
         public List<Localidad> ObtenerLocalidadArg(string idprovincia)
         {
